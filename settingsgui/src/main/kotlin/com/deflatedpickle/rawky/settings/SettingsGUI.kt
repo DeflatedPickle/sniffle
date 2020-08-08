@@ -5,10 +5,12 @@ import com.deflatedpickle.haruhi.api.plugin.Plugin
 import com.deflatedpickle.haruhi.event.EventProgramFinishSetup
 import com.deflatedpickle.haruhi.util.PluginUtil
 import com.deflatedpickle.haruhi.util.RegistryUtil
+import kotlinx.serialization.ImplicitReflectionSerializer
 import java.util.regex.PatternSyntaxException
 import javax.swing.JMenu
 import javax.swing.tree.DefaultMutableTreeNode
 
+@ImplicitReflectionSerializer
 @Plugin(
     value = "settings_gui",
     author = "DeflatedPickle",
