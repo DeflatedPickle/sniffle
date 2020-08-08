@@ -14,6 +14,6 @@ dependencies {
     api 'org.swinglabs:swingx:1.6.1'
     api 'com.github.Vatuu:discord-rpc:1.6.2'
     api 'com.github.DeflatedPickle.tosuto:tosuto:1.7.2'
-    api 'com.github.DeflatedPickle.haruhi:haruhi:1.4.1'
+    api 'com.github.DeflatedPickle.haruhi:haruhi:e61b692077'
     api 'com.github.DeflatedPickle:undulation:d144e9ccb4'
 }
