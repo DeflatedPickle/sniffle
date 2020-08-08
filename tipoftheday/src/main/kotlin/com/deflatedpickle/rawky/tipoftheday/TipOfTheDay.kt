@@ -17,10 +17,7 @@ import org.jdesktop.swingx.tips.TipOfTheDayModel
         <br>
         Provides a dialog to show tips other plugins have registered
     """,
-    type = PluginType.API,
-    dependencies = [
-        "deflatedpickle@core#1.0.0"
-    ]
+    type = PluginType.API
 )
 @Suppress("unused")
 object TipOfTheDay {

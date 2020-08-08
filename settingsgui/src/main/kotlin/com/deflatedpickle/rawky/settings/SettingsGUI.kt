@@ -16,7 +16,6 @@ import javax.swing.tree.DefaultMutableTreeNode
     author = "DeflatedPickle",
     version = "1.0.0",
     dependencies = [
-        "deflatedpickle@core#1.0.0",
         "deflatedpickle@discord_rpc#1.0.0"
     ]
 )
