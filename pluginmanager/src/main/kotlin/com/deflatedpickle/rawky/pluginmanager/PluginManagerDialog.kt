@@ -1,34 +1,43 @@
 package com.deflatedpickle.rawky.pluginmanager
 
+import com.deflatedpickle.haruhi.api.plugin.Plugin
 import com.deflatedpickle.haruhi.util.PluginUtil
 import com.deflatedpickle.rawky.discordrpc.util.DiscordRP
 import net.arikia.dev.drpc.DiscordRichPresence
-import org.jdesktop.swingx.JXTree
-import org.jdesktop.swingx.treetable.DefaultMutableTreeTableNode
-import org.jdesktop.swingx.treetable.MutableTreeTableNode
+import org.jdesktop.swingx.JXList
 import org.oxbow.swingbits.dialog.task.TaskDialog
+import java.awt.Component
 import java.awt.Dimension
 import java.awt.event.WindowAdapter
 import java.awt.event.WindowEvent
-import javax.swing.BoxLayout
-import javax.swing.JDialog
-import javax.swing.JPanel
-import javax.swing.JSplitPane
-import javax.swing.SwingUtilities
-import javax.swing.tree.DefaultMutableTreeNode
+import javax.swing.*
 
 object PluginManagerDialog : TaskDialog(PluginUtil.window, "Plugin Manager") {
     private val panel = PluginManagerPanel()
 
-    private val treeRootNode = DefaultMutableTreeNode("plugin")
-    private val tree = JXTree(treeRootNode).apply {
-        val table = this
-        isEditable = false
+    private val listModel = DefaultListModel<Plugin>()
+    private val list = JXList(this.listModel).apply {
+        this.cellRenderer = object : DefaultListCellRenderer() {
+            override fun getListCellRendererComponent(
+                list: JList<*>?,
+                value: Any?,
+                index: Int,
+                isSelected: Boolean,
+                cellHasFocus: Boolean
+            ): Component =
+                super.getListCellRendererComponent(
+                    list,
+                    (value as Plugin).value,
+                    index,
+                    isSelected,
+                    cellHasFocus
+                )
+        }
 
-        addTreeSelectionListener {
-            if (table.minSelectionRow == -1) return@addTreeSelectionListener
+        addListSelectionListener {
+            if (this.selectedIndex == -1) return@addListSelectionListener
 
-            val selected = PluginUtil.discoveredPlugins[table.minSelectionRow]
+            val selected = PluginUtil.discoveredPlugins[this.selectedIndex]
             val dependencies = selected.dependencies
 
             panel.dependencies.dependenciesTableTree.treeTableModel =
@@ -38,65 +47,18 @@ object PluginManagerDialog : TaskDialog(PluginUtil.window, "Plugin Manager") {
                     }.toTypedArray()
                 )
 
-            this@PluginManagerDialog.panel.header.apply {
-                this.nameLabel.text =
-                    PluginUtil.discoveredPlugins[table.minSelectionRow]
-                        .value
-                        .split("_")
-                        .joinToString(" ") { it.capitalize() }
-                this.versionLabel.text = "v${
-                PluginUtil.discoveredPlugins[table.minSelectionRow].version
-                }"
-
-                this.authorLabel.text = "By ${
-                PluginUtil.discoveredPlugins[table.minSelectionRow].author
-                }"
-
-                this.typeLabel.text = "Type: ${
-                PluginUtil.discoveredPlugins[table.minSelectionRow].type.name
-                }"
-
-                this.descriptionLabel.text =
-                    "<html>${
-                    PluginUtil
-                        .discoveredPlugins[table.minSelectionRow]
-                        // Split it, get rid of the short description
-                        .description.split("<br>").drop(1)[0]
-                        // One BR is too small for me, need b i g
-                        .replace("<br>", "<br><br>")
-                        .trimIndent()
-                    }</html>"
-            }
-
-            this@PluginManagerDialog.panel.dependencies.apply {
-                this.dependenciesTableTree.removeAll()
-                val dependencies = PluginUtil.discoveredPlugins[table.minSelectionRow].dependencies
-
-                if (dependencies.isEmpty()) {
-                    (panel.dependencies.dependenciesTableTree.treeTableModel.root as MutableTreeTableNode).insert(
-                        DefaultMutableTreeTableNode("none"),
-                        0
-                    )
-                } else {
-                    for (i in dependencies) {
-                        (panel.dependencies.dependenciesTableTree.treeTableModel.root as MutableTreeTableNode).insert(
-                            DefaultMutableTreeTableNode(i),
-                            0
-                        )
-                    }
-                }
-            }
+            val plugin = PluginUtil.discoveredPlugins[this.selectedIndex]
+            this@PluginManagerDialog.panel.header.refresh(plugin)
+            this@PluginManagerDialog.panel.dependencies.refresh(plugin)
         }
     }
 
-    private val splitPane = JSplitPane(JSplitPane.HORIZONTAL_SPLIT, tree, panel).apply {
+    private val splitPane = JSplitPane(JSplitPane.HORIZONTAL_SPLIT, list, panel).apply {
         isOneTouchExpandable = true
     }
 
     init {
         setCommands(StandardCommand.OK, StandardCommand.CANCEL)
-
-        this.tree.isRootVisible = false
 
         this.fixedComponent = JPanel().apply {
             isOpaque = false
@@ -116,11 +78,9 @@ object PluginManagerDialog : TaskDialog(PluginUtil.window, "Plugin Manager") {
 
     override fun setVisible(visible: Boolean) {
         for (plug in PluginUtil.discoveredPlugins) {
-            this.treeRootNode.add(DefaultMutableTreeNode(plug.value))
+            this.listModel.addElement(plug)
         }
-
-        this.tree.setSelectionRow(0)
-        this.tree.expandAll()
+        this.list.selectedIndex = 0
 
         DiscordRP.stack.push(
             DiscordRichPresence
