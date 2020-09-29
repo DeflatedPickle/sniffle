@@ -1,30 +1,24 @@
 package com.deflatedpickle.rawky.settings
 
 import com.deflatedpickle.haruhi.api.plugin.Plugin
+import com.deflatedpickle.haruhi.api.registry.Registry
 import com.deflatedpickle.haruhi.util.ConfigUtil
 import com.deflatedpickle.haruhi.util.PluginUtil
-import com.deflatedpickle.rawky.settings.extension.get
-import com.deflatedpickle.rawky.settings.extension.set
+import com.deflatedpickle.haruhi.util.RegistryUtil
 import com.deflatedpickle.rawky.settings.widget.ErrorLabel
 import com.deflatedpickle.rawky.settings.widget.SearchList
 import com.deflatedpickle.rawky.ui.constraints.FillBothFinishLine
 import com.deflatedpickle.rawky.ui.constraints.FillHorizontal
+import com.deflatedpickle.rawky.ui.constraints.FillHorizontalFinishLine
 import com.deflatedpickle.rawky.ui.constraints.StickEast
-import com.deflatedpickle.rawky.ui.constraints.StickWestFinishLine
 import kotlinx.serialization.ImplicitReflectionSerializer
 import org.oxbow.swingbits.dialog.task.TaskDialog
 import java.awt.Component
 import java.awt.Dimension
-import java.io.File
-import javax.swing.BoxLayout
-import javax.swing.JCheckBox
-import javax.swing.JLabel
-import javax.swing.JPanel
-import javax.swing.JSeparator
-import javax.swing.JSplitPane
+import javax.swing.*
 import javax.swing.tree.DefaultMutableTreeNode
 import javax.swing.tree.MutableTreeNode
-import kotlin.reflect.full.createType
+import kotlin.reflect.KClass
 import kotlin.reflect.full.declaredMemberProperties
 
 @ImplicitReflectionSerializer
@@ -64,12 +58,15 @@ object SettingsDialog : TaskDialog(PluginUtil.window, "Settings") {
                                 SettingsPanel.add(JLabel("${i.name}:"), StickEast)
                                 SettingsPanel.add(JSeparator(JSeparator.HORIZONTAL), FillHorizontal)
 
+                                val instance = ConfigUtil.getSettings<Any>(PluginUtil.pluginToSlug(plugin))
+
+                                val registry = RegistryUtil.get("setting_type") as Registry<String, (Plugin, String, Any) -> Component>?
+
                                 SettingsPanel.add(
-                                    when (i.returnType) {
-                                        Boolean::class.createType() -> checkBox(plugin, i.name)
-                                        else -> ErrorLabel("${i::class.simpleName} isn't supported yet!")
-                                    } as Component,
-                                    StickWestFinishLine
+                                    registry?.get((i.returnType.classifier as KClass<*>).qualifiedName!!)?.let { it(plugin, i.name, instance) } ?: ErrorLabel(
+                                        "${(i.returnType.classifier as KClass<*>).qualifiedName} isn't supported yet!"
+                                    ),
+                                    FillHorizontalFinishLine
                                 )
                             }
                         }
@@ -87,7 +84,7 @@ object SettingsDialog : TaskDialog(PluginUtil.window, "Settings") {
 
     private val splitPane = JSplitPane(
         JSplitPane.HORIZONTAL_SPLIT,
-        searchPanel, SettingsPanel
+        searchPanel, JScrollPane(SettingsPanel)
     ).apply {
         isOneTouchExpandable = true
     }
@@ -102,22 +99,6 @@ object SettingsDialog : TaskDialog(PluginUtil.window, "Settings") {
             preferredSize = Dimension(400, 200)
 
             add(this@SettingsDialog.splitPane)
-        }
-    }
-
-    private fun checkBox(plugin: Plugin, name: String): JCheckBox = JCheckBox().apply {
-        val instance = ConfigUtil.getSettings<Any>(PluginUtil.pluginToSlug(plugin))
-
-        isSelected = instance.get(name)
-
-        addActionListener {
-            isSelected = !instance.get<Boolean>(name)
-            instance.set(name, isSelected)
-
-            val id = PluginUtil.pluginToSlug(plugin)
-            ConfigUtil.serializeConfig(
-                id, File("config/$id.json")
-            )
         }
     }
 }

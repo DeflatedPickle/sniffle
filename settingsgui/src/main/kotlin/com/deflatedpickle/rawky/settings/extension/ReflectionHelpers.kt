@@ -22,7 +22,7 @@ inline fun <reified T : Any> Any.set(string: String, value: T) {
 
     val setterName = "${setterPrefix}${string.capitalize()}"
 
-    val method = javaClass.getDeclaredMethod(setterName, Boolean::class.java)
+    val method = javaClass.getDeclaredMethod(setterName, T::class.java)
     method.isAccessible = true
     method.invoke(this, value) as? T
 }
