@@ -1,3 +1,7 @@
+/* Copyright (c) 2020-2021 DeflatedPickle under the MIT license */
+
+@file:Suppress("UNCHECKED_CAST")
+
 package com.deflatedpickle.rawky.settings
 
 import com.deflatedpickle.haruhi.api.Registry
@@ -7,25 +11,26 @@ import com.deflatedpickle.haruhi.event.EventProgramFinishSetup
 import com.deflatedpickle.haruhi.util.ConfigUtil
 import com.deflatedpickle.haruhi.util.PluginUtil
 import com.deflatedpickle.haruhi.util.RegistryUtil
-import com.deflatedpickle.rawky.settings.extension.get
-import com.deflatedpickle.rawky.settings.extension.set
-import kotlinx.serialization.ImplicitReflectionSerializer
-import org.jdesktop.swingx.JXTextField
+import com.deflatedpickle.marvin.extensions.get
+import com.deflatedpickle.marvin.extensions.set
 import java.awt.Component
 import java.awt.event.KeyAdapter
 import java.awt.event.KeyEvent
 import java.io.File
 import java.util.regex.PatternSyntaxException
 import javax.swing.JCheckBox
+import javax.swing.JComboBox
 import javax.swing.JMenu
 import javax.swing.tree.DefaultMutableTreeNode
+import kotlinx.serialization.ImplicitReflectionSerializer
+import org.jdesktop.swingx.JXTextField
 
 @Suppress("unused")
 @ImplicitReflectionSerializer
 @Plugin(
     value = "settings_gui",
     author = "DeflatedPickle",
-    version = "1.0.0",
+    version = "1.1.0",
     dependencies = [
         "deflatedpickle@discord_rpc#1.0.0"
     ]
@@ -47,6 +52,7 @@ object SettingsGUI {
             val registry = RegistryUtil.get("setting_type") as Registry<String, (Plugin, String, Any) -> Component>
             registerBoolean(registry)
             registerString(registry)
+            registerEnum(registry)
         }
 
         EventProgramFinishSetup.addListener {
@@ -102,6 +108,25 @@ object SettingsGUI {
                         )
                     }
                 })
+            }
+        }
+    }
+
+    private fun registerEnum(registry: Registry<String, (Plugin, String, Any) -> Component>) {
+        registry.register(Enum::class.qualifiedName!!) { plugin, name, instance ->
+            val clazz = instance.get<Enum<*>>(name)::class.java
+
+            JComboBox<Enum<*>>(clazz.enumConstants).apply {
+                selectedIndex = instance.get<Enum<*>>(name).ordinal
+
+                addActionListener {
+                    instance.set(name, clazz.enumConstants[selectedIndex])
+
+                    val id = PluginUtil.pluginToSlug(plugin)
+                    ConfigUtil.serializeConfig(
+                        id, File("config/$id.json")
+                    )
+                }
             }
         }
     }
