@@ -1,16 +1,25 @@
+/* Copyright (c) 2020 DeflatedPickle under the MIT license */
+
 package com.deflatedpickle.rawky.pluginmanager
 
 import com.deflatedpickle.haruhi.api.plugin.Plugin
 import com.deflatedpickle.haruhi.util.PluginUtil
 import com.deflatedpickle.rawky.discordrpc.util.DiscordRP
-import net.arikia.dev.drpc.DiscordRichPresence
-import org.jdesktop.swingx.JXList
-import org.oxbow.swingbits.dialog.task.TaskDialog
 import java.awt.Component
 import java.awt.Dimension
 import java.awt.event.WindowAdapter
 import java.awt.event.WindowEvent
-import javax.swing.*
+import javax.swing.BoxLayout
+import javax.swing.DefaultListCellRenderer
+import javax.swing.DefaultListModel
+import javax.swing.JDialog
+import javax.swing.JList
+import javax.swing.JPanel
+import javax.swing.JSplitPane
+import javax.swing.SwingUtilities
+import net.arikia.dev.drpc.DiscordRichPresence
+import org.jdesktop.swingx.JXList
+import org.oxbow.swingbits.dialog.task.TaskDialog
 
 object PluginManagerDialog : TaskDialog(PluginUtil.window, "Plugin Manager") {
     private val panel = PluginManagerPanel()
@@ -71,7 +80,10 @@ object PluginManagerDialog : TaskDialog(PluginUtil.window, "Plugin Manager") {
 
         (SwingUtilities.getWindowAncestor(this.fixedComponent) as JDialog).addWindowListener(object : WindowAdapter() {
             override fun windowClosing(e: WindowEvent) {
-                DiscordRP.stack.pop()
+                try {
+                    DiscordRP.stack.pop()
+                } catch (e: NoSuchElementException) {
+                }
             }
         })
     }

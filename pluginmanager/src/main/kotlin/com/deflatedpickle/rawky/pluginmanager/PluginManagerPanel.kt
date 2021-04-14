@@ -1,15 +1,18 @@
+/* Copyright (c) 2020 DeflatedPickle under the MIT license */
+
 package com.deflatedpickle.rawky.pluginmanager
 
 import com.deflatedpickle.haruhi.api.plugin.Plugin
-import com.deflatedpickle.haruhi.util.PluginUtil
 import com.deflatedpickle.rawky.ui.constraints.FillHorizontalFinishLine
 import com.deflatedpickle.rawky.ui.constraints.StickCenterFinishLine
 import com.deflatedpickle.rawky.ui.constraints.StickWestFinishLine
-import org.jdesktop.swingx.*
+import java.awt.GridBagLayout
+import javax.swing.BoxLayout
+import org.jdesktop.swingx.JXLabel
+import org.jdesktop.swingx.JXPanel
+import org.jdesktop.swingx.JXTreeTable
 import org.jdesktop.swingx.treetable.DefaultMutableTreeTableNode
 import org.jdesktop.swingx.treetable.MutableTreeTableNode
-import java.awt.*
-import javax.swing.BoxLayout
 
 class PluginManagerPanel : JXPanel() {
     class Header : JXPanel() {

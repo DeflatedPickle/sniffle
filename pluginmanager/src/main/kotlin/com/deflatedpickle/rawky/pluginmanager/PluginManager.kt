@@ -1,9 +1,10 @@
+/* Copyright (c) 2020 DeflatedPickle under the MIT license */
+
 package com.deflatedpickle.rawky.pluginmanager
 
 import com.deflatedpickle.haruhi.api.constants.MenuCategory
 import com.deflatedpickle.haruhi.api.plugin.Plugin
 import com.deflatedpickle.haruhi.api.plugin.PluginType
-import com.deflatedpickle.haruhi.event.EventMenuBuild
 import com.deflatedpickle.haruhi.event.EventProgramFinishSetup
 import com.deflatedpickle.haruhi.event.EventWindowShown
 import com.deflatedpickle.haruhi.util.PluginUtil
@@ -16,7 +17,7 @@ import javax.swing.JMenu
 @Plugin(
     value = "plugin_manager",
     author = "DeflatedPickle",
-    version = "1.0.0",
+    version = "1.0.1",
     description = """
         <br>
         A GUI for managing plugins
