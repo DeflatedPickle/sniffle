@@ -5,15 +5,16 @@ plugins {
 }
 
 dependencies {
-    api project(":discordrpc")
+    implementation project(":discordrpc")
 
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 
-    api 'org.oxbow:swing-bits:1.0.0-SNAPSHOT'
-    api 'com.github.Fylipp:easy-events:v1.1.0'
-    api 'org.swinglabs:swingx:1.6.1'
-    api 'com.github.Vatuu:discord-rpc:1.6.2'
-    api 'com.github.DeflatedPickle.tosuto:tosuto:1.7.2'
-    api 'com.github.DeflatedPickle.haruhi:haruhi:e61b692077'
-    api 'com.github.DeflatedPickle:undulation:d144e9ccb4'
+    implementation 'org.oxbow:swing-bits:1.0.0-SNAPSHOT'
+    implementation 'com.github.Fylipp:easy-events:v1.1.0'
+    implementation 'org.swinglabs:swingx:1.6.1'
+    implementation 'com.github.Vatuu:discord-rpc:1.6.2'
+
+    implementation 'com.deflatedpickle:tosuto'
+    implementation 'com.deflatedpickle:haruhi'
+    implementation 'com.deflatedpickle:undulation'
 }

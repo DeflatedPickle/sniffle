@@ -1,14 +1,16 @@
+/* Copyright (c) 2020 DeflatedPickle under the MIT license */
+
 package com.deflatedpickle.rawky.discordrpc.util
 
 import com.deflatedpickle.haruhi.util.PluginUtil
 import com.deflatedpickle.tosuto.ToastItem
 import com.deflatedpickle.tosuto.action.ToastSingleAction
 import com.deflatedpickle.tosuto.api.ToastLevel
+import javax.swing.Timer
 import net.arikia.dev.drpc.DiscordEventHandlers
 import net.arikia.dev.drpc.DiscordRPC
 import net.arikia.dev.drpc.DiscordRichPresence
 import org.apache.logging.log4j.LogManager
-import javax.swing.Timer
 
 object DiscordRP {
     private val logger = LogManager.getLogger(this::class.simpleName)

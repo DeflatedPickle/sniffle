@@ -5,10 +5,11 @@ plugins {
 }
 
 dependencies {
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 
-    api 'com.github.Fylipp:easy-events:v1.1.0'
-    api 'org.swinglabs:swingx:1.6.1'
-    api 'com.github.DeflatedPickle.tosuto:tosuto:1.7.2'
-    api 'com.github.DeflatedPickle.haruhi:haruhi:e61b692077'
+    implementation 'com.github.Fylipp:easy-events:v1.1.0'
+    implementation 'org.swinglabs:swingx:1.6.1'
+
+    implementation 'com.deflatedpickle:tosuto'
+    implementation 'com.deflatedpickle:haruhi'
 }

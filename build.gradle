@@ -2,18 +2,30 @@ plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm' version '1.3.72'
     id 'org.jetbrains.kotlin.plugin.serialization' version '1.3.72'
+
+    id 'com.diffplug.spotless' version '5.7.0'
 }
 
 group 'com.deflatedpickle'
 version '1.0.0'
 
 allprojects {
+    apply plugin: 'com.diffplug.spotless'
+
     repositories {
         jcenter()
         mavenCentral()
 
         maven { url 'https://jitpack.io' }
         maven { url 'https://github.com/eugener/oxbow/raw/master/maven/repository' }
+    }
+
+    spotless {
+        kotlin {
+            ktlint()
+
+            licenseHeader '/* Copyright (c) $YEAR DeflatedPickle under the MIT license */\n\n'
+        }
     }
 }
 
@@ -34,8 +46,5 @@ subprojects {
 }
 
 compileKotlin {
-    kotlinOptions.jvmTarget = "1.8"
-}
-compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
