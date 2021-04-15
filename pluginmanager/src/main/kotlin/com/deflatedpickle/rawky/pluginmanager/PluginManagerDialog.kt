@@ -1,4 +1,4 @@
-/* Copyright (c) 2020 DeflatedPickle under the MIT license */
+/* Copyright (c) 2020-2021 DeflatedPickle under the MIT license */
 
 package com.deflatedpickle.rawky.pluginmanager
 
@@ -15,6 +15,7 @@ import javax.swing.DefaultListModel
 import javax.swing.JDialog
 import javax.swing.JList
 import javax.swing.JPanel
+import javax.swing.JScrollPane
 import javax.swing.JSplitPane
 import javax.swing.SwingUtilities
 import net.arikia.dev.drpc.DiscordRichPresence
@@ -46,24 +47,19 @@ object PluginManagerDialog : TaskDialog(PluginUtil.window, "Plugin Manager") {
         addListSelectionListener {
             if (this.selectedIndex == -1) return@addListSelectionListener
 
-            val selected = PluginUtil.discoveredPlugins[this.selectedIndex]
-            val dependencies = selected.dependencies
-
-            panel.dependencies.dependenciesTableTree.treeTableModel =
-                PluginManagerTreeTableModel(
-                    dependencies.map {
-                        PluginUtil.slugToPlugin[it]!!
-                    }.toTypedArray()
-                )
-
             val plugin = PluginUtil.discoveredPlugins[this.selectedIndex]
             this@PluginManagerDialog.panel.header.refresh(plugin)
             this@PluginManagerDialog.panel.dependencies.refresh(plugin)
         }
     }
 
-    private val splitPane = JSplitPane(JSplitPane.HORIZONTAL_SPLIT, list, panel).apply {
+    private val splitPane = JSplitPane(
+        JSplitPane.HORIZONTAL_SPLIT,
+        JScrollPane(list), JScrollPane(panel)
+    ).apply {
         isOneTouchExpandable = true
+        isContinuousLayout = true
+        resizeWeight = 0.3
     }
 
     init {

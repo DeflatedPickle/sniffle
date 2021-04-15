@@ -1,4 +1,4 @@
-/* Copyright (c) 2020 DeflatedPickle under the MIT license */
+/* Copyright (c) 2020-2021 DeflatedPickle under the MIT license */
 
 package com.deflatedpickle.rawky.pluginmanager
 
@@ -17,7 +17,7 @@ import javax.swing.JMenu
 @Plugin(
     value = "plugin_manager",
     author = "DeflatedPickle",
-    version = "1.0.1",
+    version = "1.0.2",
     description = """
         <br>
         A GUI for managing plugins

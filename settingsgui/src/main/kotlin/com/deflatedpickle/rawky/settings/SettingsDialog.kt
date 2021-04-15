@@ -86,12 +86,10 @@ object SettingsDialog : TaskDialog(PluginUtil.window, "Settings") {
 
                                     clazz?.let { e ->
                                         if (registry!!.has(e)) {
-                                            SettingsPanel.add(
-                                                registry.get(clazz)?.let { it(plugin, i.name, instance) } ?: ErrorLabel(
-                                                    "$clazz isn't supported yet!"
-                                                ),
-                                                FillHorizontalFinishLine
-                                            )
+                                            val widget = registry.get(clazz)?.let { it(plugin, i.name, instance) }
+                                            SettingsPanel.add(widget ?: ErrorLabel(
+                                                "$clazz isn't supported yet!"
+                                            ), FillHorizontalFinishLine)
                                         }
                                     }
                                 }
@@ -122,6 +120,8 @@ object SettingsDialog : TaskDialog(PluginUtil.window, "Settings") {
         searchPanel, JScrollPane(SettingsPanel)
     ).apply {
         isOneTouchExpandable = true
+        isContinuousLayout = true
+        resizeWeight = 0.3
     }
 
     init {

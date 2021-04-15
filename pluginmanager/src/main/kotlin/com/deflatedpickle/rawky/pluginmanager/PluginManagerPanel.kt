@@ -1,4 +1,4 @@
-/* Copyright (c) 2020 DeflatedPickle under the MIT license */
+/* Copyright (c) 2020-2021 DeflatedPickle under the MIT license */
 
 package com.deflatedpickle.rawky.pluginmanager
 
@@ -8,11 +8,10 @@ import com.deflatedpickle.rawky.ui.constraints.StickCenterFinishLine
 import com.deflatedpickle.rawky.ui.constraints.StickWestFinishLine
 import java.awt.GridBagLayout
 import javax.swing.BoxLayout
+import javax.swing.DefaultListModel
 import org.jdesktop.swingx.JXLabel
+import org.jdesktop.swingx.JXList
 import org.jdesktop.swingx.JXPanel
-import org.jdesktop.swingx.JXTreeTable
-import org.jdesktop.swingx.treetable.DefaultMutableTreeTableNode
-import org.jdesktop.swingx.treetable.MutableTreeTableNode
 
 class PluginManagerPanel : JXPanel() {
     class Header : JXPanel() {
@@ -76,31 +75,22 @@ class PluginManagerPanel : JXPanel() {
             this.font = this.font.deriveFont(18f)
         }
 
-        val dependenciesTableTree = JXTreeTable()
+        val dependencyModel = DefaultListModel<String>()
+        val dependenciesList = JXList(this.dependencyModel)
 
         init {
             this.layout = GridBagLayout()
 
             this.add(this.titleLabel, StickWestFinishLine)
-            this.add(this.dependenciesTableTree, FillHorizontalFinishLine)
+            this.add(this.dependenciesList, FillHorizontalFinishLine)
         }
 
         fun refresh(plugin: Plugin) {
-            this.dependenciesTableTree.removeAll()
+            this.dependencyModel.removeAllElements()
             val dependencies = plugin.dependencies
 
-            if (dependencies.isEmpty()) {
-                (dependenciesTableTree.treeTableModel.root as MutableTreeTableNode).insert(
-                    DefaultMutableTreeTableNode("none"),
-                    0
-                )
-            } else {
-                for (i in dependencies) {
-                    (dependenciesTableTree.treeTableModel.root as MutableTreeTableNode).insert(
-                        DefaultMutableTreeTableNode(i),
-                        0
-                    )
-                }
+            for (i in dependencies) {
+                dependencyModel.addElement(i)
             }
         }
     }
