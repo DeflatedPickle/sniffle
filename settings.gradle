@@ -1,6 +1,0 @@
-rootProject.name = 'sniffle'
-
-include 'pluginmanager'
-include 'discordrpc'
-include 'tipoftheday'
-include 'settingsgui'

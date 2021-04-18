@@ -1,11 +1,18 @@
 plugins {
+    id 'java'
     id 'java-library'
 
     id 'org.jetbrains.kotlin.jvm'
+
+    id 'com.diffplug.spotless'
 }
 
+group 'com.deflatedpickle'
+version "1.0.2"
+sourceCompatibility = 1.8
+
 dependencies {
-    implementation project(":discordrpc")
+    // implementation project(":discordrpc")
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 

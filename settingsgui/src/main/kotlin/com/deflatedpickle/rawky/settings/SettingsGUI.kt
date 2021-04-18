@@ -30,10 +30,7 @@ import org.jdesktop.swingx.JXTextField
 @Plugin(
     value = "settings_gui",
     author = "DeflatedPickle",
-    version = "1.1.1",
-    dependencies = [
-        "deflatedpickle@discord_rpc#1.0.0"
-    ]
+    version = "1.1.1"
 )
 object SettingsGUI {
     init {
