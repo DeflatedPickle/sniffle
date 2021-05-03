@@ -3,9 +3,9 @@
 package com.deflatedpickle.rawky.pluginmanager
 
 import com.deflatedpickle.haruhi.api.plugin.Plugin
-import com.deflatedpickle.rawky.ui.constraints.FillHorizontalFinishLine
-import com.deflatedpickle.rawky.ui.constraints.StickCenterFinishLine
-import com.deflatedpickle.rawky.ui.constraints.StickWestFinishLine
+import com.deflatedpickle.undulation.constraints.FillHorizontalFinishLine
+import com.deflatedpickle.undulation.constraints.StickCenterFinishLine
+import com.deflatedpickle.undulation.constraints.StickWestFinishLine
 import java.awt.GridBagLayout
 import javax.swing.BoxLayout
 import javax.swing.DefaultListModel

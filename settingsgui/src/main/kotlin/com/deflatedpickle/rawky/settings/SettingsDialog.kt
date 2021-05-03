@@ -11,10 +11,10 @@ import com.deflatedpickle.haruhi.util.PluginUtil
 import com.deflatedpickle.haruhi.util.RegistryUtil
 import com.deflatedpickle.rawky.settings.widget.ErrorLabel
 import com.deflatedpickle.rawky.settings.widget.SearchList
-import com.deflatedpickle.rawky.ui.constraints.FillBothFinishLine
-import com.deflatedpickle.rawky.ui.constraints.FillHorizontal
-import com.deflatedpickle.rawky.ui.constraints.FillHorizontalFinishLine
-import com.deflatedpickle.rawky.ui.constraints.StickEast
+import com.deflatedpickle.undulation.constraints.FillBothFinishLine
+import com.deflatedpickle.undulation.constraints.FillHorizontal
+import com.deflatedpickle.undulation.constraints.FillHorizontalFinishLine
+import com.deflatedpickle.undulation.constraints.StickEast
 import java.awt.Component
 import java.awt.Dimension
 import javax.swing.BoxLayout
