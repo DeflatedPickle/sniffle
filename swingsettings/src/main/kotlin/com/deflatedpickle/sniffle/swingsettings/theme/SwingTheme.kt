@@ -2,6 +2,8 @@
 
 package com.deflatedpickle.sniffle.swingsettings.theme
 
+import java.awt.Font as AWTFont
+import com.deflatedpickle.sniffle.swingsettings.api.Font
 import com.deflatedpickle.sniffle.swingsettings.api.Theme
 import com.deflatedpickle.sniffle.swingsettings.util.ThemeSerializer
 import com.sun.java.swing.plaf.motif.MotifLookAndFeel
@@ -31,6 +33,11 @@ object ThemeNimbus : Theme(
 ) {
     override fun changeTo() {
         UIManager.setLookAndFeel(NimbusLookAndFeel())
+    }
+
+    override fun setFont(font: Font) {
+        UIManager.getLookAndFeelDefaults()["defaultFont"] =
+            AWTFont(font.name.name, font.style.ordinal, font.size)
     }
 }
 

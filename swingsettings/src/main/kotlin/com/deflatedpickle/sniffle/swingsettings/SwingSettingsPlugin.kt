@@ -8,11 +8,14 @@ import com.deflatedpickle.haruhi.api.Registry
 import com.deflatedpickle.haruhi.api.plugin.Plugin
 import com.deflatedpickle.haruhi.api.plugin.PluginType
 import com.deflatedpickle.haruhi.event.EventProgramFinishSetup
+import com.deflatedpickle.haruhi.event.EventSerializeConfig
 import com.deflatedpickle.haruhi.util.ConfigUtil
 import com.deflatedpickle.haruhi.util.RegistryUtil
 import com.deflatedpickle.marvin.extensions.get
 import com.deflatedpickle.marvin.extensions.set
 import com.deflatedpickle.rawky.settings.SettingsGUI
+import com.deflatedpickle.sniffle.swingsettings.api.Font
+import com.deflatedpickle.sniffle.swingsettings.api.FontFamily
 import com.deflatedpickle.sniffle.swingsettings.api.Theme
 import com.deflatedpickle.sniffle.swingsettings.config.SwingSettings
 import com.deflatedpickle.sniffle.swingsettings.theme.DarculaTheme
@@ -93,6 +96,7 @@ import com.deflatedpickle.sniffle.swingsettings.theme.ThemeMotif
 import com.deflatedpickle.sniffle.swingsettings.theme.ThemeNative
 import com.deflatedpickle.sniffle.swingsettings.theme.ThemeNimbus
 import java.awt.Component
+import java.awt.GraphicsEnvironment
 import java.awt.Window
 import javax.swing.JComboBox
 import javax.swing.SwingUtilities
@@ -100,7 +104,7 @@ import javax.swing.SwingUtilities
 @Plugin(
     value = "swing_settings",
     author = "DeflatedPickle",
-    version = "1.0.0",
+    version = "1.1.0",
     description = """
         <br>
         Settings for Swing
@@ -239,7 +243,9 @@ object SwingSettingsPlugin {
                             instance.set(name, selectedItem)
 
                             SwingUtilities.invokeLater {
-                                instance.get<Theme>(name).changeTo()
+                                instance.get<Theme>(name).apply {
+                                    changeTo()
+                                }
                                 this@SwingSettingsPlugin.updateComponents()
                             }
 
@@ -248,12 +254,59 @@ object SwingSettingsPlugin {
                     }
                 }
 
+                registry.register(FontFamily::class.qualifiedName!!) { plugin, name, instance ->
+                    // Theme::class.sealedSubclasses.map { it.objectInstance as Theme }.toTypedArray()
+                    JComboBox(GraphicsEnvironment.getLocalGraphicsEnvironment().availableFontFamilyNames).apply {
+                        selectedItem = instance.get<FontFamily>(name).name
+
+                        addActionListener {
+                            instance.set(name, FontFamily(selectedItem as String))
+                            SettingsGUI.serializeConfig(plugin)
+                        }
+                    }
+                }
             }
 
-            ConfigUtil.getSettings<SwingSettings>("deflatedpickle@swing_settings#>=1.0.0")?.let {
+            ConfigUtil.getSettings<SwingSettings>("deflatedpickle@swing_settings#>=1.0.0")?.let { settings ->
                 SwingUtilities.invokeLater {
-                    it.theme.changeTo()
+                    settings.theme.apply {
+                        changeTo()
+
+                        settings.font.also {
+                            setFont(
+                                if (it.name.name == "") {
+                                    Font(
+                                        style = it.style,
+                                        size = it.size
+                                    )
+                                } else {
+                                    Font(
+                                        it.name,
+                                        it.style,
+                                        it.size
+                                    )
+                                }
+                            )
+                        }
+                    }
+
                     this.updateComponents()
+                }
+
+                EventSerializeConfig.addListener {
+                    SwingUtilities.invokeLater {
+                        settings.font.also {
+                            settings.theme.setFont(
+                                Font(
+                                    it.name,
+                                    it.style,
+                                    it.size
+                                )
+                            )
+                        }
+
+                        this.updateComponents()
+                    }
                 }
             }
         }
