@@ -1,0 +1,27 @@
+group 'com.deflatedpickle'
+version "1.0.0"
+
+dependencies {
+    implementation project(':settingsgui')
+
+    implementation 'com.github.renatoathaydes:kunion:0bd9cbfe38'
+
+    implementation 'org.oxbow:swing-bits:1.0.0-SNAPSHOT'
+    implementation 'com.github.Fylipp:easy-events:v1.1.0'
+    implementation 'org.swinglabs:swingx:1.6.1'
+
+    implementation 'com.github.lkishalmi:Darcula:gradle-SNAPSHOT'
+    // implementation 'io.github.vincenzopalazzo:material-ui-swing:1.1.2-rc1'
+    // implementation 'com.weblookandfeel:weblaf-core:1.2.8'
+    // implementation 'com.weblookandfeel:weblaf-ui:1.2.8'
+    implementation 'com.formdev:flatlaf:1.1.2'
+    implementation 'com.formdev:flatlaf-intellij-themes:1.1.2'
+    implementation 'com.formdev:flatlaf-swingx:1.1.2'
+    implementation 'com.formdev:flatlaf-jide-oss:1.1.2'
+    implementation 'com.github.weisj:darklaf-core:2.5.5'
+    // implementation 'com.github.kirill-grouchnikov:substance:2317ae784d'
+
+    implementation 'com.deflatedpickle:haruhi'
+    implementation 'com.deflatedpickle:undulation'
+    implementation 'com.deflatedpickle:marvin'
+}

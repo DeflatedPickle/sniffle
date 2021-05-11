@@ -13,6 +13,10 @@ import com.deflatedpickle.haruhi.util.PluginUtil
 import com.deflatedpickle.haruhi.util.RegistryUtil
 import com.deflatedpickle.marvin.extensions.get
 import com.deflatedpickle.marvin.extensions.set
+import com.deflatedpickle.undulation.DocumentAdapter
+import com.deflatedpickle.undulation.extensions.findNode
+import com.deflatedpickle.undulation.extensions.getText
+import com.deflatedpickle.undulation.widget.SliderSpinner
 import java.awt.Component
 import java.awt.event.KeyAdapter
 import java.awt.event.KeyEvent
@@ -22,11 +26,10 @@ import javax.swing.JCheckBox
 import javax.swing.JComboBox
 import javax.swing.JMenu
 import javax.swing.tree.DefaultMutableTreeNode
-import kotlinx.serialization.ImplicitReflectionSerializer
+import kotlinx.serialization.InternalSerializationApi
 import org.jdesktop.swingx.JXTextField
 
 @Suppress("unused")
-@ImplicitReflectionSerializer
 @Plugin(
     value = "settings_gui",
     author = "DeflatedPickle",
@@ -35,7 +38,8 @@ import org.jdesktop.swingx.JXTextField
 object SettingsGUI {
     init {
         @Suppress("UNCHECKED_CAST")
-        RegistryUtil.register("setting_type", Registry<String, (Plugin, String, Any) -> Component>() as Registry<String, Any>)
+        RegistryUtil.register("setting_type",
+            Registry<String, (Plugin, String, Any) -> Component>() as Registry<String, Any>)
 
         EventProgramFinishSetup.addListener {
             val menuBar = RegistryUtil.get(MenuCategory.MENU.name)
@@ -50,26 +54,52 @@ object SettingsGUI {
             registerBoolean(registry)
             registerString(registry)
             registerEnum(registry)
+            registerInt(registry)
         }
 
         EventProgramFinishSetup.addListener {
             for (plugin in PluginUtil.discoveredPlugins) {
                 if (plugin.settings != Nothing::class) {
+                    var authorNode = Categories.nodePlugin.findNode(plugin.author)
+
+                    if (authorNode == null) {
+                        authorNode = DefaultMutableTreeNode(plugin.author)
+
+                        SettingsDialog.searchPanel.model.insertNodeInto(
+                            authorNode,
+                            Categories.nodePlugin,
+                            SettingsDialog.searchPanel.model.getChildCount(Categories.nodePlugin)
+                        )
+                    }
+
                     SettingsDialog.searchPanel.model.insertNodeInto(
-                        DefaultMutableTreeNode(PluginUtil.pluginToSlug(plugin)),
-                        Categories.nodePlugin,
-                        SettingsDialog.searchPanel.model.getChildCount(Categories.nodePlugin)
+                        DefaultMutableTreeNode(plugin),
+                        authorNode,
+                        authorNode.leafCount - 1
                     )
                 }
+
             }
+
+            SettingsDialog.searchPanel.tree.expandAll()
         }
 
-        SettingsDialog.searchPanel.searchField.addActionListener {
-            try {
-                SettingsDialog.searchPanel.tree.searchable.search(it.actionCommand)
-            } catch (e: PatternSyntaxException) {
-            }
+        SettingsDialog.searchPanel.searchField.apply {
+            document.addDocumentListener(DocumentAdapter {
+                try {
+                    SettingsDialog.searchPanel.tree.searchable.search(it.document.getText())
+                } catch (e: PatternSyntaxException) {
+                }
+            })
         }
+    }
+
+    @OptIn(InternalSerializationApi::class)
+    fun serializeConfig(plugin: Plugin) {
+        val id = PluginUtil.pluginToSlug(plugin)
+        ConfigUtil.serializeConfig(
+            id, File("config/$id.json")
+        )
     }
 
     private fun registerBoolean(registry: Registry<String, (Plugin, String, Any) -> Component>) {
@@ -80,11 +110,7 @@ object SettingsGUI {
                 addActionListener {
                     isSelected = !instance.get<Boolean>(name)
                     instance.set(name, isSelected)
-
-                    val id = PluginUtil.pluginToSlug(plugin)
-                    ConfigUtil.serializeConfig(
-                        id, File("config/$id.json")
-                    )
+                    serializeConfig(plugin)
                 }
             }
         }
@@ -98,11 +124,7 @@ object SettingsGUI {
                 addKeyListener(object : KeyAdapter() {
                     override fun keyTyped(e: KeyEvent) {
                         instance.set(name, text + e.keyChar)
-
-                        val id = PluginUtil.pluginToSlug(plugin)
-                        ConfigUtil.serializeConfig(
-                            id, File("config/$id.json")
-                        )
+                        serializeConfig(plugin)
                     }
                 })
             }
@@ -118,11 +140,24 @@ object SettingsGUI {
 
                 addActionListener {
                     instance.set(name, clazz.enumConstants[selectedIndex])
+                    serializeConfig(plugin)
+                }
+            }
+        }
+    }
 
-                    val id = PluginUtil.pluginToSlug(plugin)
-                    ConfigUtil.serializeConfig(
-                        id, File("config/$id.json")
-                    )
+    private fun registerInt(registry: Registry<String, (Plugin, String, Any) -> Component>) {
+        registry.register(Int::class.qualifiedName!!) { plugin, name, instance ->
+            SliderSpinner(
+                instance.get(name),
+                0,
+                100
+            ).apply {
+                value = instance.get(name)
+
+                addChangeListener {
+                    instance.set(name, value)
+                    serializeConfig(plugin)
                 }
             }
         }
