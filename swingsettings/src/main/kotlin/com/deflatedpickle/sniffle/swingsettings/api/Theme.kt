@@ -27,8 +27,8 @@ abstract class Theme(
         }-${
             name.toLowerCase()
                 .replace(
-                    "_",
-                    " "
+                    " ",
+                    "_"
                 )
         }",
         project,
