@@ -38,7 +38,7 @@ import kotlinx.serialization.Serializable
 @Serializable(with = ThemeSerializer::class)
 object FlatLafArcTheme : Theme(
     "flatlaf-intellij_arc",
-    Project.FLATLAF,
+    FlatLaf,
     "Arc",
 ) {
     override fun changeTo() {
@@ -50,7 +50,7 @@ object FlatLafArcTheme : Theme(
 @Serializable(with = ThemeSerializer::class)
 object FlatLafArcOrangeTheme : Theme(
     "flatlaf-intellij_arc_orange",
-    Project.FLATLAF,
+    FlatLaf,
     "Arc Orange",
 ) {
     override fun changeTo() {
@@ -62,7 +62,7 @@ object FlatLafArcOrangeTheme : Theme(
 @Serializable(with = ThemeSerializer::class)
 object FlatLafArcDarkTheme : Theme(
     "flatlaf-intellij_arc_dark",
-    Project.FLATLAF,
+    FlatLaf,
     "Arc Dark",
 ) {
     override fun changeTo() {
@@ -74,7 +74,7 @@ object FlatLafArcDarkTheme : Theme(
 @Serializable(with = ThemeSerializer::class)
 object FlatLafArcDarkOrangeTheme : Theme(
     "flatlaf-intellij_arc_dark_orange",
-    Project.FLATLAF,
+    FlatLaf,
     "Arc Dark Orange",
 ) {
     override fun changeTo() {
@@ -86,7 +86,7 @@ object FlatLafArcDarkOrangeTheme : Theme(
 @Serializable(with = ThemeSerializer::class)
 object FlatLafCarbonTheme : Theme(
     "flatlaf-intellij_carbon",
-    Project.FLATLAF,
+    FlatLaf,
     "Carbon",
 ) {
     override fun changeTo() {
@@ -98,7 +98,7 @@ object FlatLafCarbonTheme : Theme(
 @Serializable(with = ThemeSerializer::class)
 object FlatLafCobalt2Theme : Theme(
     "flatlaf-intellij_cobalt_2",
-    Project.FLATLAF,
+    FlatLaf,
     "Cobalt 2",
 ) {
     override fun changeTo() {
@@ -110,7 +110,7 @@ object FlatLafCobalt2Theme : Theme(
 @Serializable(with = ThemeSerializer::class)
 object FlatLafCyanLightTheme : Theme(
     "flatlaf-intellij_cyan_light",
-    Project.FLATLAF,
+    FlatLaf,
     "Cyan Light",
 ) {
     override fun changeTo() {
@@ -122,7 +122,7 @@ object FlatLafCyanLightTheme : Theme(
 @Serializable(with = ThemeSerializer::class)
 object FlatLafDarkFlatTheme : Theme(
     "flatlaf-intellij_dark_flat",
-    Project.FLATLAF,
+    FlatLaf,
     "Dark Flat",
 ) {
     override fun changeTo() {
@@ -134,7 +134,7 @@ object FlatLafDarkFlatTheme : Theme(
 @Serializable(with = ThemeSerializer::class)
 object FlatLafDarkPurpleTheme : Theme(
     "flatlaf-intellij_dark_purple",
-    Project.FLATLAF,
+    FlatLaf,
     "Dark Purple",
 ) {
     override fun changeTo() {
@@ -146,7 +146,7 @@ object FlatLafDarkPurpleTheme : Theme(
 @Serializable(with = ThemeSerializer::class)
 object FlatLafDraculaTheme : Theme(
     "flatlaf-intellij_dracula",
-    Project.FLATLAF,
+    FlatLaf,
     "Dracula",
 ) {
     override fun changeTo() {
@@ -158,7 +158,7 @@ object FlatLafDraculaTheme : Theme(
 @Serializable(with = ThemeSerializer::class)
 object FlatLafGradiantoDarkFuchsiaTheme : Theme(
     "flatlaf-intellij_gradianto_dark_fuchsia",
-    Project.FLATLAF,
+    FlatLaf,
     "Gradianto Dark Fuchsia",
 ) {
     override fun changeTo() {
@@ -170,7 +170,7 @@ object FlatLafGradiantoDarkFuchsiaTheme : Theme(
 @Serializable(with = ThemeSerializer::class)
 object FlatLafGradiantoDeepOceanTheme : Theme(
     "flatlaf-intellij_gradianto_deep_ocean",
-    Project.FLATLAF,
+    FlatLaf,
     "Gradianto Deep Ocean",
 ) {
     override fun changeTo() {
@@ -182,7 +182,7 @@ object FlatLafGradiantoDeepOceanTheme : Theme(
 @Serializable(with = ThemeSerializer::class)
 object FlatLafGradiantoMidnightBlueTheme : Theme(
     "flatlaf-intellij_gradianto_midnight_blue",
-    Project.FLATLAF,
+    FlatLaf,
     "Gradianto Midnight Blue",
 ) {
     override fun changeTo() {
@@ -194,7 +194,7 @@ object FlatLafGradiantoMidnightBlueTheme : Theme(
 @Serializable(with = ThemeSerializer::class)
 object FlatLafGradiantoNatureGreenTheme : Theme(
     "flatlaf-intellij_gradianto_nature_green",
-    Project.FLATLAF,
+    FlatLaf,
     "Gradianto Nature Green",
 ) {
     override fun changeTo() {
@@ -206,7 +206,7 @@ object FlatLafGradiantoNatureGreenTheme : Theme(
 @Serializable(with = ThemeSerializer::class)
 object FlatLafGrayTheme : Theme(
     "flatlaf-intellij_gray",
-    Project.FLATLAF,
+    FlatLaf,
     "Gray",
 ) {
     override fun changeTo() {
@@ -218,7 +218,7 @@ object FlatLafGrayTheme : Theme(
 @Serializable(with = ThemeSerializer::class)
 object FlatLafGruvboxDarkHardTheme : Theme(
     "flatlaf-intellij_gruvbox_dark_hard",
-    Project.FLATLAF,
+    FlatLaf,
     "Gruvbox Dark Hard",
 ) {
     override fun changeTo() {
@@ -230,7 +230,7 @@ object FlatLafGruvboxDarkHardTheme : Theme(
 @Serializable(with = ThemeSerializer::class)
 object FlatLafGruvboxDarkMediumTheme : Theme(
     "flatlaf-intellij_gruvbox_dark_medium",
-    Project.FLATLAF,
+    FlatLaf,
     "Gruvbox Dark Medium",
 ) {
     override fun changeTo() {
@@ -242,7 +242,7 @@ object FlatLafGruvboxDarkMediumTheme : Theme(
 @Serializable(with = ThemeSerializer::class)
 object FlatLafGruvboxDarkSoftTheme : Theme(
     "flatlaf-intellij_gruvbox_dark_soft",
-    Project.FLATLAF,
+    FlatLaf,
     "Gruvbox Dark Soft",
 ) {
     override fun changeTo() {
@@ -254,7 +254,7 @@ object FlatLafGruvboxDarkSoftTheme : Theme(
 @Serializable(with = ThemeSerializer::class)
 object FlatLafHiberbeeDarkTheme : Theme(
     "flatlaf-intellij_hiberbee_dark",
-    Project.FLATLAF,
+    FlatLaf,
     "Hiberbee Dark",
 ) {
     override fun changeTo() {
@@ -266,7 +266,7 @@ object FlatLafHiberbeeDarkTheme : Theme(
 @Serializable(with = ThemeSerializer::class)
 object FlatLafHighContrastTheme : Theme(
     "flatlaf-intellij_high_contrast",
-    Project.FLATLAF,
+    FlatLaf,
     "High Contrast",
 ) {
     override fun changeTo() {
@@ -278,7 +278,7 @@ object FlatLafHighContrastTheme : Theme(
 @Serializable(with = ThemeSerializer::class)
 object FlatLafLightFlatTheme : Theme(
     "flatlaf-intellij_light_flat",
-    Project.FLATLAF,
+    FlatLaf,
     "Light Flat"
 ) {
     override fun changeTo() {
@@ -290,7 +290,7 @@ object FlatLafLightFlatTheme : Theme(
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialDesignDarkTheme : Theme(
     "flatlaf-intellij_material_design_dark",
-    Project.FLATLAF,
+    FlatLaf,
     "Material Design Dark",
 ) {
     override fun changeTo() {
@@ -302,7 +302,7 @@ object FlatLafMaterialDesignDarkTheme : Theme(
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMonocaiTheme : Theme(
     "flatlaf-intellij_monocai",
-    Project.FLATLAF,
+    FlatLaf,
     "Monocai",
 ) {
     override fun changeTo() {
@@ -314,7 +314,7 @@ object FlatLafMonocaiTheme : Theme(
 @Serializable(with = ThemeSerializer::class)
 object FlatLafNordTheme : Theme(
     "flatlaf-intellij_nord",
-    Project.FLATLAF,
+    FlatLaf,
     "Nord",
 ) {
     override fun changeTo() {
@@ -326,7 +326,7 @@ object FlatLafNordTheme : Theme(
 @Serializable(with = ThemeSerializer::class)
 object FlatLafOneDarkTheme : Theme(
     "flatlaf-intellij_one_dark",
-    Project.FLATLAF,
+    FlatLaf,
     "One Dark",
 ) {
     override fun changeTo() {
@@ -338,7 +338,7 @@ object FlatLafOneDarkTheme : Theme(
 @Serializable(with = ThemeSerializer::class)
 object FlatLafSolarizedDarkTheme : Theme(
     "flatlaf-intellij_solarized_dark",
-    Project.FLATLAF,
+    FlatLaf,
     "Solarized Dark",
 ) {
     override fun changeTo() {
@@ -350,7 +350,7 @@ object FlatLafSolarizedDarkTheme : Theme(
 @Serializable(with = ThemeSerializer::class)
 object FlatLafSolarizedLightTheme : Theme(
     "flatlaf-intellij_solarized_light",
-    Project.FLATLAF,
+    FlatLaf,
     "Solarized Light",
 ) {
     override fun changeTo() {
@@ -362,7 +362,7 @@ object FlatLafSolarizedLightTheme : Theme(
 @Serializable(with = ThemeSerializer::class)
 object FlatLafSpaceGrayTheme : Theme(
     "flatlaf-intellij_spacegray",
-    Project.FLATLAF,
+    FlatLaf,
     "Spacegray",
 ) {
     override fun changeTo() {
@@ -374,7 +374,7 @@ object FlatLafSpaceGrayTheme : Theme(
 @Serializable(with = ThemeSerializer::class)
 object FlatLafVuesionTheme : Theme(
     "flatlaf-intellij_vuesion",
-    Project.FLATLAF,
+    FlatLaf,
     "Vuesion",
 ) {
     override fun changeTo() {

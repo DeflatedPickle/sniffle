@@ -1,5 +1,6 @@
 package com.deflatedpickle.sniffle.swingsettings.theme
 
+import com.deflatedpickle.sniffle.swingsettings.api.Project
 import com.deflatedpickle.sniffle.swingsettings.api.Theme
 import com.deflatedpickle.sniffle.swingsettings.util.ThemeSerializer
 import com.formdev.flatlaf.FlatDarculaLaf
@@ -10,11 +11,12 @@ import javax.swing.UIManager
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable
 
+object FlatLaf : Project("FLATLAF")
+
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafLightTheme : Theme(
-    "flatlaf_light",
-    Project.FLATLAF,
+    FlatLaf,
     "Light",
 ) {
     override fun changeTo() {
@@ -25,8 +27,7 @@ object FlatLafLightTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafDarkTheme : Theme(
-    "flatlaf_dark",
-    Project.FLATLAF,
+    FlatLaf,
     "Dark",
 ) {
     override fun changeTo() {
@@ -37,8 +38,7 @@ object FlatLafDarkTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafIntelliJTheme : Theme(
-    "flatlaf_intellij",
-    Project.FLATLAF,
+    FlatLaf,
     "IntelliJ",
 ) {
     override fun changeTo() {
@@ -49,8 +49,7 @@ object FlatLafIntelliJTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafDarculaTheme : Theme(
-    "flatlaf_darcula",
-    Project.FLATLAF,
+    FlatLaf,
     "Darcula",
 ) {
     override fun changeTo() {

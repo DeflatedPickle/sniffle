@@ -1,22 +1,22 @@
 package com.deflatedpickle.sniffle.swingsettings.theme
 
-import com.bulenkov.darcula.DarculaLaf
 import com.deflatedpickle.sniffle.swingsettings.api.Project
 import com.deflatedpickle.sniffle.swingsettings.api.Theme
 import com.deflatedpickle.sniffle.swingsettings.util.ThemeSerializer
 import javax.swing.UIManager
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable
+import net.sf.nimrod.NimRODLookAndFeel
 
-object Darcula : Project("DARCULA")
+object NimROD : Project("NIMROD")
 
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
-object DarculaTheme : Theme(
-    Darcula,
-    "Darcula",
+object NimRODTheme : Theme(
+    NimROD,
+    "NimROD",
 ) {
     override fun changeTo() {
-        UIManager.setLookAndFeel(DarculaLaf())
+        UIManager.setLookAndFeel(NimRODLookAndFeel())
     }
 }

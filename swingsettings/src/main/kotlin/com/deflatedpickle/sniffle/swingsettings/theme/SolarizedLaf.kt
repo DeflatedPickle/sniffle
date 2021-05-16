@@ -1,22 +1,22 @@
 package com.deflatedpickle.sniffle.swingsettings.theme
 
-import com.bulenkov.darcula.DarculaLaf
 import com.deflatedpickle.sniffle.swingsettings.api.Project
 import com.deflatedpickle.sniffle.swingsettings.api.Theme
 import com.deflatedpickle.sniffle.swingsettings.util.ThemeSerializer
+import eu.herrn.solarized.SolarizedLookAndFeel
 import javax.swing.UIManager
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable
 
-object Darcula : Project("DARCULA")
+object Solarized : Project("SOLARIZED")
 
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
-object DarculaTheme : Theme(
-    Darcula,
-    "Darcula",
+object SolarizedTheme : Theme(
+    Solarized,
+    "Solarized",
 ) {
     override fun changeTo() {
-        UIManager.setLookAndFeel(DarculaLaf())
+        UIManager.setLookAndFeel(SolarizedLookAndFeel())
     }
 }

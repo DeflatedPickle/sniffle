@@ -4,31 +4,33 @@ package com.deflatedpickle.sniffle.swingsettings.theme
 
 import java.awt.Font as AWTFont
 import com.deflatedpickle.sniffle.swingsettings.api.Font
+import com.deflatedpickle.sniffle.swingsettings.api.Project
 import com.deflatedpickle.sniffle.swingsettings.api.Theme
 import com.deflatedpickle.sniffle.swingsettings.util.ThemeSerializer
 import com.sun.java.swing.plaf.motif.MotifLookAndFeel
 import javax.swing.UIManager
+import javax.swing.plaf.metal.MetalLookAndFeel
 import javax.swing.plaf.nimbus.NimbusLookAndFeel
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable
 
+object Swing : Project("SWING")
+
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
-object ThemeMetal : Theme(
-    "swing_metal",
-    Project.SWING,
+object SwingMetalTheme : Theme(
+    Swing,
     "Metal",
 ) {
     override fun changeTo() {
-        UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName())
+        UIManager.setLookAndFeel(MetalLookAndFeel())
     }
 }
 
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
-object ThemeNimbus : Theme(
-    "swing_nimbus",
-    Project.SWING,
+object SwingNimbusTheme : Theme(
+    Swing,
     "Nimbus",
 ) {
     override fun changeTo() {
@@ -43,9 +45,8 @@ object ThemeNimbus : Theme(
 
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
-object ThemeMotif : Theme(
-    "swing_motif",
-    Project.SWING,
+object SwingMotifTheme : Theme(
+    Swing,
     "Motif",
 ) {
     override fun changeTo() {
@@ -55,9 +56,8 @@ object ThemeMotif : Theme(
 
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
-object ThemeNative : Theme(
-    "swing_native",
-    Project.SWING,
+object SwingNativeTheme : Theme(
+    Swing,
     "System",
 ) {
     override fun changeTo() {

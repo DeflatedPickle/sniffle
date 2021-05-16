@@ -1,7 +1,10 @@
+@file:Suppress("unused")
+
 package com.deflatedpickle.sniffle.swingsettings.api
 
 enum class FontStyle {
     PLAIN,
     BOLD,
-    ITALIC
+    ITALIC,
+    BOLD_ITALIC,
 }

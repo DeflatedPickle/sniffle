@@ -27,5 +27,6 @@ object ThemeSerializer : KSerializer<Theme> {
         encoder.encodeString(value.id)
 
     override fun deserialize(decoder: Decoder): Theme =
-        (RegistryUtil.get("theme") as Registry<String, Theme>).get(decoder.decodeString())!!
+        (RegistryUtil.get("theme") as Registry<String, Theme>)
+            .get(decoder.decodeString())!!
 }

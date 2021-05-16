@@ -42,8 +42,7 @@ import kotlinx.serialization.Serializable
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialArcDarkTheme : Theme(
-    "flatlaf-intellij-material_arc_dark",
-    Project.FLATLAF,
+    FlatLaf,
     "Arc Dark"
 ) {
     override fun changeTo() {
@@ -54,8 +53,7 @@ object FlatLafMaterialArcDarkTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialArcDarkContrastTheme : Theme(
-    "flatlaf-intellij-material_arc_dark_contrast",
-    Project.FLATLAF,
+    FlatLaf,
     "Arc Dark Contrast"
 ) {
     override fun changeTo() {
@@ -66,8 +64,7 @@ object FlatLafMaterialArcDarkContrastTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialOneDarkTheme : Theme(
-    "flatlaf-intellij-material_one_dark",
-    Project.FLATLAF,
+    FlatLaf,
     "Atom One Dark"
 ) {
     override fun changeTo() {
@@ -78,8 +75,7 @@ object FlatLafMaterialOneDarkTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialOneDarkContrastTheme : Theme(
-    "flatlaf-intellij-material_one_dark_contrast",
-    Project.FLATLAF,
+    FlatLaf,
     "Atom One Dark Contrast"
 ) {
     override fun changeTo() {
@@ -90,8 +86,7 @@ object FlatLafMaterialOneDarkContrastTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialOneLightTheme : Theme(
-    "flatlaf-intellij-material_one_light",
-    Project.FLATLAF,
+    FlatLaf,
     "Atom One Light"
 ) {
     override fun changeTo() {
@@ -102,8 +97,7 @@ object FlatLafMaterialOneLightTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialOneLightContrastTheme : Theme(
-    "flatlaf-intellij-material_one_light_contrast",
-    Project.FLATLAF,
+    FlatLaf,
     "Atom One Light Contrast"
 ) {
     override fun changeTo() {
@@ -114,8 +108,7 @@ object FlatLafMaterialOneLightContrastTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialDraculaTheme : Theme(
-    "flatlaf-intellij-material_dracula",
-    Project.FLATLAF,
+    FlatLaf,
     "Dracula"
 ) {
     override fun changeTo() {
@@ -126,8 +119,7 @@ object FlatLafMaterialDraculaTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialDraculaContrastTheme : Theme(
-    "flatlaf-intellij-material_dracula_contrast",
-    Project.FLATLAF,
+    FlatLaf,
     "Dracula Contrast"
 ) {
     override fun changeTo() {
@@ -138,8 +130,7 @@ object FlatLafMaterialDraculaContrastTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialGitHubTheme : Theme(
-    "flatlaf-intellij-material_github",
-    Project.FLATLAF,
+    FlatLaf,
     "GitHub"
 ) {
     override fun changeTo() {
@@ -150,8 +141,7 @@ object FlatLafMaterialGitHubTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialGitHubContrastTheme : Theme(
-    "flatlaf-intellij-material_github_contrast",
-    Project.FLATLAF,
+    FlatLaf,
     "GitHub Contrast"
 ) {
     override fun changeTo() {
@@ -162,8 +152,7 @@ object FlatLafMaterialGitHubContrastTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialLightOwlTheme : Theme(
-    "flatlaf-intellij-material_light_owl",
-    Project.FLATLAF,
+    FlatLaf,
     "Light Owl"
 ) {
     override fun changeTo() {
@@ -174,8 +163,7 @@ object FlatLafMaterialLightOwlTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialLightOwlContrastTheme : Theme(
-    "flatlaf-intellij-material_light_owl_contrast",
-    Project.FLATLAF,
+    FlatLaf,
     "Light Owl Contrast"
 ) {
     override fun changeTo() {
@@ -186,8 +174,7 @@ object FlatLafMaterialLightOwlContrastTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialDarkerTheme : Theme(
-    "flatlaf-intellij-material_darker",
-    Project.FLATLAF,
+    FlatLaf,
     "Material Darker"
 ) {
     override fun changeTo() {
@@ -198,8 +185,7 @@ object FlatLafMaterialDarkerTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialDarkerContrastTheme : Theme(
-    "flatlaf-intellij-material_darker_contrast",
-    Project.FLATLAF,
+    FlatLaf,
     "Material Darker Contrast"
 ) {
     override fun changeTo() {
@@ -210,8 +196,7 @@ object FlatLafMaterialDarkerContrastTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialDeepOceanTheme : Theme(
-    "flatlaf-intellij-material_deep_ocean",
-    Project.FLATLAF,
+    FlatLaf,
     "Material Deep Ocean"
 ) {
     override fun changeTo() {
@@ -222,8 +207,7 @@ object FlatLafMaterialDeepOceanTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialDeepOceanContrastTheme : Theme(
-    "flatlaf-intellij-material_deep_ocean_contrast",
-    Project.FLATLAF,
+    FlatLaf,
     "Material Deep Ocean Contrast"
 ) {
     override fun changeTo() {
@@ -234,8 +218,7 @@ object FlatLafMaterialDeepOceanContrastTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialLighterTheme : Theme(
-    "flatlaf-intellij-material_lighter",
-    Project.FLATLAF,
+    FlatLaf,
     "Material Lighter"
 ) {
     override fun changeTo() {
@@ -246,8 +229,7 @@ object FlatLafMaterialLighterTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialLighterContrastTheme : Theme(
-    "flatlaf-intellij-material_lighter_contrast",
-    Project.FLATLAF,
+    FlatLaf,
     "Material Lighter Contrast"
 ) {
     override fun changeTo() {
@@ -258,8 +240,7 @@ object FlatLafMaterialLighterContrastTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialOceanicTheme : Theme(
-    "flatlaf-intellij-material_oceanic",
-    Project.FLATLAF,
+    FlatLaf,
     "Material Oceanic"
 ) {
     override fun changeTo() {
@@ -270,8 +251,7 @@ object FlatLafMaterialOceanicTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialOceanicContrastTheme : Theme(
-    "flatlaf-intellij-material_oceanic_contrast",
-    Project.FLATLAF,
+    FlatLaf,
     "Material Oceanic Contrast"
 ) {
     override fun changeTo() {
@@ -282,8 +262,7 @@ object FlatLafMaterialOceanicContrastTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialPalenightTheme : Theme(
-    "flatlaf-intellij-material_palenight",
-    Project.FLATLAF,
+    FlatLaf,
     "Material Palenight"
 ) {
     override fun changeTo() {
@@ -294,8 +273,7 @@ object FlatLafMaterialPalenightTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialPalenightContrastTheme : Theme(
-    "flatlaf-intellij-material_palenight_contrast",
-    Project.FLATLAF,
+    FlatLaf,
     "Material Palenight Contrast"
 ) {
     override fun changeTo() {
@@ -306,8 +284,7 @@ object FlatLafMaterialPalenightContrastTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialMonokaiProTheme : Theme(
-    "flatlaf-intellij-material_monokai_pro",
-    Project.FLATLAF,
+    FlatLaf,
     "Monokai Pro"
 ) {
     override fun changeTo() {
@@ -318,8 +295,7 @@ object FlatLafMaterialMonokaiProTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialMonokaiProContrastTheme : Theme(
-    "flatlaf-intellij-material_monokai_pro_contrast",
-    Project.FLATLAF,
+    FlatLaf,
     "Monokai Pro Contrast"
 ) {
     override fun changeTo() {
@@ -330,8 +306,7 @@ object FlatLafMaterialMonokaiProContrastTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialMoonlightTheme : Theme(
-    "flatlaf-intellij-material_moonlight",
-    Project.FLATLAF,
+    FlatLaf,
     "Moonlight"
 ) {
     override fun changeTo() {
@@ -342,8 +317,7 @@ object FlatLafMaterialMoonlightTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialMoonlightContrastTheme : Theme(
-    "flatlaf-intellij-material_moonlight_contrast",
-    Project.FLATLAF,
+    FlatLaf,
     "Moonlight Contrast"
 ) {
     override fun changeTo() {
@@ -354,8 +328,7 @@ object FlatLafMaterialMoonlightContrastTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialNightOwlTheme : Theme(
-    "flatlaf-intellij-material_night_owl",
-    Project.FLATLAF,
+    FlatLaf,
     "Night Owl"
 ) {
     override fun changeTo() {
@@ -366,8 +339,7 @@ object FlatLafMaterialNightOwlTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialNightOwlContrastTheme : Theme(
-    "flatlaf-intellij-material_night_owl_contrast",
-    Project.FLATLAF,
+    FlatLaf,
     "Night Owl Contrast"
 ) {
     override fun changeTo() {
@@ -378,8 +350,7 @@ object FlatLafMaterialNightOwlContrastTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialSolarizedDarkTheme : Theme(
-    "flatlaf-intellij-material_solarized_dark",
-    Project.FLATLAF,
+    FlatLaf,
     "Solarized Dark"
 ) {
     override fun changeTo() {
@@ -390,8 +361,7 @@ object FlatLafMaterialSolarizedDarkTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialSolarizedDarkContrastTheme : Theme(
-    "flatlaf-intellij-material_solarized_dark_contrast",
-    Project.FLATLAF,
+    FlatLaf,
     "Solarized Dark Contrast"
 ) {
     override fun changeTo() {
@@ -402,8 +372,7 @@ object FlatLafMaterialSolarizedDarkContrastTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialSolarizedLightTheme : Theme(
-    "flatlaf-intellij-material_solarized_light",
-    Project.FLATLAF,
+    FlatLaf,
     "Solarized Light"
 ) {
     override fun changeTo() {
@@ -414,8 +383,7 @@ object FlatLafMaterialSolarizedLightTheme : Theme(
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialSolarizedLightContrastTheme : Theme(
-    "flatlaf-intellij-material_solarized_light_contrast",
-    Project.FLATLAF,
+    FlatLaf,
     "Solarized Light Contrast"
 ) {
     override fun changeTo() {
