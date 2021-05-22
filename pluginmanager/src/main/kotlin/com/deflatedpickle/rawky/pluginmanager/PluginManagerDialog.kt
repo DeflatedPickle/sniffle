@@ -6,6 +6,8 @@ package com.deflatedpickle.rawky.pluginmanager
 
 import com.deflatedpickle.haruhi.api.plugin.Plugin
 import com.deflatedpickle.haruhi.util.PluginUtil
+import org.jdesktop.swingx.JXList
+import org.oxbow.swingbits.dialog.task.TaskDialog
 import java.awt.Component
 import java.awt.Dimension
 import javax.swing.BoxLayout
@@ -15,8 +17,6 @@ import javax.swing.JList
 import javax.swing.JPanel
 import javax.swing.JScrollPane
 import javax.swing.JSplitPane
-import org.jdesktop.swingx.JXList
-import org.oxbow.swingbits.dialog.task.TaskDialog
 
 object PluginManagerDialog : TaskDialog(PluginUtil.window, "Plugin Manager") {
     private val panel = PluginManagerPanel()

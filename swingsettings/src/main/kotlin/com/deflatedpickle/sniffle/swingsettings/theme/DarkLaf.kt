@@ -1,3 +1,5 @@
+/* Copyright (c) 2021 DeflatedPickle under the MIT license */
+
 package com.deflatedpickle.sniffle.swingsettings.theme
 
 import com.deflatedpickle.sniffle.swingsettings.api.Project

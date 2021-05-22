@@ -1,10 +1,10 @@
 plugins {
-    id 'java'
-    id 'java-library'
+	id 'java'
+	id 'java-library'
 
-    id 'org.jetbrains.kotlin.jvm'
+	id 'org.jetbrains.kotlin.jvm'
 
-    id 'com.diffplug.spotless'
+	id 'com.diffplug.spotless'
 }
 
 group 'com.deflatedpickle'
@@ -12,11 +12,11 @@ version "1.0.0"
 sourceCompatibility = 1.8
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 
-    implementation 'com.github.Fylipp:easy-events:v1.1.0'
-    implementation 'org.swinglabs:swingx:1.6.1'
+	implementation 'com.github.Fylipp:easy-events:v1.1.0'
+	implementation 'org.swinglabs:swingx:1.6.1'
 
-    implementation 'com.deflatedpickle:tosuto'
-    implementation 'com.deflatedpickle:haruhi'
+	implementation 'com.deflatedpickle:tosuto'
+	implementation 'com.deflatedpickle:haruhi'
 }

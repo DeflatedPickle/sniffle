@@ -5,17 +5,16 @@ package com.deflatedpickle.rawky.settings.widget
 import com.deflatedpickle.haruhi.api.plugin.Plugin
 import com.deflatedpickle.undulation.constraints.FillBothFinishLine
 import com.deflatedpickle.undulation.constraints.FillHorizontalFinishLine
+import org.jdesktop.swingx.JXPanel
+import org.jdesktop.swingx.JXSearchField
+import org.jdesktop.swingx.JXTree
 import java.awt.Component
 import java.awt.GridBagLayout
-import java.io.File
 import javax.swing.JScrollPane
 import javax.swing.JTree
 import javax.swing.tree.DefaultMutableTreeNode
 import javax.swing.tree.DefaultTreeCellRenderer
 import javax.swing.tree.DefaultTreeModel
-import org.jdesktop.swingx.JXPanel
-import org.jdesktop.swingx.JXSearchField
-import org.jdesktop.swingx.JXTree
 
 class SearchList : JXPanel() {
     private val root = DefaultMutableTreeNode("root")

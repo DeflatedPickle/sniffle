@@ -1,13 +1,15 @@
+/* Copyright (c) 2021 DeflatedPickle under the MIT license */
+
 @file:Suppress("unused", "UNUSED_PARAMETER", "SpellCheckingInspection")
 
 package com.deflatedpickle.sniffle.swingsettings.api
 
 import com.deflatedpickle.sniffle.swingsettings.util.ThemeSerializer
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.Serializable
 import java.util.Enumeration
 import javax.swing.UIManager
 import javax.swing.plaf.FontUIResource
-import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.Serializable
 
 @OptIn(ExperimentalSerializationApi::class)
 @Serializable(with = ThemeSerializer::class)
@@ -21,15 +23,15 @@ abstract class Theme(
         name: String = "",
     ) : this(
         "${
-            project
-                .name
-                .toLowerCase()
+        project
+            .name
+            .toLowerCase()
         }-${
-            name.toLowerCase()
-                .replace(
-                    " ",
-                    "_"
-                )
+        name.toLowerCase()
+            .replace(
+                " ",
+                "_"
+            )
         }",
         project,
         name

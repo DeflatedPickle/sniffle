@@ -1,9 +1,11 @@
+/* Copyright (c) 2021 DeflatedPickle under the MIT license */
+
 package com.deflatedpickle.sniffle.swingsettings.api
 
 import com.deflatedpickle.rawky.settings.widget.ConfigSection
-import javax.swing.UIManager
 import kotlinx.serialization.Required
 import kotlinx.serialization.Serializable
+import javax.swing.UIManager
 
 @Serializable
 data class Font(

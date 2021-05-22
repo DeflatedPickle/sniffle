@@ -1,3 +1,5 @@
+/* Copyright (c) 2021 DeflatedPickle under the MIT license */
+
 package com.deflatedpickle.sniffle.swingsettings.api
 
 import com.deflatedpickle.sniffle.swingsettings.util.FontFamilySerializer

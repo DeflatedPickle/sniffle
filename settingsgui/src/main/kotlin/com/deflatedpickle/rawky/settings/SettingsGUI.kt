@@ -17,6 +17,8 @@ import com.deflatedpickle.undulation.DocumentAdapter
 import com.deflatedpickle.undulation.extensions.findNode
 import com.deflatedpickle.undulation.extensions.getText
 import com.deflatedpickle.undulation.widget.SliderSpinner
+import kotlinx.serialization.InternalSerializationApi
+import org.jdesktop.swingx.JXTextField
 import java.awt.Component
 import java.awt.event.KeyAdapter
 import java.awt.event.KeyEvent
@@ -26,8 +28,6 @@ import javax.swing.JCheckBox
 import javax.swing.JComboBox
 import javax.swing.JMenu
 import javax.swing.tree.DefaultMutableTreeNode
-import kotlinx.serialization.InternalSerializationApi
-import org.jdesktop.swingx.JXTextField
 
 @Suppress("unused")
 @Plugin(
@@ -38,8 +38,10 @@ import org.jdesktop.swingx.JXTextField
 object SettingsGUI {
     init {
         @Suppress("UNCHECKED_CAST")
-        RegistryUtil.register("setting_type",
-            Registry<String, (Plugin, String, Any) -> Component>() as Registry<String, Any>)
+        RegistryUtil.register(
+            "setting_type",
+            Registry<String, (Plugin, String, Any) -> Component>() as Registry<String, Any>
+        )
 
         EventProgramFinishSetup.addListener {
             val menuBar = RegistryUtil.get(MenuCategory.MENU.name)
@@ -78,19 +80,20 @@ object SettingsGUI {
                         authorNode.leafCount - 1
                     )
                 }
-
             }
 
             SettingsDialog.searchPanel.tree.expandAll()
         }
 
         SettingsDialog.searchPanel.searchField.apply {
-            document.addDocumentListener(DocumentAdapter {
-                try {
-                    SettingsDialog.searchPanel.tree.searchable.search(it.document.getText())
-                } catch (e: PatternSyntaxException) {
+            document.addDocumentListener(
+                DocumentAdapter {
+                    try {
+                        SettingsDialog.searchPanel.tree.searchable.search(it.document.getText())
+                    } catch (e: PatternSyntaxException) {
+                    }
                 }
-            })
+            )
         }
     }
 

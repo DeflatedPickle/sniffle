@@ -6,12 +6,12 @@ import com.deflatedpickle.haruhi.api.plugin.Plugin
 import com.deflatedpickle.undulation.constraints.FillHorizontalFinishLine
 import com.deflatedpickle.undulation.constraints.StickCenterFinishLine
 import com.deflatedpickle.undulation.constraints.StickWestFinishLine
-import java.awt.GridBagLayout
-import javax.swing.BoxLayout
-import javax.swing.DefaultListModel
 import org.jdesktop.swingx.JXLabel
 import org.jdesktop.swingx.JXList
 import org.jdesktop.swingx.JXPanel
+import java.awt.GridBagLayout
+import javax.swing.BoxLayout
+import javax.swing.DefaultListModel
 
 class PluginManagerPanel : JXPanel() {
     class Header : JXPanel() {
@@ -35,12 +35,15 @@ class PluginManagerPanel : JXPanel() {
         init {
             this.layout = GridBagLayout()
 
-            this.add(JXPanel().apply {
-                this.layout = GridBagLayout()
+            this.add(
+                JXPanel().apply {
+                    this.layout = GridBagLayout()
 
-                this.add(nameLabel)
-                this.add(versionLabel)
-            }, StickCenterFinishLine)
+                    this.add(nameLabel)
+                    this.add(versionLabel)
+                },
+                StickCenterFinishLine
+            )
             this.add(this.authorLabel, StickCenterFinishLine)
             this.add(this.typeLabel, StickWestFinishLine)
             this.add(this.descriptionLabel, FillHorizontalFinishLine)
@@ -58,12 +61,12 @@ class PluginManagerPanel : JXPanel() {
 
             this.descriptionLabel.text =
                 "<html>${
-                    plugin
-                        // Split it, get rid of the short description
-                        .description.split("<br>").drop(1)[0]
-                        // One BR is too small for me, need b i g
-                        .replace("<br>", "<br><br>")
-                        .trimIndent()
+                plugin
+                    // Split it, get rid of the short description
+                    .description.split("<br>").drop(1)[0]
+                    // One BR is too small for me, need b i g
+                    .replace("<br>", "<br><br>")
+                    .trimIndent()
                 }</html>"
         }
     }

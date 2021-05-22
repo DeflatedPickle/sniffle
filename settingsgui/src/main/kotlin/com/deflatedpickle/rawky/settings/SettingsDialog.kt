@@ -18,6 +18,7 @@ import com.deflatedpickle.undulation.constraints.FillHorizontal
 import com.deflatedpickle.undulation.constraints.FillHorizontalFinishLine
 import com.deflatedpickle.undulation.constraints.StickEast
 import com.deflatedpickle.undulation.widget.CollapsiblePanel
+import org.oxbow.swingbits.dialog.task.TaskDialog
 import java.awt.Component
 import java.awt.Dimension
 import java.awt.GridBagLayout
@@ -34,7 +35,6 @@ import kotlin.reflect.KProperty1
 import kotlin.reflect.KType
 import kotlin.reflect.full.createType
 import kotlin.reflect.full.declaredMemberProperties
-import org.oxbow.swingbits.dialog.task.TaskDialog
 
 object SettingsDialog : TaskDialog(PluginUtil.window, "Settings") {
     private val paddingPanel = JPanel().apply {
@@ -104,8 +104,10 @@ object SettingsDialog : TaskDialog(PluginUtil.window, "Settings") {
     }
 
     private fun populatePropertyWidgets(plugin: Plugin, settings: Any, panel: JPanel, properties: Collection<KProperty1<*, *>>) {
-        (RegistryUtil.get("setting_type")
-                as Registry<String, (Plugin, String, Any) -> Component>?)?.let { registry ->
+        (
+            RegistryUtil.get("setting_type")
+                as Registry<String, (Plugin, String, Any) -> Component>?
+            )?.let { registry ->
             // println(registry!!.getAll())
 
             loop@ for (prop in properties) {
@@ -113,10 +115,12 @@ object SettingsDialog : TaskDialog(PluginUtil.window, "Settings") {
 
                 // We need to loop all the types as in some cases,
                 // such as enums, we register a setter for the base type
-                for (t in mutableListOf<KType>().apply {
-                    add(prop.returnType)
-                    addAll((prop.returnType.classifier as KClass<*>).supertypes)
-                }) {
+                for (
+                    t in mutableListOf<KType>().apply {
+                        add(prop.returnType)
+                        addAll((prop.returnType.classifier as KClass<*>).supertypes)
+                    }
+                ) {
                     val clazz = (t.classifier as KClass<*>)
                     val clazzName = clazz.qualifiedName!!
                     // println("$prop: $t, $clazz")
@@ -181,9 +185,12 @@ object SettingsDialog : TaskDialog(PluginUtil.window, "Settings") {
                     }
                 }
 
-                panel.add(ErrorLabel(
-                    "Error with ${prop.name}: ${failedClasses.joinToString()} isn't supported"
-                ), FillHorizontalFinishLine)
+                panel.add(
+                    ErrorLabel(
+                        "Error with ${prop.name}: ${failedClasses.joinToString()} isn't supported"
+                    ),
+                    FillHorizontalFinishLine
+                )
             }
         }
     }

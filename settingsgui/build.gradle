@@ -2,13 +2,13 @@ group 'com.deflatedpickle'
 version "1.1.1"
 
 dependencies {
-    // implementation project(":discordrpc")
+	// implementation project(":discordrpc")
 
-    implementation 'org.oxbow:swing-bits:1.0.0-SNAPSHOT'
-    implementation 'com.github.Fylipp:easy-events:v1.1.0'
-    implementation 'org.swinglabs:swingx:1.6.1'
+	implementation 'org.oxbow:swing-bits:1.0.0-SNAPSHOT'
+	implementation 'com.github.Fylipp:easy-events:v1.1.0'
+	implementation 'org.swinglabs:swingx:1.6.1'
 
-    implementation 'com.deflatedpickle:haruhi'
-    implementation 'com.deflatedpickle:undulation'
-    implementation 'com.deflatedpickle:marvin'
+	implementation 'com.deflatedpickle:haruhi'
+	implementation 'com.deflatedpickle:undulation'
+	implementation 'com.deflatedpickle:marvin'
 }
