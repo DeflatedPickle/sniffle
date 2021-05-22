@@ -7,6 +7,7 @@ package com.deflatedpickle.sniffle.swingsettings
 import com.deflatedpickle.haruhi.api.Registry
 import com.deflatedpickle.haruhi.api.plugin.Plugin
 import com.deflatedpickle.haruhi.api.plugin.PluginType
+import com.deflatedpickle.haruhi.event.EventDeserializedConfig
 import com.deflatedpickle.haruhi.event.EventProgramFinishSetup
 import com.deflatedpickle.haruhi.event.EventSerializeConfig
 import com.deflatedpickle.haruhi.util.ConfigUtil
@@ -170,8 +171,37 @@ object SwingSettingsPlugin {
             }
         }
 
+        EventDeserializedConfig.addListener { file ->
+            if ("swing_settings" in file.name) {
+                ConfigUtil.getSettings<SwingSettings>("deflatedpickle@swing_settings#>=1.0.0")?.let { settings ->
+                    SwingUtilities.invokeLater {
+                        settings.theme.apply {
+                            changeTo()
+
+                            settings.font.also {
+                                setFont(
+                                    if (it.name.name == "") {
+                                        Font(
+                                            style = it.style,
+                                            size = it.size
+                                        )
+                                    } else {
+                                        Font(
+                                            it.name,
+                                            it.style,
+                                            it.size
+                                        )
+                                    }
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         EventProgramFinishSetup.addListener {
-            // val themeRegistry = Registry<String, com.deflatedpickle.sniffle.swingsettings.api.Theme>()
+            this.updateComponents()
 
             (RegistryUtil.get("setting_type") as Registry<String, (Plugin, String, Any) -> Component>?)?.let { registry ->
                 registry.register(Theme::class.qualifiedName!!) { plugin, name, instance ->
@@ -209,31 +239,6 @@ object SwingSettingsPlugin {
             }
 
             ConfigUtil.getSettings<SwingSettings>("deflatedpickle@swing_settings#>=1.0.0")?.let { settings ->
-                SwingUtilities.invokeLater {
-                    settings.theme.apply {
-                        changeTo()
-
-                        settings.font.also {
-                            setFont(
-                                if (it.name.name == "") {
-                                    Font(
-                                        style = it.style,
-                                        size = it.size
-                                    )
-                                } else {
-                                    Font(
-                                        it.name,
-                                        it.style,
-                                        it.size
-                                    )
-                                }
-                            )
-                        }
-                    }
-
-                    this.updateComponents()
-                }
-
                 EventSerializeConfig.addListener {
                     if ("swing_settings" in it.name) {
                         SwingUtilities.invokeLater {
