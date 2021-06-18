@@ -4,6 +4,7 @@
 
 package com.deflatedpickle.sniffle.swingsettings.api
 
+import com.deflatedpickle.sniffle.swingsettings.event.EventChangeTheme
 import com.deflatedpickle.sniffle.swingsettings.util.ThemeSerializer
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable
@@ -36,6 +37,11 @@ abstract class Theme(
         project,
         name
     )
+
+    fun apply() {
+        changeTo()
+        EventChangeTheme.trigger(this)
+    }
 
     // Use this theme
     // Needed as some themes have different methods to apply them

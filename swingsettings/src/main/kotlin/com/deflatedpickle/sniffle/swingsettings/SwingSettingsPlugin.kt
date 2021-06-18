@@ -280,7 +280,7 @@ object SwingSettingsPlugin {
                 ConfigUtil.getSettings<SwingSettings>("deflatedpickle@swing_settings#>=1.0.0")?.let { settings ->
                     SwingUtilities.invokeLater {
                         settings.theme.apply {
-                            changeTo()
+                            this.apply()
 
                             settings.font.also {
                                 setFont(
@@ -318,7 +318,7 @@ object SwingSettingsPlugin {
 
                             SwingUtilities.invokeLater {
                                 instance.get<Theme>(name).apply {
-                                    changeTo()
+                                    this.apply()
                                     // TODO: Reset the font to the new theme's default
                                 }
                                 this@SwingSettingsPlugin.updateComponents()
