@@ -1,6 +1,6 @@
 /* Copyright (c) 2021 DeflatedPickle under the MIT license */
 
-@file:Suppress("unused")
+@file:Suppress("JAVA_MODULE_DOES_NOT_EXPORT_PACKAGE", "unused")
 
 package com.deflatedpickle.sniffle.swingsettings.theme
 
