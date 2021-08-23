@@ -138,7 +138,7 @@ object SettingsGUI {
         registry.register(Enum::class.qualifiedName!!) { plugin, name, instance ->
             val clazz = instance.get<Enum<*>>(name)::class.java
 
-            JComboBox<Enum<*>>(clazz.enumConstants).apply {
+            JComboBox(clazz.enumConstants).apply {
                 selectedIndex = instance.get<Enum<*>>(name).ordinal
 
                 addActionListener {

@@ -36,9 +36,9 @@ class SearchList : JXPanel() {
                 hasFocus: Boolean
             ): Component = super.getTreeCellRendererComponent(
                 tree,
-                (value as DefaultMutableTreeNode).userObject.let {
-                    when (it) {
-                        is Plugin -> it.value.split("_").map { it.capitalize() }.joinToString(" ")
+                (value as DefaultMutableTreeNode).userObject.let { obj ->
+                    when (obj) {
+                        is Plugin -> obj.value.split("_").joinToString(" ") { it.capitalize() }
                         else -> value
                     }
                 },

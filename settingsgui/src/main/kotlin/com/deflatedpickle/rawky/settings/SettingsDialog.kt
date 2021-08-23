@@ -1,6 +1,6 @@
 /* Copyright (c) 2020-2021 DeflatedPickle under the MIT license */
 
-@file:Suppress("UNCHECKED_CAST")
+@file:Suppress("UNCHECKED_CAST", "DEPRECATION")
 
 package com.deflatedpickle.rawky.settings
 
