@@ -28,26 +28,27 @@ import net.arikia.dev.drpc.DiscordRichPresence
 object DiscordRPC {
     init {
         EventProgramFinishSetup.addListener {
-            val settings = ConfigUtil.getSettings<DiscordRPCSettings>(
-                "deflatedpickle@discord_rpc#1.0.0"
-            )
-            val enabled = settings.enabled
+            ConfigUtil.getSettings<DiscordRPCSettings>(
+                "deflatedpickle@discord_rpc#*"
+            )?.let { settings ->
+                val enabled = settings.enabled
 
-            if (enabled) {
-                // Connect to Discord RCP
-                this.start()
-            }
+                if (enabled) {
+                    // Connect to Discord RCP
+                    this.start()
+                }
 
-            if (enabled) {
-                EventWindowShown.addListener {
-                    if (it == PluginUtil.window) {
-                        DiscordRP.stack.push(
-                            DiscordRichPresence
-                                .Builder("")
-                                .setDetails("Hanging around, doing nothing")
-                                .setStartTimestamps(System.currentTimeMillis())
-                                .build()
-                        )
+                if (enabled) {
+                    EventWindowShown.addListener {
+                        if (it == PluginUtil.window) {
+                            DiscordRP.stack.push(
+                                DiscordRichPresence
+                                    .Builder("")
+                                    .setDetails("Hanging around, doing nothing")
+                                    .setStartTimestamps(System.currentTimeMillis())
+                                    .build()
+                            )
+                        }
                     }
                 }
             }
