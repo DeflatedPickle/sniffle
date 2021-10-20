@@ -14,19 +14,26 @@ import com.deflatedpickle.haruhi.util.RegistryUtil
 import com.deflatedpickle.marvin.extensions.get
 import com.deflatedpickle.marvin.extensions.set
 import com.deflatedpickle.undulation.DocumentAdapter
+import com.deflatedpickle.undulation.constraints.FillHorizontal
 import com.deflatedpickle.undulation.extensions.findNode
 import com.deflatedpickle.undulation.extensions.getText
 import com.deflatedpickle.undulation.widget.SliderSpinner
 import kotlinx.serialization.InternalSerializationApi
 import org.jdesktop.swingx.JXTextField
 import java.awt.Component
+import java.awt.GridBagLayout
+import java.awt.Panel
+import java.awt.Point
 import java.awt.event.KeyAdapter
 import java.awt.event.KeyEvent
 import java.io.File
 import java.util.regex.PatternSyntaxException
 import javax.swing.JCheckBox
 import javax.swing.JComboBox
+import javax.swing.JLabel
 import javax.swing.JMenu
+import javax.swing.JSpinner
+import javax.swing.SpinnerNumberModel
 import javax.swing.tree.DefaultMutableTreeNode
 
 @Suppress("unused")
@@ -53,10 +60,14 @@ object SettingsGUI {
             }
 
             val registry = RegistryUtil.get("setting_type") as Registry<String, (Plugin, String, Any) -> Component>
+            // Basic
             registerBoolean(registry)
             registerString(registry)
             registerEnum(registry)
             registerInt(registry)
+
+            // Swing
+            registerPoint(registry)
         }
 
         EventProgramFinishSetup.addListener {
@@ -162,6 +173,33 @@ object SettingsGUI {
                     instance.set(name, value)
                     serializeConfig(plugin)
                 }
+            }
+        }
+    }
+
+    private fun registerPoint(registry: Registry<String, (Plugin, String, Any) -> Component>) {
+        registry.register(Point::class.qualifiedName!!) { plugin, name, instance ->
+            Panel(GridBagLayout()).apply {
+                val inst = instance.get<Point>(name)
+
+                val x = JSpinner(SpinnerNumberModel(inst.x, 8, 512, 8))
+                val y = JSpinner(SpinnerNumberModel(inst.y, 8, 512, 8))
+
+                for (i in listOf(x, y)) {
+                    i.apply {
+                        addChangeListener {
+                            instance.set(name, inst.setLocation(
+                                x.value.toString().toInt(),
+                                y.value.toString().toInt(),
+                            ))
+                            serializeConfig(plugin)
+                        }
+                    }
+                }
+
+                add(x, FillHorizontal)
+                add(JLabel("X"))
+                add(y, FillHorizontal)
             }
         }
     }
