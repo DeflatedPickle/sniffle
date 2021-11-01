@@ -13,6 +13,7 @@ import com.deflatedpickle.haruhi.util.PluginUtil
 import com.deflatedpickle.haruhi.util.RegistryUtil
 import com.deflatedpickle.marvin.extensions.get
 import com.deflatedpickle.marvin.extensions.set
+import com.deflatedpickle.rawky.settings.api.Range
 import com.deflatedpickle.undulation.DocumentAdapter
 import com.deflatedpickle.undulation.constraints.FillHorizontal
 import com.deflatedpickle.undulation.extensions.findNode
@@ -27,6 +28,7 @@ import java.awt.Point
 import java.awt.event.KeyAdapter
 import java.awt.event.KeyEvent
 import java.io.File
+import java.lang.NullPointerException
 import java.util.regex.PatternSyntaxException
 import javax.swing.JCheckBox
 import javax.swing.JComboBox
@@ -35,6 +37,8 @@ import javax.swing.JMenu
 import javax.swing.JSpinner
 import javax.swing.SpinnerNumberModel
 import javax.swing.tree.DefaultMutableTreeNode
+import kotlin.reflect.full.declaredMemberProperties
+import kotlin.reflect.full.findAnnotation
 
 @Suppress("unused")
 @Plugin(
@@ -162,10 +166,16 @@ object SettingsGUI {
 
     private fun registerInt(registry: Registry<String, (Plugin, String, Any) -> Component>) {
         registry.register(Int::class.qualifiedName!!) { plugin, name, instance ->
+            val ann = try {
+                instance::class.java.getDeclaredField(name).getAnnotation(Range::class.java)
+            } catch (e: NullPointerException) {
+                null
+            }
+
             SliderSpinner(
                 instance.get(name),
-                0,
-                100
+                ann?.min ?: 1,
+                ann?.max ?: 10,
             ).apply {
                 value = instance.get(name)
 
@@ -180,10 +190,20 @@ object SettingsGUI {
     private fun registerPoint(registry: Registry<String, (Plugin, String, Any) -> Component>) {
         registry.register(Point::class.qualifiedName!!) { plugin, name, instance ->
             Panel(GridBagLayout()).apply {
+                val ann = try {
+                    instance::class.java.getDeclaredField(name).getAnnotation(Range::class.java)
+                } catch (e: NullPointerException) {
+                    null
+                }
+
                 val inst = instance.get<Point>(name)
 
-                val x = JSpinner(SpinnerNumberModel(inst.x, 8, 512, 8))
-                val y = JSpinner(SpinnerNumberModel(inst.y, 8, 512, 8))
+                val x = JSpinner(SpinnerNumberModel(
+                    inst.x, ann?.min ?: 8, ann?.max ?: 512, 8)
+                )
+                val y = JSpinner(SpinnerNumberModel(
+                    inst.y, ann?.min ?: 8, ann?.max ?: 512, 8)
+                )
 
                 for (i in listOf(x, y)) {
                     i.apply {
