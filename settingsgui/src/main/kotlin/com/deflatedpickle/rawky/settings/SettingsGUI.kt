@@ -16,8 +16,8 @@ import com.deflatedpickle.marvin.extensions.set
 import com.deflatedpickle.rawky.settings.api.Range
 import com.deflatedpickle.undulation.DocumentAdapter
 import com.deflatedpickle.undulation.constraints.FillHorizontal
-import com.deflatedpickle.undulation.extensions.findNode
-import com.deflatedpickle.undulation.extensions.getText
+import com.deflatedpickle.undulation.functions.extensions.findNode
+import com.deflatedpickle.undulation.functions.extensions.getText
 import com.deflatedpickle.undulation.widget.SliderSpinner
 import kotlinx.serialization.InternalSerializationApi
 import org.jdesktop.swingx.JXTextField
@@ -37,8 +37,6 @@ import javax.swing.JMenu
 import javax.swing.JSpinner
 import javax.swing.SpinnerNumberModel
 import javax.swing.tree.DefaultMutableTreeNode
-import kotlin.reflect.full.declaredMemberProperties
-import kotlin.reflect.full.findAnnotation
 
 @Suppress("unused")
 @Plugin(
