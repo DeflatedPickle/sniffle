@@ -2,6 +2,7 @@
 
 package com.deflatedpickle.sniffle.swingsettings.api
 
+import com.deflatedpickle.rawky.settings.api.Range
 import com.deflatedpickle.rawky.settings.widget.ConfigSection
 import kotlinx.serialization.Required
 import kotlinx.serialization.Serializable
@@ -11,5 +12,5 @@ import javax.swing.UIManager
 data class Font(
     @Required var name: FontFamily = FontFamily(UIManager.getDefaults().getFont("TabbedPane.font").family),
     @Required var style: FontStyle = FontStyle.PLAIN,
-    @Required var size: Int = 12
+    @Required @Range(1, 36) var size: Int = 12
 ) : ConfigSection
