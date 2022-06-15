@@ -13,14 +13,17 @@ import com.deflatedpickle.haruhi.util.PluginUtil
 import com.deflatedpickle.haruhi.util.RegistryUtil
 import com.deflatedpickle.marvin.extensions.get
 import com.deflatedpickle.marvin.extensions.set
-import com.deflatedpickle.rawky.settings.api.Range
+import com.deflatedpickle.rawky.settings.api.FloatRange
+import com.deflatedpickle.rawky.settings.api.IntRange
 import com.deflatedpickle.undulation.DocumentAdapter
 import com.deflatedpickle.undulation.constraints.FillHorizontal
 import com.deflatedpickle.undulation.functions.extensions.findNode
 import com.deflatedpickle.undulation.functions.extensions.getText
+import com.deflatedpickle.undulation.widget.ColourButton
 import com.deflatedpickle.undulation.widget.SliderSpinner
 import kotlinx.serialization.InternalSerializationApi
 import org.jdesktop.swingx.JXTextField
+import java.awt.Color
 import java.awt.Component
 import java.awt.GridBagLayout
 import java.awt.Panel
@@ -67,9 +70,11 @@ object SettingsGUI {
             registerString(registry)
             registerEnum(registry)
             registerInt(registry)
+            registerFloat(registry)
 
             // Swing
             registerPoint(registry)
+            registerColor(registry)
         }
 
         EventProgramFinishSetup.addListener {
@@ -165,7 +170,7 @@ object SettingsGUI {
     private fun registerInt(registry: Registry<String, (Plugin, String, Any) -> Component>) {
         registry.register(Int::class.qualifiedName!!) { plugin, name, instance ->
             val ann = try {
-                instance::class.java.getDeclaredField(name).getAnnotation(Range::class.java)
+                instance::class.java.getDeclaredField(name).getAnnotation(IntRange::class.java)
             } catch (e: NullPointerException) {
                 null
             }
@@ -185,11 +190,34 @@ object SettingsGUI {
         }
     }
 
+    private fun registerFloat(registry: Registry<String, (Plugin, String, Any) -> Component>) {
+        registry.register(Float::class.qualifiedName!!) { plugin, name, instance ->
+            val ann = try {
+                instance::class.java.getDeclaredField(name).getAnnotation(FloatRange::class.java)
+            } catch (e: NullPointerException) {
+                null
+            }
+
+            SliderSpinner(
+                instance.get(name),
+                ann?.min ?: 1f,
+                ann?.max ?: 10f,
+            ).apply {
+                value = instance.get(name)
+
+                addChangeListener {
+                    instance.set(name, value)
+                    serializeConfig(plugin)
+                }
+            }
+        }
+    }
+
     private fun registerPoint(registry: Registry<String, (Plugin, String, Any) -> Component>) {
         registry.register(Point::class.qualifiedName!!) { plugin, name, instance ->
             Panel(GridBagLayout()).apply {
                 val ann = try {
-                    instance::class.java.getDeclaredField(name).getAnnotation(Range::class.java)
+                    instance::class.java.getDeclaredField(name).getAnnotation(IntRange::class.java)
                 } catch (e: NullPointerException) {
                     null
                 }
@@ -218,6 +246,17 @@ object SettingsGUI {
                 add(x, FillHorizontal)
                 add(JLabel("X"))
                 add(y, FillHorizontal)
+            }
+        }
+    }
+
+    private fun registerColor(registry: Registry<String, (Plugin, String, Any) -> Component>) {
+        registry.register(Color::class.qualifiedName!!) { plugin, name, instance ->
+            ColourButton(instance.get(name)).apply {
+                addChangeListener {
+                    instance.set(name, this.color)
+                    serializeConfig(plugin)
+                }
             }
         }
     }
