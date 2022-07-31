@@ -13,6 +13,7 @@ import com.deflatedpickle.haruhi.util.PluginUtil
 import com.deflatedpickle.haruhi.util.RegistryUtil
 import com.deflatedpickle.marvin.extensions.get
 import com.deflatedpickle.marvin.extensions.set
+import com.deflatedpickle.monocons.MonoIcon
 import com.deflatedpickle.rawky.settings.api.FloatRange
 import com.deflatedpickle.rawky.settings.api.IntRange
 import com.deflatedpickle.undulation.DocumentAdapter
@@ -22,7 +23,9 @@ import com.deflatedpickle.undulation.functions.extensions.getText
 import com.deflatedpickle.undulation.widget.ColourButton
 import com.deflatedpickle.undulation.widget.SliderSpinner
 import kotlinx.serialization.InternalSerializationApi
+import org.jdesktop.swingx.JXButton
 import org.jdesktop.swingx.JXTextField
+import org.jdesktop.swingx.prompt.BuddySupport.Position.RIGHT
 import java.awt.Color
 import java.awt.Component
 import java.awt.GridBagLayout
@@ -35,6 +38,7 @@ import java.lang.NullPointerException
 import java.util.regex.PatternSyntaxException
 import javax.swing.JCheckBox
 import javax.swing.JComboBox
+import javax.swing.JFileChooser
 import javax.swing.JLabel
 import javax.swing.JMenu
 import javax.swing.JSpinner
@@ -71,6 +75,8 @@ object SettingsGUI {
             registerEnum(registry)
             registerInt(registry)
             registerFloat(registry)
+
+            registerFile(registry)
 
             // Swing
             registerPoint(registry)
@@ -209,6 +215,39 @@ object SettingsGUI {
                     instance.set(name, value)
                     serializeConfig(plugin)
                 }
+            }
+        }
+    }
+
+    private fun registerFile(registry: Registry<String, (Plugin, String, Any) -> Component>) {
+        registry.register(File::class.qualifiedName!!) { plugin, name, instance ->
+            JXTextField(name).apply {
+                text = (instance.get(name) as File).absolutePath
+
+                val field = this
+
+                val chooser = JFileChooser(text).apply {
+                    fileSelectionMode = JFileChooser.DIRECTORIES_ONLY
+                    isAcceptAllFileFilterUsed = false
+                }
+
+                addBuddy(JXButton(MonoIcon.FOLDER_OPEN).apply {
+                    addActionListener {
+                        if (chooser.showOpenDialog(PluginUtil.window) == JFileChooser.APPROVE_OPTION) {
+                            field.text = chooser.selectedFile.absolutePath
+
+                            instance.set(name, File(field.text))
+                            serializeConfig(plugin)
+                        }
+                    }
+                }, RIGHT)
+
+                addKeyListener(object : KeyAdapter() {
+                    override fun keyTyped(e: KeyEvent) {
+                        instance.set(name, File(text + e.keyChar))
+                        serializeConfig(plugin)
+                    }
+                })
             }
         }
     }

@@ -12,4 +12,5 @@ dependencies {
 	implementation 'com.deflatedpickle:haruhi'
 	implementation 'com.deflatedpickle:undulation'
 	implementation 'com.deflatedpickle:marvin'
+	implementation 'com.deflatedpickle:monocons:'
 }
