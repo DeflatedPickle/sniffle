@@ -9,6 +9,7 @@ import com.deflatedpickle.haruhi.api.constants.MenuCategory
 import com.deflatedpickle.haruhi.api.plugin.Plugin
 import com.deflatedpickle.haruhi.event.EventProgramFinishSetup
 import com.deflatedpickle.haruhi.util.ConfigUtil
+import com.deflatedpickle.haruhi.util.ConfigUtil.serializeConfig
 import com.deflatedpickle.haruhi.util.PluginUtil
 import com.deflatedpickle.haruhi.util.RegistryUtil
 import com.deflatedpickle.marvin.extensions.get
@@ -119,14 +120,6 @@ object SettingsGUI {
                 }
             )
         }
-    }
-
-    @OptIn(InternalSerializationApi::class)
-    fun serializeConfig(plugin: Plugin) {
-        val id = PluginUtil.pluginToSlug(plugin)
-        ConfigUtil.serializeConfig(
-            id, File("config/$id.json")
-        )
     }
 
     private fun registerBoolean(registry: Registry<String, (Plugin, String, Any) -> Component>) {

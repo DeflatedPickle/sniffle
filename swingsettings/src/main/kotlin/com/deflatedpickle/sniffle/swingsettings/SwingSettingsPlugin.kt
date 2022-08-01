@@ -324,7 +324,7 @@ object SwingSettingsPlugin {
                                 this@SwingSettingsPlugin.updateComponents()
                             }
 
-                            SettingsGUI.serializeConfig(plugin)
+                            ConfigUtil.serializeConfig(plugin)
                         }
                     }
                 }
@@ -336,7 +336,7 @@ object SwingSettingsPlugin {
 
                         addActionListener {
                             instance.set(name, FontFamily(selectedItem as String))
-                            SettingsGUI.serializeConfig(plugin)
+                            ConfigUtil.serializeConfig(plugin)
                         }
                     }
                 }
