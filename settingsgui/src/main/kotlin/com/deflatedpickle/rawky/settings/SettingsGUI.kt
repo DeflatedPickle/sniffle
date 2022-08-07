@@ -8,22 +8,21 @@ import com.deflatedpickle.haruhi.api.Registry
 import com.deflatedpickle.haruhi.api.constants.MenuCategory
 import com.deflatedpickle.haruhi.api.plugin.Plugin
 import com.deflatedpickle.haruhi.event.EventProgramFinishSetup
-import com.deflatedpickle.haruhi.util.ConfigUtil
 import com.deflatedpickle.haruhi.util.ConfigUtil.serializeConfig
 import com.deflatedpickle.haruhi.util.PluginUtil
 import com.deflatedpickle.haruhi.util.RegistryUtil
 import com.deflatedpickle.marvin.extensions.get
 import com.deflatedpickle.marvin.extensions.set
 import com.deflatedpickle.monocons.MonoIcon
-import com.deflatedpickle.rawky.settings.api.FloatRange
-import com.deflatedpickle.rawky.settings.api.IntRange
+import com.deflatedpickle.rawky.settings.api.range.FloatRange
+import com.deflatedpickle.rawky.settings.api.range.IntRange
+import com.deflatedpickle.rawky.settings.api.widget.SliderSpinner
 import com.deflatedpickle.undulation.DocumentAdapter
 import com.deflatedpickle.undulation.constraints.FillHorizontal
 import com.deflatedpickle.undulation.functions.extensions.findNode
 import com.deflatedpickle.undulation.functions.extensions.getText
 import com.deflatedpickle.undulation.widget.ColourButton
 import com.deflatedpickle.undulation.widget.SliderSpinner
-import kotlinx.serialization.InternalSerializationApi
 import org.jdesktop.swingx.JXButton
 import org.jdesktop.swingx.JXTextField
 import org.jdesktop.swingx.prompt.BuddySupport.Position.RIGHT
@@ -35,7 +34,7 @@ import java.awt.Point
 import java.awt.event.KeyAdapter
 import java.awt.event.KeyEvent
 import java.io.File
-import java.lang.NullPointerException
+import java.lang.reflect.Modifier
 import java.util.regex.PatternSyntaxException
 import javax.swing.JCheckBox
 import javax.swing.JComboBox
@@ -125,6 +124,10 @@ object SettingsGUI {
     private fun registerBoolean(registry: Registry<String, (Plugin, String, Any) -> Component>) {
         registry.register(Boolean::class.qualifiedName!!) { plugin, name, instance ->
             JCheckBox().apply {
+                if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
+                    this.isEnabled = false
+                }
+
                 isSelected = instance.get(name)
 
                 addActionListener {
@@ -139,6 +142,10 @@ object SettingsGUI {
     private fun registerString(registry: Registry<String, (Plugin, String, Any) -> Component>) {
         registry.register(String::class.qualifiedName!!) { plugin, name, instance ->
             JXTextField(name).apply {
+                if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
+                    this.isEnabled = false
+                }
+
                 text = instance.get(name)
 
                 addKeyListener(object : KeyAdapter() {
@@ -156,6 +163,10 @@ object SettingsGUI {
             val clazz = instance.get<Enum<*>>(name)::class.java
 
             JComboBox(clazz.enumConstants).apply {
+                if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
+                    this.isEnabled = false
+                }
+
                 selectedIndex = instance.get<Enum<*>>(name).ordinal
 
                 addActionListener {
@@ -168,22 +179,54 @@ object SettingsGUI {
 
     private fun registerInt(registry: Registry<String, (Plugin, String, Any) -> Component>) {
         registry.register(Int::class.qualifiedName!!) { plugin, name, instance ->
-            val ann = try {
+            val intRange = try {
                 instance::class.java.getDeclaredField(name).getAnnotation(IntRange::class.java)
             } catch (e: NullPointerException) {
                 null
             }
 
-            SliderSpinner(
-                instance.get(name),
-                ann?.min ?: 1,
-                ann?.max ?: 10,
-            ).apply {
-                value = instance.get(name)
+            val widget = try {
+                instance::class.java.getDeclaredField(name).getAnnotation(SliderSpinner::class.java)
+            } catch (e: NullPointerException) {
+                null
+            }
 
-                addChangeListener {
-                    instance.set(name, value)
-                    serializeConfig(plugin)
+            if (widget != null) {
+                SliderSpinner(
+                    instance.get(name),
+                    intRange?.min ?: 1,
+                    intRange?.max ?: 10,
+                ).apply {
+                    if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
+                        this.isEnabled = false
+                    }
+
+                    value = instance.get(name)
+
+                    addChangeListener {
+                        instance.set(name, value)
+                        serializeConfig(plugin)
+                    }
+                }
+            } else {
+                JSpinner(
+                    SpinnerNumberModel(
+                        instance.get(name),
+                        intRange?.min ?: 1,
+                        intRange?.max ?: 10,
+                        1
+                    )
+                ).apply {
+                    if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
+                        this.isEnabled = false
+                    }
+
+                    value = instance.get(name)
+
+                    addChangeListener {
+                        instance.set(name, value)
+                        serializeConfig(plugin)
+                    }
                 }
             }
         }
@@ -191,22 +234,54 @@ object SettingsGUI {
 
     private fun registerFloat(registry: Registry<String, (Plugin, String, Any) -> Component>) {
         registry.register(Float::class.qualifiedName!!) { plugin, name, instance ->
-            val ann = try {
+            val floatRange = try {
                 instance::class.java.getDeclaredField(name).getAnnotation(FloatRange::class.java)
             } catch (e: NullPointerException) {
                 null
             }
 
-            SliderSpinner(
-                instance.get(name),
-                ann?.min ?: 1f,
-                ann?.max ?: 10f,
-            ).apply {
-                value = instance.get(name)
+            val widget = try {
+                instance::class.java.getDeclaredField(name).getAnnotation(SliderSpinner::class.java)
+            } catch (e: NullPointerException) {
+                null
+            }
 
-                addChangeListener {
-                    instance.set(name, value)
-                    serializeConfig(plugin)
+            if (widget != null) {
+                SliderSpinner(
+                    instance.get(name),
+                    floatRange?.min ?: 1f,
+                    floatRange?.max ?: 10f,
+                ).apply {
+                    if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
+                        this.isEnabled = false
+                    }
+
+                    value = instance.get(name)
+
+                    addChangeListener {
+                        instance.set(name, value)
+                        serializeConfig(plugin)
+                    }
+                }
+            } else {
+                JSpinner(
+                    SpinnerNumberModel(
+                        instance.get(name),
+                        floatRange?.min ?: 1f,
+                        floatRange?.max ?: 10f,
+                        0.1f
+                    )
+                ).apply {
+                    if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
+                        this.isEnabled = false
+                    }
+
+                    value = instance.get(name)
+
+                    addChangeListener {
+                        instance.set(name, value)
+                        serializeConfig(plugin)
+                    }
                 }
             }
         }
@@ -215,6 +290,10 @@ object SettingsGUI {
     private fun registerFile(registry: Registry<String, (Plugin, String, Any) -> Component>) {
         registry.register(File::class.qualifiedName!!) { plugin, name, instance ->
             JXTextField(name).apply {
+                if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
+                    this.isEnabled = false
+                }
+
                 text = (instance.get(name) as File).absolutePath
 
                 val field = this
@@ -225,6 +304,10 @@ object SettingsGUI {
                 }
 
                 addBuddy(JXButton(MonoIcon.FOLDER_OPEN).apply {
+                    if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
+                        this.isEnabled = false
+                    }
+
                     addActionListener {
                         if (chooser.showOpenDialog(PluginUtil.window) == JFileChooser.APPROVE_OPTION) {
                             field.text = chooser.selectedFile.absolutePath
@@ -265,6 +348,10 @@ object SettingsGUI {
 
                 for (i in listOf(x, y)) {
                     i.apply {
+                        if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
+                            this.isEnabled = false
+                        }
+
                         addChangeListener {
                             instance.set(name, inst.setLocation(
                                 x.value.toString().toInt(),
@@ -285,6 +372,10 @@ object SettingsGUI {
     private fun registerColor(registry: Registry<String, (Plugin, String, Any) -> Component>) {
         registry.register(Color::class.qualifiedName!!) { plugin, name, instance ->
             ColourButton(instance.get(name)).apply {
+                if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
+                    this.isEnabled = false
+                }
+
                 addChangeListener {
                     instance.set(name, this.color)
                     serializeConfig(plugin)
