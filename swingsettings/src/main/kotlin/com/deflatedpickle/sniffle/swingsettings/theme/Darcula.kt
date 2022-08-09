@@ -12,8 +12,6 @@ import javax.swing.UIManager
 
 object Darcula : Project("DARCULA")
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object DarculaTheme : Theme(
     Darcula,
     "Darcula",

@@ -36,8 +36,6 @@ import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatArcDarkIJTheme
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafArcTheme : Theme(
     "flatlaf-intellij_arc",
     FlatLaf,
@@ -48,8 +46,6 @@ object FlatLafArcTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafArcOrangeTheme : Theme(
     "flatlaf-intellij_arc_orange",
     FlatLaf,
@@ -60,8 +56,6 @@ object FlatLafArcOrangeTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafArcDarkTheme : Theme(
     "flatlaf-intellij_arc_dark",
     FlatLaf,
@@ -72,8 +66,6 @@ object FlatLafArcDarkTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafArcDarkOrangeTheme : Theme(
     "flatlaf-intellij_arc_dark_orange",
     FlatLaf,
@@ -84,8 +76,6 @@ object FlatLafArcDarkOrangeTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafCarbonTheme : Theme(
     "flatlaf-intellij_carbon",
     FlatLaf,
@@ -96,8 +86,6 @@ object FlatLafCarbonTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafCobalt2Theme : Theme(
     "flatlaf-intellij_cobalt_2",
     FlatLaf,
@@ -108,8 +96,6 @@ object FlatLafCobalt2Theme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafCyanLightTheme : Theme(
     "flatlaf-intellij_cyan_light",
     FlatLaf,
@@ -120,8 +106,6 @@ object FlatLafCyanLightTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafDarkFlatTheme : Theme(
     "flatlaf-intellij_dark_flat",
     FlatLaf,
@@ -132,8 +116,6 @@ object FlatLafDarkFlatTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafDarkPurpleTheme : Theme(
     "flatlaf-intellij_dark_purple",
     FlatLaf,
@@ -144,8 +126,6 @@ object FlatLafDarkPurpleTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafDraculaTheme : Theme(
     "flatlaf-intellij_dracula",
     FlatLaf,
@@ -156,8 +136,6 @@ object FlatLafDraculaTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafGradiantoDarkFuchsiaTheme : Theme(
     "flatlaf-intellij_gradianto_dark_fuchsia",
     FlatLaf,
@@ -168,8 +146,6 @@ object FlatLafGradiantoDarkFuchsiaTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafGradiantoDeepOceanTheme : Theme(
     "flatlaf-intellij_gradianto_deep_ocean",
     FlatLaf,
@@ -180,8 +156,6 @@ object FlatLafGradiantoDeepOceanTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafGradiantoMidnightBlueTheme : Theme(
     "flatlaf-intellij_gradianto_midnight_blue",
     FlatLaf,
@@ -192,8 +166,6 @@ object FlatLafGradiantoMidnightBlueTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafGradiantoNatureGreenTheme : Theme(
     "flatlaf-intellij_gradianto_nature_green",
     FlatLaf,
@@ -204,8 +176,6 @@ object FlatLafGradiantoNatureGreenTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafGrayTheme : Theme(
     "flatlaf-intellij_gray",
     FlatLaf,
@@ -216,8 +186,6 @@ object FlatLafGrayTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafGruvboxDarkHardTheme : Theme(
     "flatlaf-intellij_gruvbox_dark_hard",
     FlatLaf,
@@ -228,8 +196,6 @@ object FlatLafGruvboxDarkHardTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafGruvboxDarkMediumTheme : Theme(
     "flatlaf-intellij_gruvbox_dark_medium",
     FlatLaf,
@@ -240,8 +206,6 @@ object FlatLafGruvboxDarkMediumTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafGruvboxDarkSoftTheme : Theme(
     "flatlaf-intellij_gruvbox_dark_soft",
     FlatLaf,
@@ -252,8 +216,6 @@ object FlatLafGruvboxDarkSoftTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafHiberbeeDarkTheme : Theme(
     "flatlaf-intellij_hiberbee_dark",
     FlatLaf,
@@ -264,8 +226,6 @@ object FlatLafHiberbeeDarkTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafHighContrastTheme : Theme(
     "flatlaf-intellij_high_contrast",
     FlatLaf,
@@ -276,8 +236,6 @@ object FlatLafHighContrastTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafLightFlatTheme : Theme(
     "flatlaf-intellij_light_flat",
     FlatLaf,
@@ -288,8 +246,6 @@ object FlatLafLightFlatTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialDesignDarkTheme : Theme(
     "flatlaf-intellij_material_design_dark",
     FlatLaf,
@@ -300,8 +256,6 @@ object FlatLafMaterialDesignDarkTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMonocaiTheme : Theme(
     "flatlaf-intellij_monocai",
     FlatLaf,
@@ -312,8 +266,6 @@ object FlatLafMonocaiTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafNordTheme : Theme(
     "flatlaf-intellij_nord",
     FlatLaf,
@@ -324,8 +276,6 @@ object FlatLafNordTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafOneDarkTheme : Theme(
     "flatlaf-intellij_one_dark",
     FlatLaf,
@@ -336,8 +286,6 @@ object FlatLafOneDarkTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafSolarizedDarkTheme : Theme(
     "flatlaf-intellij_solarized_dark",
     FlatLaf,
@@ -348,8 +296,6 @@ object FlatLafSolarizedDarkTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafSolarizedLightTheme : Theme(
     "flatlaf-intellij_solarized_light",
     FlatLaf,
@@ -360,8 +306,6 @@ object FlatLafSolarizedLightTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafSpaceGrayTheme : Theme(
     "flatlaf-intellij_spacegray",
     FlatLaf,
@@ -372,8 +316,6 @@ object FlatLafSpaceGrayTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafVuesionTheme : Theme(
     "flatlaf-intellij_vuesion",
     FlatLaf,

@@ -12,8 +12,6 @@ import javax.swing.UIManager
 
 object Solarized : Project("SOLARIZED")
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object SolarizedTheme : Theme(
     Solarized,
     "Solarized",

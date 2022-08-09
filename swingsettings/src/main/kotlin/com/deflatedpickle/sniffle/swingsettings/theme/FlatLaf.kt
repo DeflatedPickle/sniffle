@@ -15,8 +15,6 @@ import javax.swing.UIManager
 
 object FlatLaf : Project("FLATLAF")
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafLightTheme : Theme(
     FlatLaf,
     "Light",
@@ -26,8 +24,6 @@ object FlatLafLightTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafDarkTheme : Theme(
     FlatLaf,
     "Dark",
@@ -37,8 +33,6 @@ object FlatLafDarkTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafIntelliJTheme : Theme(
     FlatLaf,
     "IntelliJ",
@@ -48,8 +42,6 @@ object FlatLafIntelliJTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafDarculaTheme : Theme(
     FlatLaf,
     "Darcula",

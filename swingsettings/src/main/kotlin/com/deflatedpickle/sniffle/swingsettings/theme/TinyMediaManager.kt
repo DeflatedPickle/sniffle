@@ -13,8 +13,6 @@ import javax.swing.UIManager
 
 object TinyMediaManager : Project("TINYMEDIAMANAGER")
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object TinyMediaManagerLightTheme : Theme(
     TinyMediaManager,
     "TinyMediaManager Light",
@@ -24,8 +22,6 @@ object TinyMediaManagerLightTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object TinyMediaManagerDarkTheme : Theme(
     TinyMediaManager,
     "TinyMediaManager Dark",

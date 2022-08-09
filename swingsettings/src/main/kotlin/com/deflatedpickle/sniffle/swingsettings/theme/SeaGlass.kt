@@ -12,8 +12,6 @@ import javax.swing.UIManager
 
 object SeaGlass : Project("SEAGLASS")
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object SeaGlassTheme : Theme(
     SeaGlass,
     "SeaGlass",

@@ -18,8 +18,6 @@ import java.awt.Font as AWTFont
 
 object Swing : Project("SWING")
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object SwingMetalTheme : Theme(
     Swing,
     "Metal",
@@ -29,8 +27,6 @@ object SwingMetalTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object SwingNimbusTheme : Theme(
     Swing,
     "Nimbus",
@@ -45,8 +41,6 @@ object SwingNimbusTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object SwingMotifTheme : Theme(
     Swing,
     "Motif",
@@ -56,8 +50,6 @@ object SwingMotifTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object SwingNativeTheme : Theme(
     Swing,
     "System",

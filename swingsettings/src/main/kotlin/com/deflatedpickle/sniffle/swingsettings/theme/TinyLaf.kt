@@ -14,8 +14,6 @@ import net.sf.tinylaf.Theme as TinyTheme
 
 object TinyLaf : Project("TINYLAF")
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object TinyLafYQTheme : Theme(
     TinyLaf,
     "YQ",
@@ -41,8 +39,6 @@ object TinyLafYQTheme : Theme(
     }
 }*/
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object TinyLafRadianceTheme : Theme(
     TinyLaf,
     "Radiance",

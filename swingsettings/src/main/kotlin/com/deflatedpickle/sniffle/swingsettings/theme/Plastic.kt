@@ -32,8 +32,6 @@ import javax.swing.plaf.metal.MetalLookAndFeel
 
 object Plastic : Project("PLASTIC")
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object PlasticBrownSugarTheme : Theme(
     Plastic,
     "Brown Sugar",
@@ -44,8 +42,6 @@ object PlasticBrownSugarTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object PlasticDarkStarTheme : Theme(
     Plastic,
     "Dark Star",
@@ -56,8 +52,6 @@ object PlasticDarkStarTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object PlasticDesertBlueTheme : Theme(
     Plastic,
     "Desert Blue",
@@ -68,8 +62,6 @@ object PlasticDesertBlueTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object PlasticDesertBluerTheme : Theme(
     Plastic,
     "Desert Bluer",
@@ -80,8 +72,6 @@ object PlasticDesertBluerTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object PlasticDesertGreenTheme : Theme(
     Plastic,
     "Desert Green",
@@ -92,8 +82,6 @@ object PlasticDesertGreenTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object PlasticDesertRedTheme : Theme(
     Plastic,
     "Desert Red",
@@ -104,8 +92,6 @@ object PlasticDesertRedTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object PlasticDesertYellowTheme : Theme(
     Plastic,
     "Desert Yellow",
@@ -116,8 +102,6 @@ object PlasticDesertYellowTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object PlasticExperienceBlueTheme : Theme(
     Plastic,
     "Experience Blue",
@@ -128,8 +112,6 @@ object PlasticExperienceBlueTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object PlasticExperienceGreenTheme : Theme(
     Plastic,
     "Experience Green",
@@ -140,8 +122,6 @@ object PlasticExperienceGreenTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object PlasticSilverTheme : Theme(
     Plastic,
     "Silver",
@@ -152,8 +132,6 @@ object PlasticSilverTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object PlasticSkyBlueTheme : Theme(
     Plastic,
     "Sky Blue",
@@ -164,8 +142,6 @@ object PlasticSkyBlueTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object PlasticSkyBluerTheme : Theme(
     Plastic,
     "Sky Bluer",
@@ -176,8 +152,6 @@ object PlasticSkyBluerTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object PlasticSkyBluerTahomaTheme : Theme(
     Plastic,
     "Sky Bluer Tahoma",
@@ -188,8 +162,6 @@ object PlasticSkyBluerTahomaTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object PlasticSkyGreenTheme : Theme(
     Plastic,
     "Sky Green",
@@ -200,8 +172,6 @@ object PlasticSkyGreenTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object PlasticSkyKruppTheme : Theme(
     Plastic,
     "Sky Krupp",
@@ -212,8 +182,6 @@ object PlasticSkyKruppTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object PlasticSkyPinkTheme : Theme(
     Plastic,
     "Sky Pink",
@@ -224,8 +192,6 @@ object PlasticSkyPinkTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object PlasticSkyRedTheme : Theme(
     Plastic,
     "Sky Red",
@@ -236,8 +202,6 @@ object PlasticSkyRedTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object PlasticSkyYellowTheme : Theme(
     Plastic,
     "Sky Yellow",
@@ -248,8 +212,6 @@ object PlasticSkyYellowTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object Plastic3DTheme : Theme(
     Plastic,
     "3D",
@@ -259,8 +221,6 @@ object Plastic3DTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object PlasticXPTheme : Theme(
     Plastic,
     "XP",

@@ -18,8 +18,6 @@ import kotlinx.serialization.Serializable
 
 object DarkLaf : Project("DARKLAF")
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object DarkLafDarculaTheme : Theme(
     DarkLaf,
     "Darcula"
@@ -29,8 +27,6 @@ object DarkLafDarculaTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object DarkLafHighContrastDarkTheme : Theme(
     DarkLaf,
     "High Contrast Dark"
@@ -40,8 +36,6 @@ object DarkLafHighContrastDarkTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object DarkLafHighContrastLightTheme : Theme(
     DarkLaf,
     "High Contrast Light"
@@ -51,8 +45,6 @@ object DarkLafHighContrastLightTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object DarkLafIntelliJTheme : Theme(
     DarkLaf,
     "IntelliJ"
@@ -62,8 +54,6 @@ object DarkLafIntelliJTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object DarkLafOneDarkTheme : Theme(
     DarkLaf,
     "One Dark"
@@ -73,8 +63,6 @@ object DarkLafOneDarkTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object DarkLafSolarizedDarkTheme : Theme(
     DarkLaf,
     "Solarized Dark"
@@ -84,8 +72,6 @@ object DarkLafSolarizedDarkTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object DarkLafSolarizedLightTheme : Theme(
     DarkLaf,
     "Solarized Light"

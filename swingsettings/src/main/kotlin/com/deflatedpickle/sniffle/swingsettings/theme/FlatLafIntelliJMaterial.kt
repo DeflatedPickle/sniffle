@@ -41,8 +41,6 @@ import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatSolarizedLight
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialArcDarkTheme : Theme(
     FlatLaf,
     "Arc Dark"
@@ -52,8 +50,6 @@ object FlatLafMaterialArcDarkTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialArcDarkContrastTheme : Theme(
     FlatLaf,
     "Arc Dark Contrast"
@@ -63,8 +59,6 @@ object FlatLafMaterialArcDarkContrastTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialOneDarkTheme : Theme(
     FlatLaf,
     "Atom One Dark"
@@ -74,8 +68,6 @@ object FlatLafMaterialOneDarkTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialOneDarkContrastTheme : Theme(
     FlatLaf,
     "Atom One Dark Contrast"
@@ -85,8 +77,6 @@ object FlatLafMaterialOneDarkContrastTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialOneLightTheme : Theme(
     FlatLaf,
     "Atom One Light"
@@ -96,8 +86,6 @@ object FlatLafMaterialOneLightTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialOneLightContrastTheme : Theme(
     FlatLaf,
     "Atom One Light Contrast"
@@ -107,8 +95,6 @@ object FlatLafMaterialOneLightContrastTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialDraculaTheme : Theme(
     FlatLaf,
     "Dracula"
@@ -118,8 +104,6 @@ object FlatLafMaterialDraculaTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialDraculaContrastTheme : Theme(
     FlatLaf,
     "Dracula Contrast"
@@ -129,8 +113,6 @@ object FlatLafMaterialDraculaContrastTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialGitHubTheme : Theme(
     FlatLaf,
     "GitHub"
@@ -140,8 +122,6 @@ object FlatLafMaterialGitHubTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialGitHubContrastTheme : Theme(
     FlatLaf,
     "GitHub Contrast"
@@ -151,8 +131,6 @@ object FlatLafMaterialGitHubContrastTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialLightOwlTheme : Theme(
     FlatLaf,
     "Light Owl"
@@ -162,8 +140,6 @@ object FlatLafMaterialLightOwlTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialLightOwlContrastTheme : Theme(
     FlatLaf,
     "Light Owl Contrast"
@@ -173,8 +149,6 @@ object FlatLafMaterialLightOwlContrastTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialDarkerTheme : Theme(
     FlatLaf,
     "Material Darker"
@@ -184,8 +158,6 @@ object FlatLafMaterialDarkerTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialDarkerContrastTheme : Theme(
     FlatLaf,
     "Material Darker Contrast"
@@ -195,8 +167,6 @@ object FlatLafMaterialDarkerContrastTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialDeepOceanTheme : Theme(
     FlatLaf,
     "Material Deep Ocean"
@@ -206,8 +176,6 @@ object FlatLafMaterialDeepOceanTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialDeepOceanContrastTheme : Theme(
     FlatLaf,
     "Material Deep Ocean Contrast"
@@ -217,8 +185,6 @@ object FlatLafMaterialDeepOceanContrastTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialLighterTheme : Theme(
     FlatLaf,
     "Material Lighter"
@@ -228,8 +194,6 @@ object FlatLafMaterialLighterTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialLighterContrastTheme : Theme(
     FlatLaf,
     "Material Lighter Contrast"
@@ -239,8 +203,6 @@ object FlatLafMaterialLighterContrastTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialOceanicTheme : Theme(
     FlatLaf,
     "Material Oceanic"
@@ -250,8 +212,6 @@ object FlatLafMaterialOceanicTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialOceanicContrastTheme : Theme(
     FlatLaf,
     "Material Oceanic Contrast"
@@ -261,8 +221,6 @@ object FlatLafMaterialOceanicContrastTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialPalenightTheme : Theme(
     FlatLaf,
     "Material Palenight"
@@ -272,8 +230,6 @@ object FlatLafMaterialPalenightTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialPalenightContrastTheme : Theme(
     FlatLaf,
     "Material Palenight Contrast"
@@ -283,8 +239,6 @@ object FlatLafMaterialPalenightContrastTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialMonokaiProTheme : Theme(
     FlatLaf,
     "Monokai Pro"
@@ -294,8 +248,6 @@ object FlatLafMaterialMonokaiProTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialMonokaiProContrastTheme : Theme(
     FlatLaf,
     "Monokai Pro Contrast"
@@ -305,8 +257,6 @@ object FlatLafMaterialMonokaiProContrastTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialMoonlightTheme : Theme(
     FlatLaf,
     "Moonlight"
@@ -316,8 +266,6 @@ object FlatLafMaterialMoonlightTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialMoonlightContrastTheme : Theme(
     FlatLaf,
     "Moonlight Contrast"
@@ -327,8 +275,6 @@ object FlatLafMaterialMoonlightContrastTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialNightOwlTheme : Theme(
     FlatLaf,
     "Night Owl"
@@ -338,8 +284,6 @@ object FlatLafMaterialNightOwlTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialNightOwlContrastTheme : Theme(
     FlatLaf,
     "Night Owl Contrast"
@@ -349,8 +293,6 @@ object FlatLafMaterialNightOwlContrastTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialSolarizedDarkTheme : Theme(
     FlatLaf,
     "Solarized Dark"
@@ -360,8 +302,6 @@ object FlatLafMaterialSolarizedDarkTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialSolarizedDarkContrastTheme : Theme(
     FlatLaf,
     "Solarized Dark Contrast"
@@ -371,8 +311,6 @@ object FlatLafMaterialSolarizedDarkContrastTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialSolarizedLightTheme : Theme(
     FlatLaf,
     "Solarized Light"
@@ -382,8 +320,6 @@ object FlatLafMaterialSolarizedLightTheme : Theme(
     }
 }
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object FlatLafMaterialSolarizedLightContrastTheme : Theme(
     FlatLaf,
     "Solarized Light Contrast"

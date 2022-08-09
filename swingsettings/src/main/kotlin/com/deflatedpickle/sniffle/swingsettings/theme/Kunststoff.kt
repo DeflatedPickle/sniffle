@@ -12,8 +12,6 @@ import javax.swing.UIManager
 
 object Kunststoff : Project("KUNSTSTOFF")
 
-@OptIn(ExperimentalSerializationApi::class)
-@Serializable(with = ThemeSerializer::class)
 object KunststoffTheme : Theme(
     Kunststoff,
     "Kunststoff",
