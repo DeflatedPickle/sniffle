@@ -2,9 +2,11 @@
 
 package com.deflatedpickle.rawky.discordrpc
 
+import com.deflatedpickle.haruhi.api.Config
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class DiscordRPCSettings(
-    var enabled: Boolean = true
-)
+    override val version: Int = 1,
+    var enabled: Boolean = true,
+) : Config
