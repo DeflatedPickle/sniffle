@@ -10,6 +10,7 @@ import com.deflatedpickle.haruhi.event.EventWindowShown
 import com.deflatedpickle.haruhi.util.PluginUtil
 import com.deflatedpickle.haruhi.util.RegistryUtil
 import com.deflatedpickle.tosuto.ToastItem
+import com.deflatedpickle.tosuto.ToastWindow
 import com.deflatedpickle.tosuto.action.ToastSingleAction
 import com.deflatedpickle.tosuto.api.ToastLevel
 import javax.swing.JMenu
@@ -37,30 +38,9 @@ object PluginManager {
             }
         }
 
-        EventWindowShown.addListener { window ->
-            if (window != PluginUtil.toastWindow) return@addListener
-
-            if (PluginUtil.loadedPlugins.isNotEmpty()) {
-                PluginUtil.toastWindow.addToast(
-                    ToastItem(
-                        title = "Loaded Plugins",
-                        content = PluginUtil.loadedPlugins.joinToString {
-                            PluginUtil.pluginToSlug(it)
-                        },
-                        actions = listOf(
-                            ToastSingleAction(
-                                "Manage",
-                                command = { _, _ ->
-                                    PluginManagerDialog.isVisible = true
-                                }
-                            )
-                        )
-                    )
-                )
-            }
-
+        EventProgramFinishSetup.addListener {
             if (PluginUtil.unloadedPlugins.isNotEmpty()) {
-                PluginUtil.toastWindow.addToast(
+                PluginUtil.toastWindow.add(
                     ToastItem(
                         level = ToastLevel.WARNING,
                         title = "Unloaded Plugins",

@@ -46,7 +46,7 @@ object FlatLafMaterialArcDarkTheme : Theme(
     "Arc Dark"
 ) {
     override fun changeTo() {
-        FlatArcDarkIJTheme.install()
+        FlatArcDarkIJTheme.setup()
     }
 }
 
@@ -55,7 +55,7 @@ object FlatLafMaterialArcDarkContrastTheme : Theme(
     "Arc Dark Contrast"
 ) {
     override fun changeTo() {
-        FlatArcDarkContrastIJTheme.install()
+        FlatArcDarkContrastIJTheme.setup()
     }
 }
 
@@ -64,7 +64,7 @@ object FlatLafMaterialOneDarkTheme : Theme(
     "Atom One Dark"
 ) {
     override fun changeTo() {
-        FlatAtomOneDarkIJTheme.install()
+        FlatAtomOneDarkIJTheme.setup()
     }
 }
 
@@ -73,7 +73,7 @@ object FlatLafMaterialOneDarkContrastTheme : Theme(
     "Atom One Dark Contrast"
 ) {
     override fun changeTo() {
-        FlatAtomOneDarkContrastIJTheme.install()
+        FlatAtomOneDarkContrastIJTheme.setup()
     }
 }
 
@@ -82,7 +82,7 @@ object FlatLafMaterialOneLightTheme : Theme(
     "Atom One Light"
 ) {
     override fun changeTo() {
-        FlatAtomOneLightIJTheme.install()
+        FlatAtomOneLightIJTheme.setup()
     }
 }
 
@@ -91,7 +91,7 @@ object FlatLafMaterialOneLightContrastTheme : Theme(
     "Atom One Light Contrast"
 ) {
     override fun changeTo() {
-        FlatAtomOneLightContrastIJTheme.install()
+        FlatAtomOneLightContrastIJTheme.setup()
     }
 }
 
@@ -100,7 +100,7 @@ object FlatLafMaterialDraculaTheme : Theme(
     "Dracula"
 ) {
     override fun changeTo() {
-        FlatDraculaIJTheme.install()
+        FlatDraculaIJTheme.setup()
     }
 }
 
@@ -109,7 +109,7 @@ object FlatLafMaterialDraculaContrastTheme : Theme(
     "Dracula Contrast"
 ) {
     override fun changeTo() {
-        FlatDraculaContrastIJTheme.install()
+        FlatDraculaContrastIJTheme.setup()
     }
 }
 
@@ -118,7 +118,7 @@ object FlatLafMaterialGitHubTheme : Theme(
     "GitHub"
 ) {
     override fun changeTo() {
-        FlatGitHubIJTheme.install()
+        FlatGitHubIJTheme.setup()
     }
 }
 
@@ -127,7 +127,7 @@ object FlatLafMaterialGitHubContrastTheme : Theme(
     "GitHub Contrast"
 ) {
     override fun changeTo() {
-        FlatGitHubContrastIJTheme.install()
+        FlatGitHubContrastIJTheme.setup()
     }
 }
 
@@ -136,7 +136,7 @@ object FlatLafMaterialLightOwlTheme : Theme(
     "Light Owl"
 ) {
     override fun changeTo() {
-        FlatLightOwlIJTheme.install()
+        FlatLightOwlIJTheme.setup()
     }
 }
 
@@ -145,7 +145,7 @@ object FlatLafMaterialLightOwlContrastTheme : Theme(
     "Light Owl Contrast"
 ) {
     override fun changeTo() {
-        FlatLightOwlContrastIJTheme.install()
+        FlatLightOwlContrastIJTheme.setup()
     }
 }
 
@@ -154,7 +154,7 @@ object FlatLafMaterialDarkerTheme : Theme(
     "Material Darker"
 ) {
     override fun changeTo() {
-        FlatMaterialDarkerIJTheme.install()
+        FlatMaterialDarkerIJTheme.setup()
     }
 }
 
@@ -163,7 +163,7 @@ object FlatLafMaterialDarkerContrastTheme : Theme(
     "Material Darker Contrast"
 ) {
     override fun changeTo() {
-        FlatMaterialDarkerContrastIJTheme.install()
+        FlatMaterialDarkerContrastIJTheme.setup()
     }
 }
 
@@ -172,7 +172,7 @@ object FlatLafMaterialDeepOceanTheme : Theme(
     "Material Deep Ocean"
 ) {
     override fun changeTo() {
-        FlatMaterialDeepOceanIJTheme.install()
+        FlatMaterialDeepOceanIJTheme.setup()
     }
 }
 
@@ -181,7 +181,7 @@ object FlatLafMaterialDeepOceanContrastTheme : Theme(
     "Material Deep Ocean Contrast"
 ) {
     override fun changeTo() {
-        FlatMaterialDeepOceanContrastIJTheme.install()
+        FlatMaterialDeepOceanContrastIJTheme.setup()
     }
 }
 
@@ -190,7 +190,7 @@ object FlatLafMaterialLighterTheme : Theme(
     "Material Lighter"
 ) {
     override fun changeTo() {
-        FlatMaterialLighterIJTheme.install()
+        FlatMaterialLighterIJTheme.setup()
     }
 }
 
@@ -199,7 +199,7 @@ object FlatLafMaterialLighterContrastTheme : Theme(
     "Material Lighter Contrast"
 ) {
     override fun changeTo() {
-        FlatMaterialLighterContrastIJTheme.install()
+        FlatMaterialLighterContrastIJTheme.setup()
     }
 }
 
@@ -208,7 +208,7 @@ object FlatLafMaterialOceanicTheme : Theme(
     "Material Oceanic"
 ) {
     override fun changeTo() {
-        FlatMaterialOceanicIJTheme.install()
+        FlatMaterialOceanicIJTheme.setup()
     }
 }
 
@@ -217,7 +217,7 @@ object FlatLafMaterialOceanicContrastTheme : Theme(
     "Material Oceanic Contrast"
 ) {
     override fun changeTo() {
-        FlatMaterialOceanicContrastIJTheme.install()
+        FlatMaterialOceanicContrastIJTheme.setup()
     }
 }
 
@@ -226,7 +226,7 @@ object FlatLafMaterialPalenightTheme : Theme(
     "Material Palenight"
 ) {
     override fun changeTo() {
-        FlatMaterialPalenightIJTheme.install()
+        FlatMaterialPalenightIJTheme.setup()
     }
 }
 
@@ -235,7 +235,7 @@ object FlatLafMaterialPalenightContrastTheme : Theme(
     "Material Palenight Contrast"
 ) {
     override fun changeTo() {
-        FlatMaterialPalenightContrastIJTheme.install()
+        FlatMaterialPalenightContrastIJTheme.setup()
     }
 }
 
@@ -244,7 +244,7 @@ object FlatLafMaterialMonokaiProTheme : Theme(
     "Monokai Pro"
 ) {
     override fun changeTo() {
-        FlatMonokaiProIJTheme.install()
+        FlatMonokaiProIJTheme.setup()
     }
 }
 
@@ -253,7 +253,7 @@ object FlatLafMaterialMonokaiProContrastTheme : Theme(
     "Monokai Pro Contrast"
 ) {
     override fun changeTo() {
-        FlatMonokaiProContrastIJTheme.install()
+        FlatMonokaiProContrastIJTheme.setup()
     }
 }
 
@@ -262,7 +262,7 @@ object FlatLafMaterialMoonlightTheme : Theme(
     "Moonlight"
 ) {
     override fun changeTo() {
-        FlatMoonlightIJTheme.install()
+        FlatMoonlightIJTheme.setup()
     }
 }
 
@@ -271,7 +271,7 @@ object FlatLafMaterialMoonlightContrastTheme : Theme(
     "Moonlight Contrast"
 ) {
     override fun changeTo() {
-        FlatMoonlightContrastIJTheme.install()
+        FlatMoonlightContrastIJTheme.setup()
     }
 }
 
@@ -280,7 +280,7 @@ object FlatLafMaterialNightOwlTheme : Theme(
     "Night Owl"
 ) {
     override fun changeTo() {
-        FlatNightOwlIJTheme.install()
+        FlatNightOwlIJTheme.setup()
     }
 }
 
@@ -289,7 +289,7 @@ object FlatLafMaterialNightOwlContrastTheme : Theme(
     "Night Owl Contrast"
 ) {
     override fun changeTo() {
-        FlatNightOwlContrastIJTheme.install()
+        FlatNightOwlContrastIJTheme.setup()
     }
 }
 
@@ -298,7 +298,7 @@ object FlatLafMaterialSolarizedDarkTheme : Theme(
     "Solarized Dark"
 ) {
     override fun changeTo() {
-        FlatSolarizedDarkIJTheme.install()
+        FlatSolarizedDarkIJTheme.setup()
     }
 }
 
@@ -307,7 +307,7 @@ object FlatLafMaterialSolarizedDarkContrastTheme : Theme(
     "Solarized Dark Contrast"
 ) {
     override fun changeTo() {
-        FlatSolarizedDarkContrastIJTheme.install()
+        FlatSolarizedDarkContrastIJTheme.setup()
     }
 }
 
@@ -316,7 +316,7 @@ object FlatLafMaterialSolarizedLightTheme : Theme(
     "Solarized Light"
 ) {
     override fun changeTo() {
-        FlatSolarizedLightIJTheme.install()
+        FlatSolarizedLightIJTheme.setup()
     }
 }
 
@@ -325,6 +325,6 @@ object FlatLafMaterialSolarizedLightContrastTheme : Theme(
     "Solarized Light Contrast"
 ) {
     override fun changeTo() {
-        FlatSolarizedLightContrastIJTheme.install()
+        FlatSolarizedLightContrastIJTheme.setup()
     }
 }
