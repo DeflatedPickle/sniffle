@@ -9,12 +9,16 @@ version "1.0.0"
 sourceCompatibility = 1.8
 
 dependencies {
-    implementation 'org.apache.logging.log4j:log4j-api:2.11.1'
-    implementation 'org.apache.logging.log4j:log4j-core:2.11.1'
+    implementation 'org.apache.logging.log4j:log4j-api:2.18.0'
+    implementation 'org.apache.logging.log4j:log4j-core:2.18.0'
 
     implementation 'com.github.Fylipp:easy-events:v1.1.0'
     implementation 'com.github.Vatuu:discord-rpc:1.6.2'
 
     implementation 'com.deflatedpickle:haruhi'
     implementation 'com.deflatedpickle:tosuto'
+}
+
+repositories {
+    mavenCentral()
 }

@@ -34,11 +34,8 @@ object DiscordRPC {
                 val enabled = settings.enabled
 
                 if (enabled) {
-                    // Connect to Discord RCP
                     this.start()
-                }
 
-                if (enabled) {
                     EventWindowShown.addListener {
                         if (it == PluginUtil.window) {
                             DiscordRP.stack.push(
@@ -55,7 +52,6 @@ object DiscordRPC {
         }
 
         EventProgramShutdown.addListener {
-            // Shutdown Discord RCP
             this@DiscordRPC.stop()
         }
     }

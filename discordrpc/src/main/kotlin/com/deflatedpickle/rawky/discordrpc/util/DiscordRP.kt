@@ -18,7 +18,7 @@ object DiscordRP {
         .setReadyEventHandler {
             logger.info("Discord RCP started for user ${it.username}#${it.discriminator}")
 
-            PluginUtil.toastWindow.addToast(
+            PluginUtil.toastWindow.add(
                 ToastItem(
                     title = "Discord RPC",
                     content = "Connected to the account ${it.username}#${it.discriminator}",
@@ -37,7 +37,7 @@ object DiscordRP {
         .setErroredEventHandler { errorCode, message ->
             logger.error("Discord RCP threw an error; $errorCode, $message")
 
-            PluginUtil.toastWindow.addToast(
+            PluginUtil.toastWindow.add(
                 ToastItem(
                     level = ToastLevel.ERROR,
                     title = "Discord RPC",
@@ -48,7 +48,7 @@ object DiscordRP {
         .setDisconnectedEventHandler { errorCode, message ->
             logger.warn("Discord RCP was disconnected; $message, with the error code $errorCode")
 
-            PluginUtil.toastWindow.addToast(
+            PluginUtil.toastWindow.add(
                 ToastItem(
                     level = ToastLevel.WARNING,
                     title = "Discord RPC",
