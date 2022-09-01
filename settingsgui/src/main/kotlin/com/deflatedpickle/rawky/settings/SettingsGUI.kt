@@ -21,7 +21,7 @@ import com.deflatedpickle.undulation.DocumentAdapter
 import com.deflatedpickle.undulation.constraints.FillHorizontal
 import com.deflatedpickle.undulation.functions.extensions.findNode
 import com.deflatedpickle.undulation.functions.extensions.getText
-import com.deflatedpickle.undulation.widget.ColourButton
+import com.deflatedpickle.undulation.widget.ColourSelectButton
 import com.deflatedpickle.undulation.widget.SliderSpinner
 import org.jdesktop.swingx.JXButton
 import org.jdesktop.swingx.JXTextField
@@ -371,7 +371,7 @@ object SettingsGUI {
 
     private fun registerColor(registry: Registry<String, (Plugin, String, Any) -> Component>) {
         registry.register(Color::class.qualifiedName!!) { plugin, name, instance ->
-            ColourButton(instance.get(name)).apply {
+            ColourSelectButton(instance.get(name)).apply {
                 if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
                     this.isEnabled = false
                 }
