@@ -4,13 +4,10 @@ package com.deflatedpickle.sniffle.swingsettings.theme
 
 import com.deflatedpickle.sniffle.swingsettings.api.Project
 import com.deflatedpickle.sniffle.swingsettings.api.Theme
-import com.deflatedpickle.sniffle.swingsettings.util.ThemeSerializer
 import com.formdev.flatlaf.FlatDarculaLaf
 import com.formdev.flatlaf.FlatDarkLaf
 import com.formdev.flatlaf.FlatIntelliJLaf
 import com.formdev.flatlaf.FlatLightLaf
-import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.Serializable
 import javax.swing.UIManager
 
 object FlatLaf : Project("FLATLAF")

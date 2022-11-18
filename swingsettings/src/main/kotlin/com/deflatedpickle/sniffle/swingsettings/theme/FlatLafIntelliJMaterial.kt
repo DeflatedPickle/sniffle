@@ -5,7 +5,6 @@
 package com.deflatedpickle.sniffle.swingsettings.theme
 
 import com.deflatedpickle.sniffle.swingsettings.api.Theme
-import com.deflatedpickle.sniffle.swingsettings.util.ThemeSerializer
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatArcDarkContrastIJTheme
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatArcDarkIJTheme
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatAtomOneDarkContrastIJTheme
@@ -38,8 +37,6 @@ import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatSolarizedDarkC
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatSolarizedDarkIJTheme
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatSolarizedLightContrastIJTheme
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatSolarizedLightIJTheme
-import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.Serializable
 
 object FlatLafMaterialArcDarkTheme : Theme(
     FlatLaf,

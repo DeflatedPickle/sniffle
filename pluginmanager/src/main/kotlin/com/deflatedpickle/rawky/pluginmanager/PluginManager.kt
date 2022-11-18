@@ -6,12 +6,9 @@ import com.deflatedpickle.haruhi.api.constants.MenuCategory
 import com.deflatedpickle.haruhi.api.plugin.Plugin
 import com.deflatedpickle.haruhi.api.plugin.PluginType
 import com.deflatedpickle.haruhi.event.EventProgramFinishSetup
-import com.deflatedpickle.haruhi.event.EventWindowShown
 import com.deflatedpickle.haruhi.util.PluginUtil
 import com.deflatedpickle.haruhi.util.RegistryUtil
 import com.deflatedpickle.tosuto.ToastItem
-import com.deflatedpickle.tosuto.ToastWindow
-import com.deflatedpickle.tosuto.action.ToastSingleAction
 import com.deflatedpickle.tosuto.api.ToastLevel
 import javax.swing.JMenu
 

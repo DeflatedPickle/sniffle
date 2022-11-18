@@ -4,7 +4,6 @@ package com.deflatedpickle.sniffle.swingsettings.theme
 
 import com.deflatedpickle.sniffle.swingsettings.api.Project
 import com.deflatedpickle.sniffle.swingsettings.api.Theme
-import com.deflatedpickle.sniffle.swingsettings.util.ThemeSerializer
 import com.github.weisj.darklaf.LafManager
 import com.github.weisj.darklaf.theme.DarculaTheme
 import com.github.weisj.darklaf.theme.HighContrastDarkTheme
@@ -13,8 +12,6 @@ import com.github.weisj.darklaf.theme.IntelliJTheme
 import com.github.weisj.darklaf.theme.OneDarkTheme
 import com.github.weisj.darklaf.theme.SolarizedDarkTheme
 import com.github.weisj.darklaf.theme.SolarizedLightTheme
-import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.Serializable
 
 object DarkLaf : Project("DARKLAF")
 

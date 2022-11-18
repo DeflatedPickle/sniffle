@@ -19,7 +19,6 @@ import com.deflatedpickle.undulation.constraints.FillHorizontalFinishLine
 import com.deflatedpickle.undulation.constraints.StickEast
 import com.deflatedpickle.undulation.widget.CollapsiblePanel
 import org.oxbow.swingbits.dialog.task.TaskDialog
-import java.awt.Color
 import java.awt.Component
 import java.awt.Dimension
 import java.awt.GridBagLayout
@@ -110,7 +109,10 @@ object SettingsDialog : TaskDialog(PluginUtil.window, "Settings") {
     }
 
     private fun populatePropertyWidgets(
-        plugin: Plugin, settings: Any, panel: JPanel, properties: Collection<KProperty1<*, *>>
+        plugin: Plugin,
+        settings: Any,
+        panel: JPanel,
+        properties: Collection<KProperty1<*, *>>
     ) {
         (RegistryUtil.get("setting_type") as Registry<String, (Plugin, String, Any) -> Component>?)
             ?.let { registry ->
@@ -122,10 +124,10 @@ object SettingsDialog : TaskDialog(PluginUtil.window, "Settings") {
                     // We need to loop all the types as in some cases,
                     // such as enums, we register a setter for the base type
                     for (
-                    t in mutableListOf<KType>().apply {
-                        add(prop.returnType)
-                        addAll((prop.returnType.classifier as KClass<*>).supertypes)
-                    }
+                        t in mutableListOf<KType>().apply {
+                            add(prop.returnType)
+                            addAll((prop.returnType.classifier as KClass<*>).supertypes)
+                        }
                     ) {
                         val clazz = (t.classifier as KClass<*>)
                         val clazzName = clazz.qualifiedName!!
@@ -139,9 +141,11 @@ object SettingsDialog : TaskDialog(PluginUtil.window, "Settings") {
                                 registry.get(clazzName)?.let {
                                     val label = JLabel(
                                         "${
-                                            prop.name.capitalize().split(
-                                                Regex("(?=\\p{Lu})")).joinToString(" "
-                                            )
+                                        prop.name.capitalize().split(
+                                            Regex("(?=\\p{Lu})")
+                                        ).joinToString(
+                                            " "
+                                        )
                                         }:"
                                     )
                                     val separator = JSeparator(JSeparator.HORIZONTAL)

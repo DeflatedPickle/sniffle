@@ -3,7 +3,6 @@
 package com.deflatedpickle.sniffle.swingsettings.theme
 
 import com.deflatedpickle.sniffle.swingsettings.api.Theme
-import com.deflatedpickle.sniffle.swingsettings.util.ThemeSerializer
 import com.formdev.flatlaf.intellijthemes.FlatArcDarkOrangeIJTheme
 import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme
 import com.formdev.flatlaf.intellijthemes.FlatArcOrangeIJTheme
@@ -33,8 +32,6 @@ import com.formdev.flatlaf.intellijthemes.FlatSolarizedLightIJTheme
 import com.formdev.flatlaf.intellijthemes.FlatSpacegrayIJTheme
 import com.formdev.flatlaf.intellijthemes.FlatVuesionIJTheme
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatArcDarkIJTheme
-import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.Serializable
 
 object FlatLafArcTheme : Theme(
     "flatlaf-intellij_arc",

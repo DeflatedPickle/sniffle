@@ -4,10 +4,7 @@ package com.deflatedpickle.sniffle.swingsettings.theme
 
 import com.deflatedpickle.sniffle.swingsettings.api.Project
 import com.deflatedpickle.sniffle.swingsettings.api.Theme
-import com.deflatedpickle.sniffle.swingsettings.util.ThemeSerializer
 import com.metsci.glimpse.tinylaf.TinyLafUtils
-import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.Serializable
 import net.sf.tinylaf.TinyLookAndFeel
 import javax.swing.UIManager
 import net.sf.tinylaf.Theme as TinyTheme

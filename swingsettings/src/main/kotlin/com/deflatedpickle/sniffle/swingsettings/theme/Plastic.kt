@@ -4,7 +4,6 @@ package com.deflatedpickle.sniffle.swingsettings.theme
 
 import com.deflatedpickle.sniffle.swingsettings.api.Project
 import com.deflatedpickle.sniffle.swingsettings.api.Theme
-import com.deflatedpickle.sniffle.swingsettings.util.ThemeSerializer
 import com.jgoodies.plaf.plastic.Plastic3DLookAndFeel
 import com.jgoodies.plaf.plastic.PlasticXPLookAndFeel
 import com.jgoodies.plaf.plastic.theme.BrownSugar
@@ -25,8 +24,6 @@ import com.jgoodies.plaf.plastic.theme.SkyKrupp
 import com.jgoodies.plaf.plastic.theme.SkyPink
 import com.jgoodies.plaf.plastic.theme.SkyRed
 import com.jgoodies.plaf.plastic.theme.SkyYellow
-import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.Serializable
 import javax.swing.UIManager
 import javax.swing.plaf.metal.MetalLookAndFeel
 

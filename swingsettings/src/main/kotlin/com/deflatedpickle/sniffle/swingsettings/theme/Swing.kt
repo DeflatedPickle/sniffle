@@ -7,10 +7,7 @@ package com.deflatedpickle.sniffle.swingsettings.theme
 import com.deflatedpickle.sniffle.swingsettings.api.Font
 import com.deflatedpickle.sniffle.swingsettings.api.Project
 import com.deflatedpickle.sniffle.swingsettings.api.Theme
-import com.deflatedpickle.sniffle.swingsettings.util.ThemeSerializer
 import com.sun.java.swing.plaf.motif.MotifLookAndFeel
-import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.Serializable
 import javax.swing.UIManager
 import javax.swing.plaf.metal.MetalLookAndFeel
 import javax.swing.plaf.nimbus.NimbusLookAndFeel

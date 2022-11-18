@@ -14,11 +14,11 @@ import com.deflatedpickle.haruhi.util.RegistryUtil
 import com.deflatedpickle.marvin.extensions.get
 import com.deflatedpickle.marvin.extensions.set
 import com.deflatedpickle.monocons.MonoIcon
-import com.deflatedpickle.undulation.api.FontStyle
 import com.deflatedpickle.rawky.settings.api.range.FloatRange
 import com.deflatedpickle.rawky.settings.api.range.IntRange
 import com.deflatedpickle.rawky.settings.api.widget.SliderSpinner
 import com.deflatedpickle.undulation.DocumentAdapter
+import com.deflatedpickle.undulation.api.FontStyle
 import com.deflatedpickle.undulation.constraints.FillHorizontal
 import com.deflatedpickle.undulation.constraints.FillHorizontalFinishLine
 import com.deflatedpickle.undulation.functions.extensions.findNode
@@ -309,20 +309,23 @@ object SettingsGUI {
                     isAcceptAllFileFilterUsed = false
                 }
 
-                addBuddy(JXButton(MonoIcon.FOLDER_OPEN).apply {
-                    if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
-                        this.isEnabled = false
-                    }
-
-                    addActionListener {
-                        if (chooser.showOpenDialog(PluginUtil.window) == JFileChooser.APPROVE_OPTION) {
-                            field.text = chooser.selectedFile.absolutePath
-
-                            instance.set(name, File(field.text))
-                            serializeConfig(plugin)
+                addBuddy(
+                    JXButton(MonoIcon.FOLDER_OPEN).apply {
+                        if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
+                            this.isEnabled = false
                         }
-                    }
-                }, RIGHT)
+
+                        addActionListener {
+                            if (chooser.showOpenDialog(PluginUtil.window) == JFileChooser.APPROVE_OPTION) {
+                                field.text = chooser.selectedFile.absolutePath
+
+                                instance.set(name, File(field.text))
+                                serializeConfig(plugin)
+                            }
+                        }
+                    },
+                    RIGHT
+                )
 
                 addKeyListener(object : KeyAdapter() {
                     override fun keyTyped(e: KeyEvent) {
@@ -364,7 +367,8 @@ object SettingsGUI {
 
                         addChangeListener {
                             instance.set(
-                                name, inst.setLocation(
+                                name,
+                                inst.setLocation(
                                     x.value.toString().toInt(),
                                     y.value.toString().toInt(),
                                 )
@@ -427,7 +431,8 @@ object SettingsGUI {
                         when (it.stateChange) {
                             ItemEvent.SELECTED -> {
                                 instance.set(
-                                    name, Font(
+                                    name,
+                                    Font(
                                         nameField.selectedItem?.toString() ?: "Dialog",
                                         styleField.selectedIndex,
                                         sizeField.value,
@@ -441,7 +446,8 @@ object SettingsGUI {
 
                 sizeField.addChangeListener {
                     instance.set(
-                        name, Font(
+                        name,
+                        Font(
                             nameField.selectedItem?.toString() ?: "Dialog",
                             styleField.selectedIndex,
                             sizeField.value,
