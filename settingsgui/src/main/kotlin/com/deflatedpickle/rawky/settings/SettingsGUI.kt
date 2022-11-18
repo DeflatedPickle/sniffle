@@ -14,11 +14,13 @@ import com.deflatedpickle.haruhi.util.RegistryUtil
 import com.deflatedpickle.marvin.extensions.get
 import com.deflatedpickle.marvin.extensions.set
 import com.deflatedpickle.monocons.MonoIcon
+import com.deflatedpickle.undulation.api.FontStyle
 import com.deflatedpickle.rawky.settings.api.range.FloatRange
 import com.deflatedpickle.rawky.settings.api.range.IntRange
 import com.deflatedpickle.rawky.settings.api.widget.SliderSpinner
 import com.deflatedpickle.undulation.DocumentAdapter
 import com.deflatedpickle.undulation.constraints.FillHorizontal
+import com.deflatedpickle.undulation.constraints.FillHorizontalFinishLine
 import com.deflatedpickle.undulation.functions.extensions.findNode
 import com.deflatedpickle.undulation.functions.extensions.getText
 import com.deflatedpickle.undulation.widget.ColourSelectButton
@@ -28,9 +30,12 @@ import org.jdesktop.swingx.JXTextField
 import org.jdesktop.swingx.prompt.BuddySupport.Position.RIGHT
 import java.awt.Color
 import java.awt.Component
+import java.awt.Font
+import java.awt.GraphicsEnvironment
 import java.awt.GridBagLayout
 import java.awt.Panel
 import java.awt.Point
+import java.awt.event.ItemEvent
 import java.awt.event.KeyAdapter
 import java.awt.event.KeyEvent
 import java.io.File
@@ -81,6 +86,7 @@ object SettingsGUI {
             // Swing
             registerPoint(registry)
             registerColor(registry)
+            registerFont(registry)
         }
 
         EventProgramFinishSetup.addListener {
@@ -339,11 +345,15 @@ object SettingsGUI {
 
                 val inst = instance.get<Point>(name)
 
-                val x = JSpinner(SpinnerNumberModel(
-                    inst.x, ann?.min ?: 8, ann?.max ?: 512, 8)
+                val x = JSpinner(
+                    SpinnerNumberModel(
+                        inst.x, ann?.min ?: 8, ann?.max ?: 512, 8
+                    )
                 )
-                val y = JSpinner(SpinnerNumberModel(
-                    inst.y, ann?.min ?: 8, ann?.max ?: 512, 8)
+                val y = JSpinner(
+                    SpinnerNumberModel(
+                        inst.y, ann?.min ?: 8, ann?.max ?: 512, 8
+                    )
                 )
 
                 for (i in listOf(x, y)) {
@@ -353,10 +363,12 @@ object SettingsGUI {
                         }
 
                         addChangeListener {
-                            instance.set(name, inst.setLocation(
-                                x.value.toString().toInt(),
-                                y.value.toString().toInt(),
-                            ))
+                            instance.set(
+                                name, inst.setLocation(
+                                    x.value.toString().toInt(),
+                                    y.value.toString().toInt(),
+                                )
+                            )
                             serializeConfig(plugin)
                         }
                     }
@@ -378,6 +390,63 @@ object SettingsGUI {
 
                 addChangeListener {
                     instance.set(name, this.color)
+                    serializeConfig(plugin)
+                }
+            }
+        }
+    }
+
+    private fun registerFont(registry: Registry<String, (Plugin, String, Any) -> Component>) {
+        registry.register(Font::class.qualifiedName!!) { plugin, name, instance ->
+            Panel(GridBagLayout()).apply {
+                val inst = instance.get<Font>(name)
+
+                val nameField =
+                    JComboBox(GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames()).apply {
+                        selectedItem = inst.name
+                    }
+                val styleField = JComboBox(FontStyle.values()).apply {
+                    selectedIndex = inst.style
+                }
+                val sizeField = SliderSpinner(12, 1, 128).apply {
+                    value = inst.size
+                }
+
+                for (i in listOf(nameField, styleField, sizeField)) {
+                    i.apply {
+                        if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
+                            isEnabled = false
+                        }
+                    }
+
+                    add(i, FillHorizontalFinishLine)
+                }
+
+                for (i in listOf(nameField, styleField)) {
+                    i.addItemListener {
+                        when (it.stateChange) {
+                            ItemEvent.SELECTED -> {
+                                instance.set(
+                                    name, Font(
+                                        nameField.selectedItem?.toString() ?: "Dialog",
+                                        styleField.selectedIndex,
+                                        sizeField.value,
+                                    )
+                                )
+                                serializeConfig(plugin)
+                            }
+                        }
+                    }
+                }
+
+                sizeField.addChangeListener {
+                    instance.set(
+                        name, Font(
+                            nameField.selectedItem?.toString() ?: "Dialog",
+                            styleField.selectedIndex,
+                            sizeField.value,
+                        )
+                    )
                     serializeConfig(plugin)
                 }
             }

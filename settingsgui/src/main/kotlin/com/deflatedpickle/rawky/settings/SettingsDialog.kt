@@ -19,6 +19,7 @@ import com.deflatedpickle.undulation.constraints.FillHorizontalFinishLine
 import com.deflatedpickle.undulation.constraints.StickEast
 import com.deflatedpickle.undulation.widget.CollapsiblePanel
 import org.oxbow.swingbits.dialog.task.TaskDialog
+import java.awt.Color
 import java.awt.Component
 import java.awt.Dimension
 import java.awt.GridBagLayout
@@ -66,7 +67,12 @@ object SettingsDialog : TaskDialog(PluginUtil.window, "Settings") {
                     (component as DefaultMutableTreeNode).userObject.let { plugin ->
                         if (plugin is Plugin && plugin.settings != Nothing::class) {
                             ConfigUtil.getSettings<Any>(PluginUtil.pluginToSlug(plugin))?.let { instance ->
-                                populatePropertyWidgets(plugin, instance, SettingsPanel, plugin.settings.declaredMemberProperties)
+                                populatePropertyWidgets(
+                                    plugin,
+                                    instance,
+                                    SettingsPanel,
+                                    plugin.settings.declaredMemberProperties
+                                )
                             }
                         }
                     }
@@ -103,95 +109,97 @@ object SettingsDialog : TaskDialog(PluginUtil.window, "Settings") {
         }
     }
 
-    private fun populatePropertyWidgets(plugin: Plugin, settings: Any, panel: JPanel, properties: Collection<KProperty1<*, *>>) {
-        (
-            RegistryUtil.get("setting_type")
-                as Registry<String, (Plugin, String, Any) -> Component>?
-            )?.let { registry ->
-            // println(registry!!.getAll())
+    private fun populatePropertyWidgets(
+        plugin: Plugin, settings: Any, panel: JPanel, properties: Collection<KProperty1<*, *>>
+    ) {
+        (RegistryUtil.get("setting_type") as Registry<String, (Plugin, String, Any) -> Component>?)
+            ?.let { registry ->
+                // println(registry!!.getAll())
 
-            loop@ for (prop in properties) {
-                val failedClasses = mutableListOf<String>()
+                loop@ for (prop in properties) {
+                    val failedClasses = mutableListOf<String>()
 
-                // We need to loop all the types as in some cases,
-                // such as enums, we register a setter for the base type
-                for (
+                    // We need to loop all the types as in some cases,
+                    // such as enums, we register a setter for the base type
+                    for (
                     t in mutableListOf<KType>().apply {
                         add(prop.returnType)
                         addAll((prop.returnType.classifier as KClass<*>).supertypes)
                     }
-                ) {
-                    val clazz = (t.classifier as KClass<*>)
-                    val clazzName = clazz.qualifiedName!!
-                    // println("$prop: $t, $clazz")
+                    ) {
+                        val clazz = (t.classifier as KClass<*>)
+                        val clazzName = clazz.qualifiedName!!
+                        // println("$prop: $t, $clazz")
 
-                    // println((prop.returnType.classifier as KClass<*>).supertypes)
-                    // println("$prop, ${prop is Enum<*>}")
+                        // println((prop.returnType.classifier as KClass<*>).supertypes)
+                        // println("$prop, ${prop is Enum<*>}")
 
-                    when {
-                        registry.has(clazzName) -> {
-                            registry.get(clazzName)?.let {
-                                val label = JLabel("${prop.name.capitalize().split(Regex("(?=\\p{Lu})")).joinToString(" ")}:")
-                                val separator = JSeparator(JSeparator.HORIZONTAL)
-                                val widget = it(plugin, prop.name, settings)
+                        when {
+                            registry.has(clazzName) -> {
+                                registry.get(clazzName)?.let {
+                                    val label = JLabel(
+                                        "${
+                                            prop.name.capitalize().split(
+                                                Regex("(?=\\p{Lu})")).joinToString(" "
+                                            )
+                                        }:"
+                                    )
+                                    val separator = JSeparator(JSeparator.HORIZONTAL)
+                                    val widget = it(plugin, prop.name, settings)
+
+                                    when (panel) {
+                                        is CollapsiblePanel -> {
+                                            panel.collapse.add(label, StickEast)
+                                            panel.collapse.add(separator, FillHorizontal)
+                                            panel.collapse.add(widget, FillHorizontalFinishLine)
+                                        }
+
+                                        else -> {
+                                            panel.add(label, StickEast)
+                                            panel.add(separator, FillHorizontal)
+                                            panel.add(widget, FillHorizontalFinishLine)
+                                        }
+                                    }
+                                }
+
+                                continue@loop
+                            }
+
+                            clazz.supertypes.contains(ConfigSection::class.createType()) -> {
+                                val collapsePanel = CollapsiblePanel(prop.name).apply {
+                                    layout = GridBagLayout()
+                                    collapse.layout = GridBagLayout()
+
+                                    populatePropertyWidgets(
+                                        plugin, settings.get(prop.name),
+                                        this.collapse, clazz.declaredMemberProperties
+                                    )
+                                }
 
                                 when (panel) {
                                     is CollapsiblePanel -> {
-                                        panel.collapse.add(label, StickEast)
-                                        panel.collapse.add(separator, FillHorizontal)
-                                        panel.collapse.add(widget, FillHorizontalFinishLine)
+                                        panel.collapse.add(collapsePanel)
                                     }
+
                                     else -> {
-                                        panel.add(label, StickEast)
-                                        panel.add(separator, FillHorizontal)
-                                        panel.add(widget, FillHorizontalFinishLine)
+                                        panel.add(collapsePanel, FillHorizontalFinishLine)
                                     }
                                 }
+
+                                continue@loop
                             }
 
-                            /*SettingsPanel.add(
-                                registry?.get((prop.returnType.classifier as KClass<*>).qualifiedName!!)
-                                    ?.let { it(plugin, prop.name, instance) } ?: ErrorLabel(
-                                    "${(prop.returnType.classifier as KClass<*>).qualifiedName} isn't supported yet!"
-                                ),
-                                FillHorizontalFinishLine
-                            )*/
-
-                            continue@loop
+                            else -> failedClasses.add(clazzName)
                         }
-                        clazz.supertypes.contains(ConfigSection::class.createType()) -> {
-                            val collapsePanel = CollapsiblePanel(prop.name).apply {
-                                layout = GridBagLayout()
-                                collapse.layout = GridBagLayout()
-
-                                populatePropertyWidgets(
-                                    plugin, settings.get(prop.name),
-                                    this.collapse, clazz.declaredMemberProperties
-                                )
-                            }
-
-                            when (panel) {
-                                is CollapsiblePanel -> {
-                                    panel.collapse.add(collapsePanel)
-                                }
-                                else -> {
-                                    panel.add(collapsePanel, FillHorizontalFinishLine)
-                                }
-                            }
-
-                            continue@loop
-                        }
-                        else -> failedClasses.add(clazzName)
                     }
-                }
 
-                panel.add(
-                    ErrorLabel(
-                        "Error with ${prop.name}: ${failedClasses.joinToString()} isn't supported"
-                    ),
-                    FillHorizontalFinishLine
-                )
+                    panel.add(
+                        ErrorLabel(
+                            "Error with ${prop.name}: ${failedClasses.joinToString()} isn't supported"
+                        ),
+                        FillHorizontalFinishLine
+                    )
+                }
             }
-        }
     }
 }
