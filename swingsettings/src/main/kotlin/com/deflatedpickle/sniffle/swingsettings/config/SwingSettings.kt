@@ -2,7 +2,7 @@
 
 package com.deflatedpickle.sniffle.swingsettings.config
 
-import com.deflatedpickle.haruhi.api.Config
+import com.deflatedpickle.haruhi.api.config.Config
 import com.deflatedpickle.sniffle.swingsettings.api.Font
 import com.deflatedpickle.sniffle.swingsettings.api.Theme
 import com.deflatedpickle.sniffle.swingsettings.theme.SwingNativeTheme

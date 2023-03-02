@@ -2,7 +2,7 @@
 
 package com.deflatedpickle.rawky.discordrpc
 
-import com.deflatedpickle.haruhi.api.Config
+import com.deflatedpickle.haruhi.api.config.Config
 import kotlinx.serialization.Serializable
 
 @Serializable
