@@ -8,7 +8,7 @@ repositories {
 }
 
 dependencies {
-	implementation project(':settingsgui')
+	implementation project(':sniffle.settingsgui')
 
 	implementation 'com.github.renatoathaydes:kunion:0bd9cbfe38'
 
