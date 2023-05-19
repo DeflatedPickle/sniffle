@@ -2,6 +2,7 @@
 
 package com.deflatedpickle.rawky.tipoftheday
 
+import com.deflatedpickle.haruhi.Haruhi
 import com.deflatedpickle.haruhi.api.plugin.Plugin
 import com.deflatedpickle.haruhi.api.plugin.PluginType
 import com.deflatedpickle.haruhi.event.EventWindowShown
@@ -27,7 +28,7 @@ object TipOfTheDay {
 
     init {
         EventWindowShown.addListener {
-            if (it != PluginUtil.window) return@addListener
+            if (it != Haruhi.window) return@addListener
 
             EventAddTip.trigger(this.tips)
 

@@ -4,6 +4,7 @@
 
 package com.deflatedpickle.rawky.pluginmanager
 
+import com.deflatedpickle.haruhi.Haruhi
 import com.deflatedpickle.haruhi.api.plugin.Plugin
 import com.deflatedpickle.haruhi.util.PluginUtil
 import org.jdesktop.swingx.JXList
@@ -18,7 +19,7 @@ import javax.swing.JPanel
 import javax.swing.JScrollPane
 import javax.swing.JSplitPane
 
-object PluginManagerDialog : TaskDialog(PluginUtil.window, "Plugin Manager") {
+object PluginManagerDialog : TaskDialog(Haruhi.window, "Plugin Manager") {
     private val panel = PluginManagerPanel()
 
     private val listModel = DefaultListModel<Plugin>()

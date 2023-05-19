@@ -4,6 +4,7 @@
 
 package com.deflatedpickle.rawky.settings
 
+import com.deflatedpickle.haruhi.Haruhi
 import com.deflatedpickle.haruhi.api.Registry
 import com.deflatedpickle.haruhi.api.constants.MenuCategory
 import com.deflatedpickle.haruhi.api.plugin.Plugin
@@ -316,7 +317,7 @@ object SettingsGUI {
                         }
 
                         addActionListener {
-                            if (chooser.showOpenDialog(PluginUtil.window) == JFileChooser.APPROVE_OPTION) {
+                            if (chooser.showOpenDialog(Haruhi.window) == JFileChooser.APPROVE_OPTION) {
                                 field.text = chooser.selectedFile.absolutePath
 
                                 instance.set(name, File(field.text))

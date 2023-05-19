@@ -4,6 +4,7 @@
 
 package com.deflatedpickle.rawky.settings
 
+import com.deflatedpickle.haruhi.Haruhi
 import com.deflatedpickle.haruhi.api.plugin.Plugin
 import com.deflatedpickle.haruhi.api.registry.Registry
 import com.deflatedpickle.haruhi.util.ConfigUtil
@@ -36,7 +37,7 @@ import kotlin.reflect.KType
 import kotlin.reflect.full.createType
 import kotlin.reflect.full.declaredMemberProperties
 
-object SettingsDialog : TaskDialog(PluginUtil.window, "Settings") {
+object SettingsDialog : TaskDialog(Haruhi.window, "Settings") {
     private val paddingPanel = JPanel().apply {
         val dimension = Dimension(1, 1)
 

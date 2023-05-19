@@ -2,6 +2,7 @@
 
 package com.deflatedpickle.rawky.pluginmanager
 
+import com.deflatedpickle.haruhi.Haruhi
 import com.deflatedpickle.haruhi.api.constants.MenuCategory
 import com.deflatedpickle.haruhi.api.plugin.Plugin
 import com.deflatedpickle.haruhi.api.plugin.PluginType
@@ -37,7 +38,7 @@ object PluginManager {
 
         EventProgramFinishSetup.addListener {
             if (PluginUtil.unloadedPlugins.isNotEmpty()) {
-                PluginUtil.toastWindow.add(
+                Haruhi.toastWindow.add(
                     ToastItem(
                         level = ToastLevel.WARNING,
                         title = "Unloaded Plugins",
