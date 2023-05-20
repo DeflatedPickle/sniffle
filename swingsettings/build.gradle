@@ -1,6 +1,5 @@
 group 'com.deflatedpickle'
 version "1.0.1"
-sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
 	maven { url 'https://maven.atlassian.com/content/repositories/atlassian-public/' }
