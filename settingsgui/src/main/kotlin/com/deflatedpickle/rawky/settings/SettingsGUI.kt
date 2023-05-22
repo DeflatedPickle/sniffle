@@ -301,7 +301,7 @@ object SettingsGUI {
                     this.isEnabled = false
                 }
 
-                text = (instance.get(name) as File).absolutePath
+                text = (instance.get(name) as File?)?.absolutePath ?: ""
 
                 val field = this
 
