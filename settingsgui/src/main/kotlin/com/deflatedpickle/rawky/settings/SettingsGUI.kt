@@ -15,6 +15,7 @@ import com.deflatedpickle.haruhi.util.RegistryUtil
 import com.deflatedpickle.marvin.extensions.get
 import com.deflatedpickle.marvin.extensions.set
 import com.deflatedpickle.monocons.MonoIcon
+import com.deflatedpickle.rawky.settings.api.range.DoubleRange
 import com.deflatedpickle.rawky.settings.api.range.FloatRange
 import com.deflatedpickle.rawky.settings.api.range.IntRange
 import com.deflatedpickle.rawky.settings.api.widget.SliderSpinner
@@ -81,6 +82,7 @@ object SettingsGUI {
             registerEnum(registry)
             registerInt(registry)
             registerFloat(registry)
+            registerDouble(registry)
 
             registerFile(registry)
 
@@ -276,6 +278,61 @@ object SettingsGUI {
                         instance.get(name),
                         floatRange?.min ?: 1f,
                         floatRange?.max ?: 10f,
+                        0.1f
+                    )
+                ).apply {
+                    if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
+                        this.isEnabled = false
+                    }
+
+                    value = instance.get(name)
+
+                    addChangeListener {
+                        instance.set(name, value)
+                        serializeConfig(plugin)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun registerDouble(registry: Registry<String, (Plugin, String, Any) -> Component>) {
+        registry.register(Double::class.qualifiedName!!) { plugin, name, instance ->
+            val doubleRange = try {
+                instance::class.java.getDeclaredField(name).getAnnotation(DoubleRange::class.java)
+            } catch (e: NullPointerException) {
+                null
+            }
+
+            val widget = try {
+                instance::class.java.getDeclaredField(name).getAnnotation(SliderSpinner::class.java)
+            } catch (e: NullPointerException) {
+                null
+            }
+
+            if (widget != null) {
+                SliderSpinner(
+                    instance.get(name),
+                    doubleRange?.min ?: 1f,
+                    doubleRange?.max ?: 10f,
+                ).apply {
+                    if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
+                        this.isEnabled = false
+                    }
+
+                    value = instance.get(name)
+
+                    addChangeListener {
+                        instance.set(name, value)
+                        serializeConfig(plugin)
+                    }
+                }
+            } else {
+                JSpinner(
+                    SpinnerNumberModel(
+                        instance.get(name),
+                        doubleRange?.min ?: 1f,
+                        doubleRange?.max ?: 10f,
                         0.1f
                     )
                 ).apply {
