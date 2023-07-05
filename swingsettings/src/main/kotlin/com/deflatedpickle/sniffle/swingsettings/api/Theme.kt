@@ -40,6 +40,12 @@ abstract class Theme(
 
     fun apply() {
         changeTo()
+        // FIXME: find a way to get the colour without changing the theme twince
+        UIManager.put(
+            "ModernDocking.titlebar.background.color",
+            UIManager.get("TabbedPane.focusColor")
+        )
+        changeTo()
         EventChangeTheme.trigger(this)
     }
 

@@ -128,6 +128,7 @@ import java.awt.GraphicsEnvironment
 import java.awt.Window
 import javax.swing.JComboBox
 import javax.swing.SwingUtilities
+import javax.swing.UIManager
 
 @Plugin(
     value = "swing_settings",
@@ -277,6 +278,8 @@ object SwingSettingsPlugin {
         EventDeserializedConfig.addListener { file ->
             if ("swing_settings" in file.name) {
                 ConfigUtil.getSettings<SwingSettings>("deflatedpickle@swing_settings#>=1.0.0")?.let { settings ->
+                    if (!settings.enabled) return@addListener
+
                     SwingUtilities.invokeLater {
                         settings.theme.apply {
                             this.apply()
