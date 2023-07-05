@@ -119,8 +119,6 @@ import com.deflatedpickle.sniffle.swingsettings.theme.SwingMetalTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.SwingMotifTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.SwingNativeTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.SwingNimbusTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.TinyLafRadianceTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.TinyLafYQTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.TinyMediaManagerDarkTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.TinyMediaManagerLightTheme
 import java.awt.Component
@@ -264,9 +262,6 @@ object SwingSettingsPlugin {
                 // TinyMediaManager
                 TinyMediaManagerLightTheme,
                 TinyMediaManagerDarkTheme,
-                // TinyLaf
-                TinyLafYQTheme,
-                TinyLafRadianceTheme,
                 // SeaGlass
                 SeaGlassTheme,
             ).forEach {
