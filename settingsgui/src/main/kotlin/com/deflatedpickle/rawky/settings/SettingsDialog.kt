@@ -5,13 +5,13 @@
 package com.deflatedpickle.rawky.settings
 
 import com.deflatedpickle.haruhi.Haruhi
+import com.deflatedpickle.haruhi.api.config.ConfigSection
 import com.deflatedpickle.haruhi.api.plugin.Plugin
 import com.deflatedpickle.haruhi.api.registry.Registry
 import com.deflatedpickle.haruhi.util.ConfigUtil
 import com.deflatedpickle.haruhi.util.PluginUtil
 import com.deflatedpickle.haruhi.util.RegistryUtil
 import com.deflatedpickle.marvin.extensions.get
-import com.deflatedpickle.haruhi.api.config.ConfigSection
 import com.deflatedpickle.rawky.settings.widget.ErrorLabel
 import com.deflatedpickle.rawky.settings.widget.SearchList
 import com.deflatedpickle.undulation.constraints.FillBothFinishLine

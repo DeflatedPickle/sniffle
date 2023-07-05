@@ -128,7 +128,6 @@ import java.awt.GraphicsEnvironment
 import java.awt.Window
 import javax.swing.JComboBox
 import javax.swing.SwingUtilities
-import javax.swing.UIManager
 
 @Plugin(
     value = "swing_settings",

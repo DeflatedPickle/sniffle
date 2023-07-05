@@ -2,8 +2,8 @@
 
 package com.deflatedpickle.sniffle.swingsettings.api
 
-import com.deflatedpickle.rawky.settings.api.range.IntRange
 import com.deflatedpickle.haruhi.api.config.ConfigSection
+import com.deflatedpickle.rawky.settings.api.range.IntRange
 import kotlinx.serialization.Serializable
 import javax.swing.UIManager
 

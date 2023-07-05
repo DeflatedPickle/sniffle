@@ -6,7 +6,6 @@ import com.deflatedpickle.haruhi.Haruhi
 import com.deflatedpickle.haruhi.api.plugin.Plugin
 import com.deflatedpickle.haruhi.api.plugin.PluginType
 import com.deflatedpickle.haruhi.event.EventWindowShown
-import com.deflatedpickle.haruhi.util.PluginUtil
 import com.deflatedpickle.rawky.tipoftheday.event.EventAddTip
 import org.jdesktop.swingx.JXTipOfTheDay
 import org.jdesktop.swingx.tips.DefaultTipOfTheDayModel
