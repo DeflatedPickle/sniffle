@@ -451,7 +451,7 @@ object SettingsGUI {
                 }
 
                 addChangeListener {
-                    instance.set(name, this.color)
+                    instance.set(name, this.colour)
                     serializeConfig(plugin)
                 }
             }
