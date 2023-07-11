@@ -9,10 +9,11 @@ import javax.swing.UIManager
 
 object Darcula : Project("DARCULA")
 
-object DarculaTheme : Theme(
-    Darcula,
-    "Darcula",
-) {
+object DarculaTheme :
+    Theme(
+        Darcula,
+        "Darcula",
+    ) {
     override fun changeTo() {
         UIManager.setLookAndFeel(DarculaLaf())
     }

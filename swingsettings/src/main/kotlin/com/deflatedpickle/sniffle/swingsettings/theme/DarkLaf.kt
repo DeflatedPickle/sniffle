@@ -15,64 +15,43 @@ import com.github.weisj.darklaf.theme.SolarizedLightTheme
 
 object DarkLaf : Project("DARKLAF")
 
-object DarkLafDarculaTheme : Theme(
-    DarkLaf,
-    "Darcula"
-) {
+object DarkLafDarculaTheme : Theme(DarkLaf, "Darcula") {
     override fun changeTo() {
         LafManager.install(DarculaTheme())
     }
 }
 
-object DarkLafHighContrastDarkTheme : Theme(
-    DarkLaf,
-    "High Contrast Dark"
-) {
+object DarkLafHighContrastDarkTheme : Theme(DarkLaf, "High Contrast Dark") {
     override fun changeTo() {
         LafManager.install(HighContrastDarkTheme())
     }
 }
 
-object DarkLafHighContrastLightTheme : Theme(
-    DarkLaf,
-    "High Contrast Light"
-) {
+object DarkLafHighContrastLightTheme : Theme(DarkLaf, "High Contrast Light") {
     override fun changeTo() {
         LafManager.install(HighContrastLightTheme())
     }
 }
 
-object DarkLafIntelliJTheme : Theme(
-    DarkLaf,
-    "IntelliJ"
-) {
+object DarkLafIntelliJTheme : Theme(DarkLaf, "IntelliJ") {
     override fun changeTo() {
         LafManager.install(IntelliJTheme())
     }
 }
 
-object DarkLafOneDarkTheme : Theme(
-    DarkLaf,
-    "One Dark"
-) {
+object DarkLafOneDarkTheme : Theme(DarkLaf, "One Dark") {
     override fun changeTo() {
         LafManager.install(OneDarkTheme())
     }
 }
 
-object DarkLafSolarizedDarkTheme : Theme(
-    DarkLaf,
-    "Solarized Dark"
-) {
+object DarkLafSolarizedDarkTheme : Theme(DarkLaf, "Solarized Dark") {
     override fun changeTo() {
         LafManager.install(SolarizedDarkTheme())
     }
 }
 
-object DarkLafSolarizedLightTheme : Theme(
-    DarkLaf,
-    "Solarized Light"
-) {
+object DarkLafSolarizedLightTheme : Theme(DarkLaf, "Solarized Light") {
     override fun changeTo() {
         LafManager.install(SolarizedLightTheme())
     }

@@ -21,7 +21,7 @@ import javax.swing.JMenu
         <br>
         A GUI for managing plugins
     """,
-    type = PluginType.DIALOG
+    type = PluginType.DIALOG,
 )
 @Suppress("unused")
 object PluginManager {
@@ -30,9 +30,7 @@ object PluginManager {
             val menuBar = RegistryUtil.get(MenuCategory.MENU.name)
             val toolMenu = menuBar?.get(MenuCategory.TOOLS.name) as JMenu
             toolMenu.add("Plugin Manager").apply {
-                addActionListener {
-                    PluginManagerDialog.isVisible = true
-                }
+                addActionListener { PluginManagerDialog.isVisible = true }
             }
         }
 
@@ -42,10 +40,8 @@ object PluginManager {
                     ToastItem(
                         level = ToastLevel.WARNING,
                         title = "Unloaded Plugins",
-                        content = PluginUtil.unloadedPlugins.joinToString {
-                            it.value
-                        }
-                    )
+                        content = PluginUtil.unloadedPlugins.joinToString { it.value },
+                    ),
                 )
             }
         }

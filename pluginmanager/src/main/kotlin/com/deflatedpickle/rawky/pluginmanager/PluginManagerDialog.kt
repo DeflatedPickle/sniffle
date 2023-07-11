@@ -23,53 +23,54 @@ object PluginManagerDialog : TaskDialog(Haruhi.window, "Plugin Manager") {
     private val panel = PluginManagerPanel()
 
     private val listModel = DefaultListModel<Plugin>()
-    private val list = JXList(this.listModel).apply {
-        this.cellRenderer = object : DefaultListCellRenderer() {
-            override fun getListCellRendererComponent(
-                list: JList<*>?,
-                value: Any?,
-                index: Int,
-                isSelected: Boolean,
-                cellHasFocus: Boolean
-            ): Component =
-                super.getListCellRendererComponent(
-                    list,
-                    (value as Plugin).value,
-                    index,
-                    isSelected,
-                    cellHasFocus
-                )
+    private val list =
+        JXList(this.listModel).apply {
+            this.cellRenderer =
+                object : DefaultListCellRenderer() {
+                    override fun getListCellRendererComponent(
+                        list: JList<*>?,
+                        value: Any?,
+                        index: Int,
+                        isSelected: Boolean,
+                        cellHasFocus: Boolean,
+                    ): Component =
+                        super.getListCellRendererComponent(
+                            list,
+                            (value as Plugin).value,
+                            index,
+                            isSelected,
+                            cellHasFocus,
+                        )
+                }
+
+            addListSelectionListener {
+                if (this.selectedIndex == -1) return@addListSelectionListener
+
+                val plugin = PluginUtil.discoveredPlugins[this.selectedIndex]
+                this@PluginManagerDialog.panel.header.refresh(plugin)
+                this@PluginManagerDialog.panel.dependencies.refresh(plugin)
+            }
         }
 
-        addListSelectionListener {
-            if (this.selectedIndex == -1) return@addListSelectionListener
-
-            val plugin = PluginUtil.discoveredPlugins[this.selectedIndex]
-            this@PluginManagerDialog.panel.header.refresh(plugin)
-            this@PluginManagerDialog.panel.dependencies.refresh(plugin)
+    private val splitPane =
+        JSplitPane(JSplitPane.HORIZONTAL_SPLIT, JScrollPane(list), JScrollPane(panel)).apply {
+            isOneTouchExpandable = true
+            isContinuousLayout = true
+            resizeWeight = 0.3
         }
-    }
-
-    private val splitPane = JSplitPane(
-        JSplitPane.HORIZONTAL_SPLIT,
-        JScrollPane(list), JScrollPane(panel)
-    ).apply {
-        isOneTouchExpandable = true
-        isContinuousLayout = true
-        resizeWeight = 0.3
-    }
 
     init {
         setCommands(StandardCommand.OK, StandardCommand.CANCEL)
 
-        this.fixedComponent = JPanel().apply {
-            isOpaque = false
-            layout = BoxLayout(this, BoxLayout.Y_AXIS)
+        this.fixedComponent =
+            JPanel().apply {
+                isOpaque = false
+                layout = BoxLayout(this, BoxLayout.Y_AXIS)
 
-            preferredSize = Dimension(400, 200)
+                preferredSize = Dimension(400, 200)
 
-            add(this@PluginManagerDialog.splitPane)
-        }
+                add(this@PluginManagerDialog.splitPane)
+            }
     }
 
     override fun setVisible(visible: Boolean) {

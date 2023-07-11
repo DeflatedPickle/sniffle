@@ -9,10 +9,11 @@ import javax.swing.UIManager
 
 object Solarized : Project("SOLARIZED")
 
-object SolarizedTheme : Theme(
-    Solarized,
-    "Solarized",
-) {
+object SolarizedTheme :
+    Theme(
+        Solarized,
+        "Solarized",
+    ) {
     override fun changeTo() {
         UIManager.setLookAndFeel(SolarizedLookAndFeel())
     }

@@ -38,289 +38,193 @@ import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatSolarizedDarkI
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatSolarizedLightContrastIJTheme
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatSolarizedLightIJTheme
 
-object FlatLafMaterialArcDarkTheme : Theme(
-    FlatLaf,
-    "Arc Dark"
-) {
+object FlatLafMaterialArcDarkTheme : Theme(FlatLaf, "Arc Dark") {
     override fun changeTo() {
         FlatArcDarkIJTheme.setup()
     }
 }
 
-object FlatLafMaterialArcDarkContrastTheme : Theme(
-    FlatLaf,
-    "Arc Dark Contrast"
-) {
+object FlatLafMaterialArcDarkContrastTheme : Theme(FlatLaf, "Arc Dark Contrast") {
     override fun changeTo() {
         FlatArcDarkContrastIJTheme.setup()
     }
 }
 
-object FlatLafMaterialOneDarkTheme : Theme(
-    FlatLaf,
-    "Atom One Dark"
-) {
+object FlatLafMaterialOneDarkTheme : Theme(FlatLaf, "Atom One Dark") {
     override fun changeTo() {
         FlatAtomOneDarkIJTheme.setup()
     }
 }
 
-object FlatLafMaterialOneDarkContrastTheme : Theme(
-    FlatLaf,
-    "Atom One Dark Contrast"
-) {
+object FlatLafMaterialOneDarkContrastTheme : Theme(FlatLaf, "Atom One Dark Contrast") {
     override fun changeTo() {
         FlatAtomOneDarkContrastIJTheme.setup()
     }
 }
 
-object FlatLafMaterialOneLightTheme : Theme(
-    FlatLaf,
-    "Atom One Light"
-) {
+object FlatLafMaterialOneLightTheme : Theme(FlatLaf, "Atom One Light") {
     override fun changeTo() {
         FlatAtomOneLightIJTheme.setup()
     }
 }
 
-object FlatLafMaterialOneLightContrastTheme : Theme(
-    FlatLaf,
-    "Atom One Light Contrast"
-) {
+object FlatLafMaterialOneLightContrastTheme : Theme(FlatLaf, "Atom One Light Contrast") {
     override fun changeTo() {
         FlatAtomOneLightContrastIJTheme.setup()
     }
 }
 
-object FlatLafMaterialDraculaTheme : Theme(
-    FlatLaf,
-    "Dracula"
-) {
+object FlatLafMaterialDraculaTheme : Theme(FlatLaf, "Dracula") {
     override fun changeTo() {
         FlatDraculaIJTheme.setup()
     }
 }
 
-object FlatLafMaterialDraculaContrastTheme : Theme(
-    FlatLaf,
-    "Dracula Contrast"
-) {
+object FlatLafMaterialDraculaContrastTheme : Theme(FlatLaf, "Dracula Contrast") {
     override fun changeTo() {
         FlatDraculaContrastIJTheme.setup()
     }
 }
 
-object FlatLafMaterialGitHubTheme : Theme(
-    FlatLaf,
-    "GitHub"
-) {
+object FlatLafMaterialGitHubTheme : Theme(FlatLaf, "GitHub") {
     override fun changeTo() {
         FlatGitHubIJTheme.setup()
     }
 }
 
-object FlatLafMaterialGitHubContrastTheme : Theme(
-    FlatLaf,
-    "GitHub Contrast"
-) {
+object FlatLafMaterialGitHubContrastTheme : Theme(FlatLaf, "GitHub Contrast") {
     override fun changeTo() {
         FlatGitHubContrastIJTheme.setup()
     }
 }
 
-object FlatLafMaterialLightOwlTheme : Theme(
-    FlatLaf,
-    "Light Owl"
-) {
+object FlatLafMaterialLightOwlTheme : Theme(FlatLaf, "Light Owl") {
     override fun changeTo() {
         FlatLightOwlIJTheme.setup()
     }
 }
 
-object FlatLafMaterialLightOwlContrastTheme : Theme(
-    FlatLaf,
-    "Light Owl Contrast"
-) {
+object FlatLafMaterialLightOwlContrastTheme : Theme(FlatLaf, "Light Owl Contrast") {
     override fun changeTo() {
         FlatLightOwlContrastIJTheme.setup()
     }
 }
 
-object FlatLafMaterialDarkerTheme : Theme(
-    FlatLaf,
-    "Material Darker"
-) {
+object FlatLafMaterialDarkerTheme : Theme(FlatLaf, "Material Darker") {
     override fun changeTo() {
         FlatMaterialDarkerIJTheme.setup()
     }
 }
 
-object FlatLafMaterialDarkerContrastTheme : Theme(
-    FlatLaf,
-    "Material Darker Contrast"
-) {
+object FlatLafMaterialDarkerContrastTheme : Theme(FlatLaf, "Material Darker Contrast") {
     override fun changeTo() {
         FlatMaterialDarkerContrastIJTheme.setup()
     }
 }
 
-object FlatLafMaterialDeepOceanTheme : Theme(
-    FlatLaf,
-    "Material Deep Ocean"
-) {
+object FlatLafMaterialDeepOceanTheme : Theme(FlatLaf, "Material Deep Ocean") {
     override fun changeTo() {
         FlatMaterialDeepOceanIJTheme.setup()
     }
 }
 
-object FlatLafMaterialDeepOceanContrastTheme : Theme(
-    FlatLaf,
-    "Material Deep Ocean Contrast"
-) {
+object FlatLafMaterialDeepOceanContrastTheme : Theme(FlatLaf, "Material Deep Ocean Contrast") {
     override fun changeTo() {
         FlatMaterialDeepOceanContrastIJTheme.setup()
     }
 }
 
-object FlatLafMaterialLighterTheme : Theme(
-    FlatLaf,
-    "Material Lighter"
-) {
+object FlatLafMaterialLighterTheme : Theme(FlatLaf, "Material Lighter") {
     override fun changeTo() {
         FlatMaterialLighterIJTheme.setup()
     }
 }
 
-object FlatLafMaterialLighterContrastTheme : Theme(
-    FlatLaf,
-    "Material Lighter Contrast"
-) {
+object FlatLafMaterialLighterContrastTheme : Theme(FlatLaf, "Material Lighter Contrast") {
     override fun changeTo() {
         FlatMaterialLighterContrastIJTheme.setup()
     }
 }
 
-object FlatLafMaterialOceanicTheme : Theme(
-    FlatLaf,
-    "Material Oceanic"
-) {
+object FlatLafMaterialOceanicTheme : Theme(FlatLaf, "Material Oceanic") {
     override fun changeTo() {
         FlatMaterialOceanicIJTheme.setup()
     }
 }
 
-object FlatLafMaterialOceanicContrastTheme : Theme(
-    FlatLaf,
-    "Material Oceanic Contrast"
-) {
+object FlatLafMaterialOceanicContrastTheme : Theme(FlatLaf, "Material Oceanic Contrast") {
     override fun changeTo() {
         FlatMaterialOceanicContrastIJTheme.setup()
     }
 }
 
-object FlatLafMaterialPalenightTheme : Theme(
-    FlatLaf,
-    "Material Palenight"
-) {
+object FlatLafMaterialPalenightTheme : Theme(FlatLaf, "Material Palenight") {
     override fun changeTo() {
         FlatMaterialPalenightIJTheme.setup()
     }
 }
 
-object FlatLafMaterialPalenightContrastTheme : Theme(
-    FlatLaf,
-    "Material Palenight Contrast"
-) {
+object FlatLafMaterialPalenightContrastTheme : Theme(FlatLaf, "Material Palenight Contrast") {
     override fun changeTo() {
         FlatMaterialPalenightContrastIJTheme.setup()
     }
 }
 
-object FlatLafMaterialMonokaiProTheme : Theme(
-    FlatLaf,
-    "Monokai Pro"
-) {
+object FlatLafMaterialMonokaiProTheme : Theme(FlatLaf, "Monokai Pro") {
     override fun changeTo() {
         FlatMonokaiProIJTheme.setup()
     }
 }
 
-object FlatLafMaterialMonokaiProContrastTheme : Theme(
-    FlatLaf,
-    "Monokai Pro Contrast"
-) {
+object FlatLafMaterialMonokaiProContrastTheme : Theme(FlatLaf, "Monokai Pro Contrast") {
     override fun changeTo() {
         FlatMonokaiProContrastIJTheme.setup()
     }
 }
 
-object FlatLafMaterialMoonlightTheme : Theme(
-    FlatLaf,
-    "Moonlight"
-) {
+object FlatLafMaterialMoonlightTheme : Theme(FlatLaf, "Moonlight") {
     override fun changeTo() {
         FlatMoonlightIJTheme.setup()
     }
 }
 
-object FlatLafMaterialMoonlightContrastTheme : Theme(
-    FlatLaf,
-    "Moonlight Contrast"
-) {
+object FlatLafMaterialMoonlightContrastTheme : Theme(FlatLaf, "Moonlight Contrast") {
     override fun changeTo() {
         FlatMoonlightContrastIJTheme.setup()
     }
 }
 
-object FlatLafMaterialNightOwlTheme : Theme(
-    FlatLaf,
-    "Night Owl"
-) {
+object FlatLafMaterialNightOwlTheme : Theme(FlatLaf, "Night Owl") {
     override fun changeTo() {
         FlatNightOwlIJTheme.setup()
     }
 }
 
-object FlatLafMaterialNightOwlContrastTheme : Theme(
-    FlatLaf,
-    "Night Owl Contrast"
-) {
+object FlatLafMaterialNightOwlContrastTheme : Theme(FlatLaf, "Night Owl Contrast") {
     override fun changeTo() {
         FlatNightOwlContrastIJTheme.setup()
     }
 }
 
-object FlatLafMaterialSolarizedDarkTheme : Theme(
-    FlatLaf,
-    "Solarized Dark"
-) {
+object FlatLafMaterialSolarizedDarkTheme : Theme(FlatLaf, "Solarized Dark") {
     override fun changeTo() {
         FlatSolarizedDarkIJTheme.setup()
     }
 }
 
-object FlatLafMaterialSolarizedDarkContrastTheme : Theme(
-    FlatLaf,
-    "Solarized Dark Contrast"
-) {
+object FlatLafMaterialSolarizedDarkContrastTheme : Theme(FlatLaf, "Solarized Dark Contrast") {
     override fun changeTo() {
         FlatSolarizedDarkContrastIJTheme.setup()
     }
 }
 
-object FlatLafMaterialSolarizedLightTheme : Theme(
-    FlatLaf,
-    "Solarized Light"
-) {
+object FlatLafMaterialSolarizedLightTheme : Theme(FlatLaf, "Solarized Light") {
     override fun changeTo() {
         FlatSolarizedLightIJTheme.setup()
     }
 }
 
-object FlatLafMaterialSolarizedLightContrastTheme : Theme(
-    FlatLaf,
-    "Solarized Light Contrast"
-) {
+object FlatLafMaterialSolarizedLightContrastTheme : Theme(FlatLaf, "Solarized Light Contrast") {
     override fun changeTo() {
         FlatSolarizedLightContrastIJTheme.setup()
     }

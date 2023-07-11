@@ -15,6 +15,8 @@ import kotlinx.serialization.Serializable
 data class SwingSettings(
     override val version: Int = 1,
     val enabled: Boolean = false,
-    var theme: @Serializable(ThemeSerializer::class) Theme = SwingNativeTheme,
-    val font: Font = Font()
+    var theme:
+    @Serializable(ThemeSerializer::class)
+    Theme = SwingNativeTheme,
+    val font: Font = Font(),
 ) : Config

@@ -15,19 +15,21 @@ import java.awt.Font as AWTFont
 
 object Swing : Project("SWING")
 
-object SwingMetalTheme : Theme(
-    Swing,
-    "Metal",
-) {
+object SwingMetalTheme :
+    Theme(
+        Swing,
+        "Metal",
+    ) {
     override fun changeTo() {
         UIManager.setLookAndFeel(MetalLookAndFeel())
     }
 }
 
-object SwingNimbusTheme : Theme(
-    Swing,
-    "Nimbus",
-) {
+object SwingNimbusTheme :
+    Theme(
+        Swing,
+        "Nimbus",
+    ) {
     override fun changeTo() {
         UIManager.setLookAndFeel(NimbusLookAndFeel())
     }
@@ -38,19 +40,21 @@ object SwingNimbusTheme : Theme(
     }
 }
 
-object SwingMotifTheme : Theme(
-    Swing,
-    "Motif",
-) {
+object SwingMotifTheme :
+    Theme(
+        Swing,
+        "Motif",
+    ) {
     override fun changeTo() {
         UIManager.setLookAndFeel(MotifLookAndFeel())
     }
 }
 
-object SwingNativeTheme : Theme(
-    Swing,
-    "System",
-) {
+object SwingNativeTheme :
+    Theme(
+        Swing,
+        "System",
+    ) {
     override fun changeTo() {
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName())
     }

@@ -136,10 +136,8 @@ import javax.swing.SwingUtilities
         Settings for Swing
     """,
     type = PluginType.SETTING,
-    dependencies = [
-        "deflatedpickle@settings_gui#>=1.0.0"
-    ],
-    settings = SwingSettings::class
+    dependencies = ["deflatedpickle@settings_gui#>=1.0.0"],
+    settings = SwingSettings::class,
 )
 @Suppress("unused")
 object SwingSettingsPlugin {
@@ -264,14 +262,14 @@ object SwingSettingsPlugin {
                 TinyMediaManagerDarkTheme,
                 // SeaGlass
                 SeaGlassTheme,
-            ).forEach {
-                register(it.id, it)
-            }
+            )
+                .forEach { register(it.id, it) }
         }
 
         EventDeserializedConfig.addListener { file ->
             if ("swing_settings" in file.name) {
-                ConfigUtil.getSettings<SwingSettings>("deflatedpickle@swing_settings#>=1.0.0")?.let { settings ->
+                ConfigUtil.getSettings<SwingSettings>("deflatedpickle@swing_settings#>=1.0.0")?.let {
+                        settings ->
                     if (!settings.enabled) return@addListener
 
                     SwingUtilities.invokeLater {
@@ -281,17 +279,10 @@ object SwingSettingsPlugin {
                             settings.font.also {
                                 setFont(
                                     if (it.name.name == "") {
-                                        Font(
-                                            style = it.style,
-                                            size = it.size
-                                        )
+                                        Font(style = it.style, size = it.size)
                                     } else {
-                                        Font(
-                                            it.name,
-                                            it.style,
-                                            it.size
-                                        )
-                                    }
+                                        Font(it.name, it.style, it.size)
+                                    },
                                 )
                             }
                         }
@@ -303,53 +294,50 @@ object SwingSettingsPlugin {
         EventProgramFinishSetup.addListener {
             this.updateComponents()
 
-            (RegistryUtil.get("setting_type") as Registry<String, (Plugin, String, Any) -> Component>?)?.let { registry ->
-                registry.register(Theme::class.qualifiedName!!) { plugin, name, instance ->
-                    // Theme::class.sealedSubclasses.map { it.objectInstance as Theme }.toTypedArray()
-                    JComboBox(themeRegistry.getAll().values.toTypedArray()).apply {
-                        selectedItem = instance.get<Theme>(name)
+            (RegistryUtil.get("setting_type") as Registry<String, (Plugin, String, Any) -> Component>?)
+                ?.let { registry ->
+                    registry.register(Theme::class.qualifiedName!!) { plugin, name, instance ->
+                        // Theme::class.sealedSubclasses.map { it.objectInstance as Theme }.toTypedArray()
+                        JComboBox(themeRegistry.getAll().values.toTypedArray()).apply {
+                            selectedItem = instance.get<Theme>(name)
 
-                        addActionListener {
-                            instance.set(name, selectedItem)
+                            addActionListener {
+                                instance.set(name, selectedItem)
 
-                            SwingUtilities.invokeLater {
-                                instance.get<Theme>(name).apply {
-                                    this.apply()
-                                    // TODO: Reset the font to the new theme's default
+                                SwingUtilities.invokeLater {
+                                    instance.get<Theme>(name).apply {
+                                        this.apply()
+                                        // TODO: Reset the font to the new theme's default
+                                    }
+                                    this@SwingSettingsPlugin.updateComponents()
                                 }
-                                this@SwingSettingsPlugin.updateComponents()
+
+                                ConfigUtil.serializeConfig(plugin)
                             }
-
-                            ConfigUtil.serializeConfig(plugin)
                         }
+                    }
+
+                    registry.register(FontFamily::class.qualifiedName!!) { plugin, name, instance ->
+                        // Theme::class.sealedSubclasses.map { it.objectInstance as Theme }.toTypedArray()
+                        JComboBox(GraphicsEnvironment.getLocalGraphicsEnvironment().availableFontFamilyNames)
+                            .apply {
+                                selectedItem = instance.get<FontFamily>(name).name
+
+                                addActionListener {
+                                    instance.set(name, FontFamily(selectedItem as String))
+                                    ConfigUtil.serializeConfig(plugin)
+                                }
+                            }
                     }
                 }
 
-                registry.register(FontFamily::class.qualifiedName!!) { plugin, name, instance ->
-                    // Theme::class.sealedSubclasses.map { it.objectInstance as Theme }.toTypedArray()
-                    JComboBox(GraphicsEnvironment.getLocalGraphicsEnvironment().availableFontFamilyNames).apply {
-                        selectedItem = instance.get<FontFamily>(name).name
-
-                        addActionListener {
-                            instance.set(name, FontFamily(selectedItem as String))
-                            ConfigUtil.serializeConfig(plugin)
-                        }
-                    }
-                }
-            }
-
-            ConfigUtil.getSettings<SwingSettings>("deflatedpickle@swing_settings#>=1.0.0")?.let { settings ->
+            ConfigUtil.getSettings<SwingSettings>("deflatedpickle@swing_settings#>=1.0.0")?.let { settings,
+                ->
                 EventSerializeConfig.addListener {
                     if ("swing_settings" in it.name) {
                         SwingUtilities.invokeLater {
                             settings.font.also { font ->
-                                settings.theme.setFont(
-                                    Font(
-                                        font.name,
-                                        font.style,
-                                        font.size
-                                    )
-                                )
+                                settings.theme.setFont(Font(font.name, font.style, font.size))
                             }
 
                             this.updateComponents()

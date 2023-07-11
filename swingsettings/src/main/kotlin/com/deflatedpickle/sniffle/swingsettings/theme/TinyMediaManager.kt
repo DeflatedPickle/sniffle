@@ -10,19 +10,21 @@ import javax.swing.UIManager
 
 object TinyMediaManager : Project("TINYMEDIAMANAGER")
 
-object TinyMediaManagerLightTheme : Theme(
-    TinyMediaManager,
-    "TinyMediaManager Light",
-) {
+object TinyMediaManagerLightTheme :
+    Theme(
+        TinyMediaManager,
+        "TinyMediaManager Light",
+    ) {
     override fun changeTo() {
         UIManager.setLookAndFeel(TmmLightLookAndFeel())
     }
 }
 
-object TinyMediaManagerDarkTheme : Theme(
-    TinyMediaManager,
-    "TinyMediaManager Dark",
-) {
+object TinyMediaManagerDarkTheme :
+    Theme(
+        TinyMediaManager,
+        "TinyMediaManager Dark",
+    ) {
     override fun changeTo() {
         UIManager.setLookAndFeel(TmmDarkLookAndFeel())
     }

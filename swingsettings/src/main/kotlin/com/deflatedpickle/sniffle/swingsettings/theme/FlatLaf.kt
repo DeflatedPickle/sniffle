@@ -12,37 +12,41 @@ import javax.swing.UIManager
 
 object FlatLaf : Project("FLATLAF")
 
-object FlatLafLightTheme : Theme(
-    FlatLaf,
-    "Light",
-) {
+object FlatLafLightTheme :
+    Theme(
+        FlatLaf,
+        "Light",
+    ) {
     override fun changeTo() {
         UIManager.setLookAndFeel(FlatLightLaf())
     }
 }
 
-object FlatLafDarkTheme : Theme(
-    FlatLaf,
-    "Dark",
-) {
+object FlatLafDarkTheme :
+    Theme(
+        FlatLaf,
+        "Dark",
+    ) {
     override fun changeTo() {
         UIManager.setLookAndFeel(FlatDarkLaf())
     }
 }
 
-object FlatLafIntelliJTheme : Theme(
-    FlatLaf,
-    "IntelliJ",
-) {
+object FlatLafIntelliJTheme :
+    Theme(
+        FlatLaf,
+        "IntelliJ",
+    ) {
     override fun changeTo() {
         UIManager.setLookAndFeel(FlatIntelliJLaf())
     }
 }
 
-object FlatLafDarculaTheme : Theme(
-    FlatLaf,
-    "Darcula",
-) {
+object FlatLafDarculaTheme :
+    Theme(
+        FlatLaf,
+        "Darcula",
+    ) {
     override fun changeTo() {
         UIManager.setLookAndFeel(FlatDarculaLaf())
     }

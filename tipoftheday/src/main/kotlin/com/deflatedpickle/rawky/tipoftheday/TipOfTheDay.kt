@@ -15,11 +15,12 @@ import org.jdesktop.swingx.tips.TipOfTheDayModel
     value = "tip_of_the_day",
     author = "DeflatedPickle",
     version = "1.0.0",
-    description = """
+    description =
+    """
         <br>
         Provides a dialog to show tips other plugins have registered
     """,
-    type = PluginType.API
+    type = PluginType.API,
 )
 @Suppress("unused")
 object TipOfTheDay {
@@ -37,12 +38,5 @@ object TipOfTheDay {
                 tipOfTheDay.showDialog(it)
             }
         }
-
-        /*EventAddTip.addListener {
-            it.add(object : TipOfTheDayModel.Tip {
-                override fun getTipName(): String = "Example"
-                override fun getTip(): Any = "You can easily add new tips for plugins"
-            })
-        }*/
     }
 }

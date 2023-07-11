@@ -33,291 +33,315 @@ import com.formdev.flatlaf.intellijthemes.FlatSpacegrayIJTheme
 import com.formdev.flatlaf.intellijthemes.FlatVuesionIJTheme
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatArcDarkIJTheme
 
-object FlatLafArcTheme : Theme(
-    "flatlaf-intellij_arc",
-    FlatLaf,
-    "Arc",
-) {
+object FlatLafArcTheme :
+    Theme(
+        "flatlaf-intellij_arc",
+        FlatLaf,
+        "Arc",
+    ) {
     override fun changeTo() {
         FlatArcIJTheme.setup()
     }
 }
 
-object FlatLafArcOrangeTheme : Theme(
-    "flatlaf-intellij_arc_orange",
-    FlatLaf,
-    "Arc Orange",
-) {
+object FlatLafArcOrangeTheme :
+    Theme(
+        "flatlaf-intellij_arc_orange",
+        FlatLaf,
+        "Arc Orange",
+    ) {
     override fun changeTo() {
         FlatArcOrangeIJTheme.setup()
     }
 }
 
-object FlatLafArcDarkTheme : Theme(
-    "flatlaf-intellij_arc_dark",
-    FlatLaf,
-    "Arc Dark",
-) {
+object FlatLafArcDarkTheme :
+    Theme(
+        "flatlaf-intellij_arc_dark",
+        FlatLaf,
+        "Arc Dark",
+    ) {
     override fun changeTo() {
         FlatArcDarkIJTheme.setup()
     }
 }
 
-object FlatLafArcDarkOrangeTheme : Theme(
-    "flatlaf-intellij_arc_dark_orange",
-    FlatLaf,
-    "Arc Dark Orange",
-) {
+object FlatLafArcDarkOrangeTheme :
+    Theme(
+        "flatlaf-intellij_arc_dark_orange",
+        FlatLaf,
+        "Arc Dark Orange",
+    ) {
     override fun changeTo() {
         FlatArcDarkOrangeIJTheme.setup()
     }
 }
 
-object FlatLafCarbonTheme : Theme(
-    "flatlaf-intellij_carbon",
-    FlatLaf,
-    "Carbon",
-) {
+object FlatLafCarbonTheme :
+    Theme(
+        "flatlaf-intellij_carbon",
+        FlatLaf,
+        "Carbon",
+    ) {
     override fun changeTo() {
         FlatCarbonIJTheme.setup()
     }
 }
 
-object FlatLafCobalt2Theme : Theme(
-    "flatlaf-intellij_cobalt_2",
-    FlatLaf,
-    "Cobalt 2",
-) {
+object FlatLafCobalt2Theme :
+    Theme(
+        "flatlaf-intellij_cobalt_2",
+        FlatLaf,
+        "Cobalt 2",
+    ) {
     override fun changeTo() {
         FlatCobalt2IJTheme.setup()
     }
 }
 
-object FlatLafCyanLightTheme : Theme(
-    "flatlaf-intellij_cyan_light",
-    FlatLaf,
-    "Cyan Light",
-) {
+object FlatLafCyanLightTheme :
+    Theme(
+        "flatlaf-intellij_cyan_light",
+        FlatLaf,
+        "Cyan Light",
+    ) {
     override fun changeTo() {
         FlatCyanLightIJTheme.setup()
     }
 }
 
-object FlatLafDarkFlatTheme : Theme(
-    "flatlaf-intellij_dark_flat",
-    FlatLaf,
-    "Dark Flat",
-) {
+object FlatLafDarkFlatTheme :
+    Theme(
+        "flatlaf-intellij_dark_flat",
+        FlatLaf,
+        "Dark Flat",
+    ) {
     override fun changeTo() {
         FlatDarkFlatIJTheme.setup()
     }
 }
 
-object FlatLafDarkPurpleTheme : Theme(
-    "flatlaf-intellij_dark_purple",
-    FlatLaf,
-    "Dark Purple",
-) {
+object FlatLafDarkPurpleTheme :
+    Theme(
+        "flatlaf-intellij_dark_purple",
+        FlatLaf,
+        "Dark Purple",
+    ) {
     override fun changeTo() {
         FlatDarkPurpleIJTheme.setup()
     }
 }
 
-object FlatLafDraculaTheme : Theme(
-    "flatlaf-intellij_dracula",
-    FlatLaf,
-    "Dracula",
-) {
+object FlatLafDraculaTheme :
+    Theme(
+        "flatlaf-intellij_dracula",
+        FlatLaf,
+        "Dracula",
+    ) {
     override fun changeTo() {
         FlatDraculaIJTheme.setup()
     }
 }
 
-object FlatLafGradiantoDarkFuchsiaTheme : Theme(
-    "flatlaf-intellij_gradianto_dark_fuchsia",
-    FlatLaf,
-    "Gradianto Dark Fuchsia",
-) {
+object FlatLafGradiantoDarkFuchsiaTheme :
+    Theme(
+        "flatlaf-intellij_gradianto_dark_fuchsia",
+        FlatLaf,
+        "Gradianto Dark Fuchsia",
+    ) {
     override fun changeTo() {
         FlatGradiantoDarkFuchsiaIJTheme.setup()
     }
 }
 
-object FlatLafGradiantoDeepOceanTheme : Theme(
-    "flatlaf-intellij_gradianto_deep_ocean",
-    FlatLaf,
-    "Gradianto Deep Ocean",
-) {
+object FlatLafGradiantoDeepOceanTheme :
+    Theme(
+        "flatlaf-intellij_gradianto_deep_ocean",
+        FlatLaf,
+        "Gradianto Deep Ocean",
+    ) {
     override fun changeTo() {
         FlatGradiantoDeepOceanIJTheme.setup()
     }
 }
 
-object FlatLafGradiantoMidnightBlueTheme : Theme(
-    "flatlaf-intellij_gradianto_midnight_blue",
-    FlatLaf,
-    "Gradianto Midnight Blue",
-) {
+object FlatLafGradiantoMidnightBlueTheme :
+    Theme(
+        "flatlaf-intellij_gradianto_midnight_blue",
+        FlatLaf,
+        "Gradianto Midnight Blue",
+    ) {
     override fun changeTo() {
         FlatGradiantoMidnightBlueIJTheme.setup()
     }
 }
 
-object FlatLafGradiantoNatureGreenTheme : Theme(
-    "flatlaf-intellij_gradianto_nature_green",
-    FlatLaf,
-    "Gradianto Nature Green",
-) {
+object FlatLafGradiantoNatureGreenTheme :
+    Theme(
+        "flatlaf-intellij_gradianto_nature_green",
+        FlatLaf,
+        "Gradianto Nature Green",
+    ) {
     override fun changeTo() {
         FlatGradiantoNatureGreenIJTheme.setup()
     }
 }
 
-object FlatLafGrayTheme : Theme(
-    "flatlaf-intellij_gray",
-    FlatLaf,
-    "Gray",
-) {
+object FlatLafGrayTheme :
+    Theme(
+        "flatlaf-intellij_gray",
+        FlatLaf,
+        "Gray",
+    ) {
     override fun changeTo() {
         FlatGrayIJTheme.setup()
     }
 }
 
-object FlatLafGruvboxDarkHardTheme : Theme(
-    "flatlaf-intellij_gruvbox_dark_hard",
-    FlatLaf,
-    "Gruvbox Dark Hard",
-) {
+object FlatLafGruvboxDarkHardTheme :
+    Theme(
+        "flatlaf-intellij_gruvbox_dark_hard",
+        FlatLaf,
+        "Gruvbox Dark Hard",
+    ) {
     override fun changeTo() {
         FlatGruvboxDarkHardIJTheme.setup()
     }
 }
 
-object FlatLafGruvboxDarkMediumTheme : Theme(
-    "flatlaf-intellij_gruvbox_dark_medium",
-    FlatLaf,
-    "Gruvbox Dark Medium",
-) {
+object FlatLafGruvboxDarkMediumTheme :
+    Theme(
+        "flatlaf-intellij_gruvbox_dark_medium",
+        FlatLaf,
+        "Gruvbox Dark Medium",
+    ) {
     override fun changeTo() {
         FlatGruvboxDarkMediumIJTheme.setup()
     }
 }
 
-object FlatLafGruvboxDarkSoftTheme : Theme(
-    "flatlaf-intellij_gruvbox_dark_soft",
-    FlatLaf,
-    "Gruvbox Dark Soft",
-) {
+object FlatLafGruvboxDarkSoftTheme :
+    Theme(
+        "flatlaf-intellij_gruvbox_dark_soft",
+        FlatLaf,
+        "Gruvbox Dark Soft",
+    ) {
     override fun changeTo() {
         FlatGruvboxDarkSoftIJTheme.setup()
     }
 }
 
-object FlatLafHiberbeeDarkTheme : Theme(
-    "flatlaf-intellij_hiberbee_dark",
-    FlatLaf,
-    "Hiberbee Dark",
-) {
+object FlatLafHiberbeeDarkTheme :
+    Theme(
+        "flatlaf-intellij_hiberbee_dark",
+        FlatLaf,
+        "Hiberbee Dark",
+    ) {
     override fun changeTo() {
         FlatHiberbeeDarkIJTheme.setup()
     }
 }
 
-object FlatLafHighContrastTheme : Theme(
-    "flatlaf-intellij_high_contrast",
-    FlatLaf,
-    "High Contrast",
-) {
+object FlatLafHighContrastTheme :
+    Theme(
+        "flatlaf-intellij_high_contrast",
+        FlatLaf,
+        "High Contrast",
+    ) {
     override fun changeTo() {
         FlatHighContrastIJTheme.setup()
     }
 }
 
-object FlatLafLightFlatTheme : Theme(
-    "flatlaf-intellij_light_flat",
-    FlatLaf,
-    "Light Flat"
-) {
+object FlatLafLightFlatTheme : Theme("flatlaf-intellij_light_flat", FlatLaf, "Light Flat") {
     override fun changeTo() {
         FlatLightFlatIJTheme.setup()
     }
 }
 
-object FlatLafMaterialDesignDarkTheme : Theme(
-    "flatlaf-intellij_material_design_dark",
-    FlatLaf,
-    "Material Design Dark",
-) {
+object FlatLafMaterialDesignDarkTheme :
+    Theme(
+        "flatlaf-intellij_material_design_dark",
+        FlatLaf,
+        "Material Design Dark",
+    ) {
     override fun changeTo() {
         FlatMaterialDesignDarkIJTheme.setup()
     }
 }
 
-object FlatLafMonocaiTheme : Theme(
-    "flatlaf-intellij_monocai",
-    FlatLaf,
-    "Monocai",
-) {
+object FlatLafMonocaiTheme :
+    Theme(
+        "flatlaf-intellij_monocai",
+        FlatLaf,
+        "Monocai",
+    ) {
     override fun changeTo() {
         FlatMonocaiIJTheme.setup()
     }
 }
 
-object FlatLafNordTheme : Theme(
-    "flatlaf-intellij_nord",
-    FlatLaf,
-    "Nord",
-) {
+object FlatLafNordTheme :
+    Theme(
+        "flatlaf-intellij_nord",
+        FlatLaf,
+        "Nord",
+    ) {
     override fun changeTo() {
         FlatNordIJTheme.setup()
     }
 }
 
-object FlatLafOneDarkTheme : Theme(
-    "flatlaf-intellij_one_dark",
-    FlatLaf,
-    "One Dark",
-) {
+object FlatLafOneDarkTheme :
+    Theme(
+        "flatlaf-intellij_one_dark",
+        FlatLaf,
+        "One Dark",
+    ) {
     override fun changeTo() {
         FlatOneDarkIJTheme.setup()
     }
 }
 
-object FlatLafSolarizedDarkTheme : Theme(
-    "flatlaf-intellij_solarized_dark",
-    FlatLaf,
-    "Solarized Dark",
-) {
+object FlatLafSolarizedDarkTheme :
+    Theme(
+        "flatlaf-intellij_solarized_dark",
+        FlatLaf,
+        "Solarized Dark",
+    ) {
     override fun changeTo() {
         FlatSolarizedDarkIJTheme.setup()
     }
 }
 
-object FlatLafSolarizedLightTheme : Theme(
-    "flatlaf-intellij_solarized_light",
-    FlatLaf,
-    "Solarized Light",
-) {
+object FlatLafSolarizedLightTheme :
+    Theme(
+        "flatlaf-intellij_solarized_light",
+        FlatLaf,
+        "Solarized Light",
+    ) {
     override fun changeTo() {
         FlatSolarizedLightIJTheme.setup()
     }
 }
 
-object FlatLafSpaceGrayTheme : Theme(
-    "flatlaf-intellij_spacegray",
-    FlatLaf,
-    "Spacegray",
-) {
+object FlatLafSpaceGrayTheme :
+    Theme(
+        "flatlaf-intellij_spacegray",
+        FlatLaf,
+        "Spacegray",
+    ) {
     override fun changeTo() {
         FlatSpacegrayIJTheme.setup()
     }
 }
 
-object FlatLafVuesionTheme : Theme(
-    "flatlaf-intellij_vuesion",
-    FlatLaf,
-    "Vuesion",
-) {
+object FlatLafVuesionTheme :
+    Theme(
+        "flatlaf-intellij_vuesion",
+        FlatLaf,
+        "Vuesion",
+    ) {
     override fun changeTo() {
         FlatVuesionIJTheme.setup()
     }

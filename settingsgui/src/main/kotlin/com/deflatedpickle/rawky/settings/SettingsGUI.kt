@@ -53,29 +53,22 @@ import javax.swing.SpinnerNumberModel
 import javax.swing.tree.DefaultMutableTreeNode
 
 @Suppress("unused")
-@Plugin(
-    value = "settings_gui",
-    author = "DeflatedPickle",
-    version = "1.1.1"
-)
+@Plugin(value = "settings_gui", author = "DeflatedPickle", version = "1.1.1")
 object SettingsGUI {
     init {
         @Suppress("UNCHECKED_CAST")
         RegistryUtil.register(
             "setting_type",
-            Registry<String, (Plugin, String, Any) -> Component>() as Registry<String, Any>
+            Registry<String, (Plugin, String, Any) -> Component>() as Registry<String, Any>,
         )
 
         EventProgramFinishSetup.addListener {
             val menuBar = RegistryUtil.get(MenuCategory.MENU.name)
             val toolMenu = menuBar?.get(MenuCategory.FILE.name) as JMenu
-            toolMenu.add("Settings").apply {
-                addActionListener {
-                    SettingsDialog.isVisible = true
-                }
-            }
+            toolMenu.add("Settings").apply { addActionListener { SettingsDialog.isVisible = true } }
 
-            val registry = RegistryUtil.get("setting_type") as Registry<String, (Plugin, String, Any) -> Component>
+            val registry =
+                RegistryUtil.get("setting_type") as Registry<String, (Plugin, String, Any) -> Component>
             // Basic
             registerBoolean(registry)
             registerString(registry)
@@ -103,14 +96,14 @@ object SettingsGUI {
                         SettingsDialog.searchPanel.model.insertNodeInto(
                             authorNode,
                             Categories.nodePlugin,
-                            SettingsDialog.searchPanel.model.getChildCount(Categories.nodePlugin)
+                            SettingsDialog.searchPanel.model.getChildCount(Categories.nodePlugin),
                         )
                     }
 
                     SettingsDialog.searchPanel.model.insertNodeInto(
                         DefaultMutableTreeNode(plugin),
                         authorNode,
-                        authorNode.leafCount - 1
+                        authorNode.leafCount - 1,
                     )
                 }
             }
@@ -123,9 +116,8 @@ object SettingsGUI {
                 DocumentAdapter {
                     try {
                         SettingsDialog.searchPanel.tree.searchable.search(it.document.getText())
-                    } catch (e: PatternSyntaxException) {
-                    }
-                }
+                    } catch (e: PatternSyntaxException) {}
+                },
             )
         }
     }
@@ -133,7 +125,9 @@ object SettingsGUI {
     private fun registerBoolean(registry: Registry<String, (Plugin, String, Any) -> Component>) {
         registry.register(Boolean::class.qualifiedName!!) { plugin, name, instance ->
             JCheckBox().apply {
-                if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
+                if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) ==
+                    Modifier.FINAL
+                ) {
                     this.isEnabled = false
                 }
 
@@ -151,18 +145,22 @@ object SettingsGUI {
     private fun registerString(registry: Registry<String, (Plugin, String, Any) -> Component>) {
         registry.register(String::class.qualifiedName!!) { plugin, name, instance ->
             JXTextField(name).apply {
-                if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
+                if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) ==
+                    Modifier.FINAL
+                ) {
                     this.isEnabled = false
                 }
 
                 text = instance.get(name)
 
-                addKeyListener(object : KeyAdapter() {
-                    override fun keyTyped(e: KeyEvent) {
-                        instance.set(name, text + e.keyChar)
-                        serializeConfig(plugin)
-                    }
-                })
+                addKeyListener(
+                    object : KeyAdapter() {
+                        override fun keyTyped(e: KeyEvent) {
+                            instance.set(name, text + e.keyChar)
+                            serializeConfig(plugin)
+                        }
+                    },
+                )
             }
         }
     }
@@ -172,7 +170,9 @@ object SettingsGUI {
             val clazz = instance.get<Enum<*>>(name)::class.java
 
             JComboBox(clazz.enumConstants).apply {
-                if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
+                if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) ==
+                    Modifier.FINAL
+                ) {
                     this.isEnabled = false
                 }
 
@@ -188,165 +188,182 @@ object SettingsGUI {
 
     private fun registerInt(registry: Registry<String, (Plugin, String, Any) -> Component>) {
         registry.register(Int::class.qualifiedName!!) { plugin, name, instance ->
-            val intRange = try {
-                instance::class.java.getDeclaredField(name).getAnnotation(IntRange::class.java)
-            } catch (e: NullPointerException) {
-                null
-            }
+            val intRange =
+                try {
+                    instance::class.java.getDeclaredField(name).getAnnotation(IntRange::class.java)
+                } catch (e: NullPointerException) {
+                    null
+                }
 
-            val widget = try {
-                instance::class.java.getDeclaredField(name).getAnnotation(SliderSpinner::class.java)
-            } catch (e: NullPointerException) {
-                null
-            }
+            val widget =
+                try {
+                    instance::class.java.getDeclaredField(name).getAnnotation(SliderSpinner::class.java)
+                } catch (e: NullPointerException) {
+                    null
+                }
 
             if (widget != null) {
                 SliderSpinner(
                     instance.get(name),
                     intRange?.min ?: 1,
                     intRange?.max ?: 10,
-                ).apply {
-                    if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
-                        this.isEnabled = false
-                    }
+                )
+                    .apply {
+                        if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) ==
+                            Modifier.FINAL
+                        ) {
+                            this.isEnabled = false
+                        }
 
-                    value = instance.get(name)
+                        value = instance.get(name)
 
-                    addChangeListener {
-                        instance.set(name, value)
-                        serializeConfig(plugin)
+                        addChangeListener {
+                            instance.set(name, value)
+                            serializeConfig(plugin)
+                        }
                     }
-                }
             } else {
-                JSpinner(
-                    SpinnerNumberModel(
-                        instance.get(name),
-                        intRange?.min ?: 1,
-                        intRange?.max ?: 10,
-                        1
-                    )
-                ).apply {
-                    if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
-                        this.isEnabled = false
-                    }
+                JSpinner(SpinnerNumberModel(instance.get(name), intRange?.min ?: 1, intRange?.max ?: 10, 1))
+                    .apply {
+                        if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) ==
+                            Modifier.FINAL
+                        ) {
+                            this.isEnabled = false
+                        }
 
-                    value = instance.get(name)
+                        value = instance.get(name)
 
-                    addChangeListener {
-                        instance.set(name, value)
-                        serializeConfig(plugin)
+                        addChangeListener {
+                            instance.set(name, value)
+                            serializeConfig(plugin)
+                        }
                     }
-                }
             }
         }
     }
 
     private fun registerFloat(registry: Registry<String, (Plugin, String, Any) -> Component>) {
         registry.register(Float::class.qualifiedName!!) { plugin, name, instance ->
-            val floatRange = try {
-                instance::class.java.getDeclaredField(name).getAnnotation(FloatRange::class.java)
-            } catch (e: NullPointerException) {
-                null
-            }
+            val floatRange =
+                try {
+                    instance::class.java.getDeclaredField(name).getAnnotation(FloatRange::class.java)
+                } catch (e: NullPointerException) {
+                    null
+                }
 
-            val widget = try {
-                instance::class.java.getDeclaredField(name).getAnnotation(SliderSpinner::class.java)
-            } catch (e: NullPointerException) {
-                null
-            }
+            val widget =
+                try {
+                    instance::class.java.getDeclaredField(name).getAnnotation(SliderSpinner::class.java)
+                } catch (e: NullPointerException) {
+                    null
+                }
 
             if (widget != null) {
                 SliderSpinner(
                     instance.get(name),
                     floatRange?.min ?: 1f,
                     floatRange?.max ?: 10f,
-                ).apply {
-                    if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
-                        this.isEnabled = false
-                    }
+                )
+                    .apply {
+                        if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) ==
+                            Modifier.FINAL
+                        ) {
+                            this.isEnabled = false
+                        }
 
-                    value = instance.get(name)
+                        value = instance.get(name)
 
-                    addChangeListener {
-                        instance.set(name, value)
-                        serializeConfig(plugin)
+                        addChangeListener {
+                            instance.set(name, value)
+                            serializeConfig(plugin)
+                        }
                     }
-                }
             } else {
                 JSpinner(
                     SpinnerNumberModel(
                         instance.get(name),
                         floatRange?.min ?: 1f,
                         floatRange?.max ?: 10f,
-                        0.1f
-                    )
-                ).apply {
-                    if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
-                        this.isEnabled = false
-                    }
+                        0.1f,
+                    ),
+                )
+                    .apply {
+                        if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) ==
+                            Modifier.FINAL
+                        ) {
+                            this.isEnabled = false
+                        }
 
-                    value = instance.get(name)
+                        value = instance.get(name)
 
-                    addChangeListener {
-                        instance.set(name, value)
-                        serializeConfig(plugin)
+                        addChangeListener {
+                            instance.set(name, value)
+                            serializeConfig(plugin)
+                        }
                     }
-                }
             }
         }
     }
 
     private fun registerDouble(registry: Registry<String, (Plugin, String, Any) -> Component>) {
         registry.register(Double::class.qualifiedName!!) { plugin, name, instance ->
-            val doubleRange = try {
-                instance::class.java.getDeclaredField(name).getAnnotation(DoubleRange::class.java)
-            } catch (e: NullPointerException) {
-                null
-            }
+            val doubleRange =
+                try {
+                    instance::class.java.getDeclaredField(name).getAnnotation(DoubleRange::class.java)
+                } catch (e: NullPointerException) {
+                    null
+                }
 
-            val widget = try {
-                instance::class.java.getDeclaredField(name).getAnnotation(SliderSpinner::class.java)
-            } catch (e: NullPointerException) {
-                null
-            }
+            val widget =
+                try {
+                    instance::class.java.getDeclaredField(name).getAnnotation(SliderSpinner::class.java)
+                } catch (e: NullPointerException) {
+                    null
+                }
 
             if (widget != null) {
                 SliderSpinner(
                     instance.get(name),
                     doubleRange?.min ?: 1f,
                     doubleRange?.max ?: 10f,
-                ).apply {
-                    if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
-                        this.isEnabled = false
-                    }
+                )
+                    .apply {
+                        if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) ==
+                            Modifier.FINAL
+                        ) {
+                            this.isEnabled = false
+                        }
 
-                    value = instance.get(name)
+                        value = instance.get(name)
 
-                    addChangeListener {
-                        instance.set(name, value)
-                        serializeConfig(plugin)
+                        addChangeListener {
+                            instance.set(name, value)
+                            serializeConfig(plugin)
+                        }
                     }
-                }
             } else {
                 JSpinner(
                     SpinnerNumberModel(
                         instance.get(name),
                         doubleRange?.min ?: 1f,
                         doubleRange?.max ?: 10f,
-                        0.1f
-                    )
-                ).apply {
-                    if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
-                        this.isEnabled = false
-                    }
+                        0.1f,
+                    ),
+                )
+                    .apply {
+                        if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) ==
+                            Modifier.FINAL
+                        ) {
+                            this.isEnabled = false
+                        }
 
-                    value = instance.get(name)
+                        value = instance.get(name)
 
-                    addChangeListener {
-                        instance.set(name, value)
-                        serializeConfig(plugin)
+                        addChangeListener {
+                            instance.set(name, value)
+                            serializeConfig(plugin)
+                        }
                     }
-                }
             }
         }
     }
@@ -354,7 +371,9 @@ object SettingsGUI {
     private fun registerFile(registry: Registry<String, (Plugin, String, Any) -> Component>) {
         registry.register(File::class.qualifiedName!!) { plugin, name, instance ->
             JXTextField(name).apply {
-                if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
+                if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) ==
+                    Modifier.FINAL
+                ) {
                     this.isEnabled = false
                 }
 
@@ -362,14 +381,17 @@ object SettingsGUI {
 
                 val field = this
 
-                val chooser = JFileChooser(text).apply {
-                    fileSelectionMode = JFileChooser.DIRECTORIES_ONLY
-                    isAcceptAllFileFilterUsed = false
-                }
+                val chooser =
+                    JFileChooser(text).apply {
+                        fileSelectionMode = JFileChooser.DIRECTORIES_ONLY
+                        isAcceptAllFileFilterUsed = false
+                    }
 
                 addBuddy(
                     JXButton(MonoIcon.FOLDER_OPEN).apply {
-                        if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
+                        if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) ==
+                            Modifier.FINAL
+                        ) {
                             this.isEnabled = false
                         }
 
@@ -382,15 +404,17 @@ object SettingsGUI {
                             }
                         }
                     },
-                    RIGHT
+                    RIGHT,
                 )
 
-                addKeyListener(object : KeyAdapter() {
-                    override fun keyTyped(e: KeyEvent) {
-                        instance.set(name, File(text + e.keyChar))
-                        serializeConfig(plugin)
-                    }
-                })
+                addKeyListener(
+                    object : KeyAdapter() {
+                        override fun keyTyped(e: KeyEvent) {
+                            instance.set(name, File(text + e.keyChar))
+                            serializeConfig(plugin)
+                        }
+                    },
+                )
             }
         }
     }
@@ -398,28 +422,23 @@ object SettingsGUI {
     private fun registerPoint(registry: Registry<String, (Plugin, String, Any) -> Component>) {
         registry.register(Point::class.qualifiedName!!) { plugin, name, instance ->
             Panel(GridBagLayout()).apply {
-                val ann = try {
-                    instance::class.java.getDeclaredField(name).getAnnotation(IntRange::class.java)
-                } catch (e: NullPointerException) {
-                    null
-                }
+                val ann =
+                    try {
+                        instance::class.java.getDeclaredField(name).getAnnotation(IntRange::class.java)
+                    } catch (e: NullPointerException) {
+                        null
+                    }
 
                 val inst = instance.get<Point>(name)
 
-                val x = JSpinner(
-                    SpinnerNumberModel(
-                        inst.x, ann?.min ?: 8, ann?.max ?: 512, 8
-                    )
-                )
-                val y = JSpinner(
-                    SpinnerNumberModel(
-                        inst.y, ann?.min ?: 8, ann?.max ?: 512, 8
-                    )
-                )
+                val x = JSpinner(SpinnerNumberModel(inst.x, ann?.min ?: 8, ann?.max ?: 512, 8))
+                val y = JSpinner(SpinnerNumberModel(inst.y, ann?.min ?: 8, ann?.max ?: 512, 8))
 
                 for (i in listOf(x, y)) {
                     i.apply {
-                        if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
+                        if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) ==
+                            Modifier.FINAL
+                        ) {
                             this.isEnabled = false
                         }
 
@@ -429,7 +448,7 @@ object SettingsGUI {
                                 inst.setLocation(
                                     x.value.toString().toInt(),
                                     y.value.toString().toInt(),
-                                )
+                                ),
                             )
                             serializeConfig(plugin)
                         }
@@ -446,7 +465,9 @@ object SettingsGUI {
     private fun registerColor(registry: Registry<String, (Plugin, String, Any) -> Component>) {
         registry.register(Color::class.qualifiedName!!) { plugin, name, instance ->
             ColourSelectButton(instance.get(name)).apply {
-                if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
+                if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) ==
+                    Modifier.FINAL
+                ) {
                     this.isEnabled = false
                 }
 
@@ -464,19 +485,18 @@ object SettingsGUI {
                 val inst = instance.get<Font>(name)
 
                 val nameField =
-                    JComboBox(GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames()).apply {
-                        selectedItem = inst.name
-                    }
-                val styleField = JComboBox(FontStyle.values()).apply {
-                    selectedIndex = inst.style
-                }
-                val sizeField = SliderSpinner(12, 1, 128).apply {
-                    value = inst.size
-                }
+                    JComboBox(
+                        GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames(),
+                    )
+                        .apply { selectedItem = inst.name }
+                val styleField = JComboBox(FontStyle.values()).apply { selectedIndex = inst.style }
+                val sizeField = SliderSpinner(12, 1, 128).apply { value = inst.size }
 
                 for (i in listOf(nameField, styleField, sizeField)) {
                     i.apply {
-                        if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) == Modifier.FINAL) {
+                        if ((instance::class.java.getDeclaredField(name).modifiers and Modifier.FINAL) ==
+                            Modifier.FINAL
+                        ) {
                             isEnabled = false
                         }
                     }
@@ -494,7 +514,7 @@ object SettingsGUI {
                                         nameField.selectedItem?.toString() ?: "Dialog",
                                         styleField.selectedIndex,
                                         sizeField.value,
-                                    )
+                                    ),
                                 )
                                 serializeConfig(plugin)
                             }
@@ -509,7 +529,7 @@ object SettingsGUI {
                             nameField.selectedItem?.toString() ?: "Dialog",
                             styleField.selectedIndex,
                             sizeField.value,
-                        )
+                        ),
                     )
                     serializeConfig(plugin)
                 }

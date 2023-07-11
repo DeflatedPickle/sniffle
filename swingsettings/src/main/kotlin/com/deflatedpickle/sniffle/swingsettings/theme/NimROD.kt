@@ -9,10 +9,11 @@ import javax.swing.UIManager
 
 object NimROD : Project("NIMROD")
 
-object NimRODTheme : Theme(
-    NimROD,
-    "NimROD",
-) {
+object NimRODTheme :
+    Theme(
+        NimROD,
+        "NimROD",
+    ) {
     override fun changeTo() {
         UIManager.setLookAndFeel(NimRODLookAndFeel())
     }

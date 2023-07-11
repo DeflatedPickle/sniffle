@@ -9,10 +9,11 @@ import javax.swing.UIManager
 
 object Kunststoff : Project("KUNSTSTOFF")
 
-object KunststoffTheme : Theme(
-    Kunststoff,
-    "Kunststoff",
-) {
+object KunststoffTheme :
+    Theme(
+        Kunststoff,
+        "Kunststoff",
+    ) {
     override fun changeTo() {
         UIManager.setLookAndFeel(KunststoffLookAndFeel())
     }

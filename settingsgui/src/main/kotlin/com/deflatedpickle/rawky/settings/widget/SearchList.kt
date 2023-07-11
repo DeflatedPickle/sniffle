@@ -20,32 +20,37 @@ class SearchList : JXPanel() {
     private val root = DefaultMutableTreeNode("root")
     val model = DefaultTreeModel(this.root)
 
-    val searchField = JXSearchField().apply {
-        searchMode = JXSearchField.SearchMode.INSTANT
-    }
+    val searchField = JXSearchField().apply { searchMode = JXSearchField.SearchMode.INSTANT }
 
-    val tree = JXTree(this.model).apply {
-        this.cellRenderer = object : DefaultTreeCellRenderer() {
-            override fun getTreeCellRendererComponent(
-                tree: JTree?,
-                value: Any?,
-                selected: Boolean,
-                expanded: Boolean,
-                leaf: Boolean,
-                row: Int,
-                hasFocus: Boolean
-            ): Component = super.getTreeCellRendererComponent(
-                tree,
-                (value as DefaultMutableTreeNode).userObject.let { obj ->
-                    when (obj) {
-                        is Plugin -> obj.value.split("_").joinToString(" ") { it.capitalize() }
-                        else -> value
-                    }
-                },
-                selected, expanded, leaf, row, hasFocus
-            )
+    val tree =
+        JXTree(this.model).apply {
+            this.cellRenderer =
+                object : DefaultTreeCellRenderer() {
+                    override fun getTreeCellRendererComponent(
+                        tree: JTree?,
+                        value: Any?,
+                        selected: Boolean,
+                        expanded: Boolean,
+                        leaf: Boolean,
+                        row: Int,
+                        hasFocus: Boolean,
+                    ): Component =
+                        super.getTreeCellRendererComponent(
+                            tree,
+                            (value as DefaultMutableTreeNode).userObject.let { obj ->
+                                when (obj) {
+                                    is Plugin -> obj.value.split("_").joinToString(" ") { it.capitalize() }
+                                    else -> value
+                                }
+                            },
+                            selected,
+                            expanded,
+                            leaf,
+                            row,
+                            hasFocus,
+                        )
+                }
         }
-    }
 
     init {
         this.layout = GridBagLayout()

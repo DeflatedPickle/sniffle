@@ -9,10 +9,11 @@ import javax.swing.UIManager
 
 object SeaGlass : Project("SEAGLASS")
 
-object SeaGlassTheme : Theme(
-    SeaGlass,
-    "SeaGlass",
-) {
+object SeaGlassTheme :
+    Theme(
+        SeaGlass,
+        "SeaGlass",
+    ) {
     override fun changeTo() {
         UIManager.setLookAndFeel(SeaGlassLookAndFeel())
     }

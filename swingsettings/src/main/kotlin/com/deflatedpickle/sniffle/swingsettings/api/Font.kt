@@ -11,5 +11,5 @@ import javax.swing.UIManager
 data class Font(
     var name: FontFamily = FontFamily(UIManager.getDefaults().getFont("TabbedPane.font").family),
     var style: FontStyle = FontStyle.PLAIN,
-    @IntRange(1, 36) var size: Int = 12
+    @IntRange(1, 36) var size: Int = 12,
 ) : ConfigSection

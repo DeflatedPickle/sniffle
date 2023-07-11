@@ -24,27 +24,24 @@ abstract class Theme(
         name: String = "",
     ) : this(
         "${
-        project
-            .name
-            .toLowerCase()
+            project
+                .name
+                .toLowerCase()
         }-${
-        name.toLowerCase()
-            .replace(
-                " ",
-                "_"
-            )
+            name.toLowerCase()
+                .replace(
+                    " ",
+                    "_",
+                )
         }",
         project,
-        name
+        name,
     )
 
     fun apply() {
         changeTo()
         // FIXME: find a way to get the colour without changing the theme twince
-        UIManager.put(
-            "ModernDocking.titlebar.background.color",
-            UIManager.get("TabbedPane.focusColor")
-        )
+        UIManager.put("ModernDocking.titlebar.background.color", UIManager.get("TabbedPane.focusColor"))
         changeTo()
         EventChangeTheme.trigger(this)
     }

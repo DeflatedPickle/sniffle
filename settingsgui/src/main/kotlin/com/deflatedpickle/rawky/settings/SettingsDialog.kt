@@ -38,82 +38,83 @@ import kotlin.reflect.full.createType
 import kotlin.reflect.full.declaredMemberProperties
 
 object SettingsDialog : TaskDialog(Haruhi.window, "Settings") {
-    private val paddingPanel = JPanel().apply {
-        val dimension = Dimension(1, 1)
+    private val paddingPanel =
+        JPanel().apply {
+            val dimension = Dimension(1, 1)
 
-        preferredSize = dimension
-        minimumSize = dimension
-    }
-
-    val searchPanel = SearchList().apply {
-        model.apply {
-            insertNodeInto(
-                Categories.nodePlugin,
-                this.root as MutableTreeNode?,
-                this.getChildCount(this.root)
-            )
+            preferredSize = dimension
+            minimumSize = dimension
         }
 
-        tree.addTreeSelectionListener {
-            if (tree.minSelectionRow == -1) return@addTreeSelectionListener
+    val searchPanel =
+        SearchList().apply {
+            model.apply {
+                insertNodeInto(
+                    Categories.nodePlugin,
+                    this.root as MutableTreeNode?,
+                    this.getChildCount(this.root),
+                )
+            }
 
-            val path = it.newLeadSelectionPath
-            if (path != null) {
-                SettingsPanel.removeAll()
+            tree.addTreeSelectionListener {
+                if (tree.minSelectionRow == -1) return@addTreeSelectionListener
 
-                if (path.path.contains(Categories.nodePlugin)) {
-                    val component = path.path.last()
+                val path = it.newLeadSelectionPath
+                if (path != null) {
+                    SettingsPanel.removeAll()
 
-                    (component as DefaultMutableTreeNode).userObject.let { plugin ->
-                        if (plugin is Plugin && plugin.settings != Nothing::class) {
-                            ConfigUtil.getSettings<Any>(PluginUtil.pluginToSlug(plugin))?.let { instance ->
-                                populatePropertyWidgets(
-                                    plugin,
-                                    instance,
-                                    SettingsPanel,
-                                    plugin.settings.declaredMemberProperties
-                                )
+                    if (path.path.contains(Categories.nodePlugin)) {
+                        val component = path.path.last()
+
+                        (component as DefaultMutableTreeNode).userObject.let { plugin ->
+                            if (plugin is Plugin && plugin.settings != Nothing::class) {
+                                ConfigUtil.getSettings<Any>(PluginUtil.pluginToSlug(plugin))?.let { instance ->
+                                    populatePropertyWidgets(
+                                        plugin,
+                                        instance,
+                                        SettingsPanel,
+                                        plugin.settings.declaredMemberProperties,
+                                    )
+                                }
                             }
                         }
                     }
+
+                    SettingsPanel.add(this@SettingsDialog.paddingPanel, FillBothFinishLine)
+
+                    SettingsPanel.doLayout()
+                    SettingsPanel.repaint()
+                    SettingsPanel.revalidate()
                 }
-
-                SettingsPanel.add(this@SettingsDialog.paddingPanel, FillBothFinishLine)
-
-                SettingsPanel.doLayout()
-                SettingsPanel.repaint()
-                SettingsPanel.revalidate()
             }
         }
-    }
 
-    private val splitPane = JSplitPane(
-        JSplitPane.HORIZONTAL_SPLIT,
-        searchPanel, JScrollPane(SettingsPanel)
-    ).apply {
-        isOneTouchExpandable = true
-        isContinuousLayout = true
-        resizeWeight = 0.1
-    }
+    private val splitPane =
+        JSplitPane(JSplitPane.HORIZONTAL_SPLIT, searchPanel, JScrollPane(SettingsPanel)).apply {
+            isOneTouchExpandable = true
+            isContinuousLayout = true
+            resizeWeight = 0.1
+        }
 
     init {
         setCommands(StandardCommand.OK)
 
-        this.fixedComponent = JPanel().apply {
-            isOpaque = false
-            layout = BoxLayout(this, BoxLayout.Y_AXIS)
+        this.fixedComponent =
+            JPanel().apply {
+                isOpaque = false
+                layout = BoxLayout(this, BoxLayout.Y_AXIS)
 
-            preferredSize = Dimension(600, 400)
+                preferredSize = Dimension(600, 400)
 
-            add(this@SettingsDialog.splitPane)
-        }
+                add(this@SettingsDialog.splitPane)
+            }
     }
 
     private fun populatePropertyWidgets(
         plugin: Plugin,
         settings: Any,
         panel: JPanel,
-        properties: Collection<KProperty1<*, *>>
+        properties: Collection<KProperty1<*, *>>,
     ) {
         (RegistryUtil.get("setting_type") as Registry<String, (Plugin, String, Any) -> Component>?)
             ?.let { registry ->
@@ -125,10 +126,11 @@ object SettingsDialog : TaskDialog(Haruhi.window, "Settings") {
                     // We need to loop all the types as in some cases,
                     // such as enums, we register a setter for the base type
                     for (
-                        t in mutableListOf<KType>().apply {
-                            add(prop.returnType)
-                            addAll((prop.returnType.classifier as KClass<*>).supertypes)
-                        }
+                    t in
+                    mutableListOf<KType>().apply {
+                        add(prop.returnType)
+                        addAll((prop.returnType.classifier as KClass<*>).supertypes)
+                    }
                     ) {
                         val clazz = (t.classifier as KClass<*>)
                         val clazzName = clazz.qualifiedName!!
@@ -140,15 +142,16 @@ object SettingsDialog : TaskDialog(Haruhi.window, "Settings") {
                         when {
                             registry.has(clazzName) -> {
                                 registry.get(clazzName)?.let {
-                                    val label = JLabel(
-                                        "${
-                                        prop.name.capitalize().split(
-                                            Regex("(?=\\p{Lu})")
-                                        ).joinToString(
-                                            " "
+                                    val label =
+                                        JLabel(
+                                            "${
+                                                prop.name.capitalize().split(
+                                                    Regex("(?=\\p{Lu})"),
+                                                ).joinToString(
+                                                    " ",
+                                                )
+                                            }:",
                                         )
-                                        }:"
-                                    )
                                     val separator = JSeparator(JSeparator.HORIZONTAL)
                                     val widget = it(plugin, prop.name, settings)
 
@@ -158,7 +161,6 @@ object SettingsDialog : TaskDialog(Haruhi.window, "Settings") {
                                             panel.collapse.add(separator, FillHorizontal)
                                             panel.collapse.add(widget, FillHorizontalFinishLine)
                                         }
-
                                         else -> {
                                             panel.add(label, StickEast)
                                             panel.add(separator, FillHorizontal)
@@ -169,23 +171,24 @@ object SettingsDialog : TaskDialog(Haruhi.window, "Settings") {
 
                                 continue@loop
                             }
-
                             clazz.supertypes.contains(ConfigSection::class.createType()) -> {
-                                val collapsePanel = CollapsiblePanel(prop.name).apply {
-                                    layout = GridBagLayout()
-                                    collapse.layout = GridBagLayout()
+                                val collapsePanel =
+                                    CollapsiblePanel(prop.name).apply {
+                                        layout = GridBagLayout()
+                                        collapse.layout = GridBagLayout()
 
-                                    populatePropertyWidgets(
-                                        plugin, settings.get(prop.name),
-                                        this.collapse, clazz.declaredMemberProperties
-                                    )
-                                }
+                                        populatePropertyWidgets(
+                                            plugin,
+                                            settings.get(prop.name),
+                                            this.collapse,
+                                            clazz.declaredMemberProperties,
+                                        )
+                                    }
 
                                 when (panel) {
                                     is CollapsiblePanel -> {
                                         panel.collapse.add(collapsePanel)
                                     }
-
                                     else -> {
                                         panel.add(collapsePanel, FillHorizontalFinishLine)
                                     }
@@ -193,16 +196,15 @@ object SettingsDialog : TaskDialog(Haruhi.window, "Settings") {
 
                                 continue@loop
                             }
-
                             else -> failedClasses.add(clazzName)
                         }
                     }
 
                     panel.add(
                         ErrorLabel(
-                            "Error with ${prop.name}: ${failedClasses.joinToString()} isn't supported"
+                            "Error with ${prop.name}: ${failedClasses.joinToString()} isn't supported",
                         ),
-                        FillHorizontalFinishLine
+                        FillHorizontalFinishLine,
                     )
                 }
             }

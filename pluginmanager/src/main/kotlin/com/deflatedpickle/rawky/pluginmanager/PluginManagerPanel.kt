@@ -15,20 +15,12 @@ import javax.swing.DefaultListModel
 
 class PluginManagerPanel : JXPanel() {
     class Header : JXPanel() {
-        val nameLabel = JXLabel("name").apply {
-            this.font = this.font.deriveFont(26f)
-        }
-        val versionLabel = JXLabel("version").apply {
-            this.font = this.font.deriveFont(10f)
-        }
+        val nameLabel = JXLabel("name").apply { this.font = this.font.deriveFont(26f) }
+        val versionLabel = JXLabel("version").apply { this.font = this.font.deriveFont(10f) }
 
-        val authorLabel = JXLabel("author").apply {
-            this.font = this.font.deriveFont(14f)
-        }
+        val authorLabel = JXLabel("author").apply { this.font = this.font.deriveFont(14f) }
 
-        val typeLabel = JXLabel("type").apply {
-            this.font = this.font.deriveFont(10f)
-        }
+        val typeLabel = JXLabel("type").apply { this.font = this.font.deriveFont(10f) }
 
         val descriptionLabel = JXLabel("description")
 
@@ -42,7 +34,7 @@ class PluginManagerPanel : JXPanel() {
                     this.add(nameLabel)
                     this.add(versionLabel)
                 },
-                StickCenterFinishLine
+                StickCenterFinishLine,
             )
             this.add(this.authorLabel, StickCenterFinishLine)
             this.add(this.typeLabel, StickWestFinishLine)
@@ -50,10 +42,7 @@ class PluginManagerPanel : JXPanel() {
         }
 
         fun refresh(plugin: Plugin) {
-            this.nameLabel.text = plugin
-                .value
-                .split("_")
-                .joinToString(" ") { it.capitalize() }
+            this.nameLabel.text = plugin.value.split("_").joinToString(" ") { it.capitalize() }
 
             this.versionLabel.text = "v${plugin.version}"
             this.authorLabel.text = "By ${plugin.author}"
@@ -61,12 +50,12 @@ class PluginManagerPanel : JXPanel() {
 
             this.descriptionLabel.text =
                 "<html>${
-                plugin
-                    // Split it, get rid of the short description
-                    .description.split("<br>").drop(1)[0]
-                    // One BR is too small for me, need b i g
-                    .replace("<br>", "<br><br>")
-                    .trimIndent()
+                    plugin
+                        // Split it, get rid of the short description
+                        .description.split("<br>").drop(1)[0]
+                        // One BR is too small for me, need b i g
+                        .replace("<br>", "<br><br>")
+                        .trimIndent()
                 }</html>"
         }
     }
@@ -74,9 +63,7 @@ class PluginManagerPanel : JXPanel() {
     val header = Header()
 
     class Dependencies : JXPanel() {
-        val titleLabel = JXLabel("Dependencies").apply {
-            this.font = this.font.deriveFont(18f)
-        }
+        val titleLabel = JXLabel("Dependencies").apply { this.font = this.font.deriveFont(18f) }
 
         val dependencyModel = DefaultListModel<String>()
         val dependenciesList = JXList(this.dependencyModel)
