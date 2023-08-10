@@ -12,8 +12,8 @@ import com.deflatedpickle.haruhi.event.EventProgramFinishSetup
 import com.deflatedpickle.haruhi.event.EventSerializeConfig
 import com.deflatedpickle.haruhi.util.ConfigUtil
 import com.deflatedpickle.haruhi.util.RegistryUtil
-import com.deflatedpickle.marvin.extensions.get
-import com.deflatedpickle.marvin.extensions.set
+import com.deflatedpickle.marvin.functions.extensions.get
+import com.deflatedpickle.marvin.functions.extensions.set
 import com.deflatedpickle.sniffle.swingsettings.api.Font
 import com.deflatedpickle.sniffle.swingsettings.api.FontFamily
 import com.deflatedpickle.sniffle.swingsettings.api.Theme

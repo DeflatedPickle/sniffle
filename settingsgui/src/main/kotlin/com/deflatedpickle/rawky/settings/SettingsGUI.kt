@@ -12,8 +12,8 @@ import com.deflatedpickle.haruhi.event.EventProgramFinishSetup
 import com.deflatedpickle.haruhi.util.ConfigUtil.serializeConfig
 import com.deflatedpickle.haruhi.util.PluginUtil
 import com.deflatedpickle.haruhi.util.RegistryUtil
-import com.deflatedpickle.marvin.extensions.get
-import com.deflatedpickle.marvin.extensions.set
+import com.deflatedpickle.marvin.functions.extensions.get
+import com.deflatedpickle.marvin.functions.extensions.set
 import com.deflatedpickle.monocons.MonoIcon
 import com.deflatedpickle.rawky.settings.api.range.DoubleRange
 import com.deflatedpickle.rawky.settings.api.range.FloatRange
