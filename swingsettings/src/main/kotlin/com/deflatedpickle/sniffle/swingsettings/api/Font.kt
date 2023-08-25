@@ -2,14 +2,14 @@
 
 package com.deflatedpickle.sniffle.swingsettings.api
 
+import com.deflatedpickle.flatlaf.fonts.opendyslexic.FlatOpenDyslexicFont
 import com.deflatedpickle.haruhi.api.config.ConfigSection
 import com.deflatedpickle.rawky.settings.api.range.IntRange
 import kotlinx.serialization.Serializable
-import javax.swing.UIManager
 
 @Serializable
 data class Font(
-    var name: FontFamily = FontFamily(UIManager.getDefaults().getFont("TabbedPane.font").family),
-    var style: FontStyle = FontStyle.PLAIN,
+    var family: FontFamily = FontFamily(FlatOpenDyslexicFont.FAMILY),
+    var style: FontStyle = FontStyle.BOLD,
     @IntRange(1, 36) var size: Int = 12,
 ) : ConfigSection

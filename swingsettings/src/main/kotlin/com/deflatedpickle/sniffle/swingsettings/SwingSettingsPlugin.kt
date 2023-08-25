@@ -4,6 +4,7 @@
 
 package com.deflatedpickle.sniffle.swingsettings
 
+import com.deflatedpickle.haruhi.Haruhi
 import com.deflatedpickle.haruhi.api.Registry
 import com.deflatedpickle.haruhi.api.plugin.Plugin
 import com.deflatedpickle.haruhi.api.plugin.PluginType
@@ -18,19 +19,15 @@ import com.deflatedpickle.sniffle.swingsettings.api.Font
 import com.deflatedpickle.sniffle.swingsettings.api.FontFamily
 import com.deflatedpickle.sniffle.swingsettings.api.Theme
 import com.deflatedpickle.sniffle.swingsettings.config.SwingSettings
-import com.deflatedpickle.sniffle.swingsettings.theme.DarculaTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.DarkLafDarculaTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.DarkLafHighContrastDarkTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.DarkLafHighContrastLightTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.DarkLafIntelliJTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.DarkLafOneDarkTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.DarkLafSolarizedDarkTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.DarkLafSolarizedLightTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafArcDarkOrangeTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafArcDarkTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafArcOrangeTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafArcTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafCarbonTheme
+import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafCatppuccinFrappeIntelliJTheme
+import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafCatppuccinLatteIntelliJTheme
+import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafCatppuccinMacchiatoIntelliJTheme
+import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafCatppuccinMochaIntelliJTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafCobalt2Theme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafCyanLightTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafDarculaTheme
@@ -51,76 +48,33 @@ import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafHighContrastTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafIntelliJTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafLightFlatTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafLightTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialArcDarkContrastTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialArcDarkTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialDarkerContrastTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialDarkerTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialDeepOceanContrastTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialDeepOceanTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialDesignDarkTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialDraculaContrastTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialDraculaTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialGitHubContrastTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialGitHubTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialLightOwlContrastTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialLightOwlTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialLighterContrastTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialLighterTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialMonokaiProContrastTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialMonokaiProTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialMoonlightContrastTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialMoonlightTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialNightOwlContrastTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialNightOwlTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialOceanicContrastTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialOceanicTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialOneDarkContrastTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialOneDarkTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialOneLightContrastTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialOneLightTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialPalenightContrastTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialPalenightTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialSolarizedDarkContrastTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialSolarizedDarkTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialSolarizedLightContrastTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMaterialSolarizedLightTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMonocaiTheme
+import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafMonokaiProTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafNordTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafOneDarkTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafSolarizedDarkTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafSolarizedLightTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafSpaceGrayTheme
 import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafVuesionTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.KunststoffTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.NimRODTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.Plastic3DTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.PlasticBrownSugarTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.PlasticDarkStarTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.PlasticDesertBlueTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.PlasticDesertBluerTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.PlasticDesertGreenTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.PlasticDesertRedTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.PlasticDesertYellowTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.PlasticExperienceBlueTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.PlasticExperienceGreenTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.PlasticSilverTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.PlasticSkyBlueTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.PlasticSkyBluerTahomaTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.PlasticSkyBluerTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.PlasticSkyGreenTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.PlasticSkyKruppTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.PlasticSkyPinkTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.PlasticSkyRedTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.PlasticSkyYellowTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.PlasticXPTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.SeaGlassTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.SolarizedTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.SwingMetalTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.SwingMotifTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.SwingNativeTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.SwingNimbusTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.TinyMediaManagerDarkTheme
-import com.deflatedpickle.sniffle.swingsettings.theme.TinyMediaManagerLightTheme
+import com.deflatedpickle.sniffle.swingsettings.theme.FlatLafXCodeTheme
+import com.formdev.flatlaf.FlatLaf
 import java.awt.Component
 import java.awt.GraphicsEnvironment
 import java.awt.Window
@@ -147,23 +101,16 @@ object SwingSettingsPlugin {
 
         themeRegistry.apply {
             listOf(
-                // Swing
-                SwingMetalTheme,
-                SwingNimbusTheme,
-                SwingMotifTheme,
-                SwingNativeTheme,
-                // Darcula
-                DarculaTheme,
                 // FlatLaf
                 FlatLafLightTheme,
                 FlatLafDarkTheme,
                 FlatLafIntelliJTheme,
                 FlatLafDarculaTheme,
-                // FlatLaf - IntelliJ
-                FlatLafArcTheme,
-                FlatLafArcOrangeTheme,
+                // IntelliJ
                 FlatLafArcDarkTheme,
                 FlatLafArcDarkOrangeTheme,
+                FlatLafArcTheme,
+                FlatLafArcOrangeTheme,
                 FlatLafCarbonTheme,
                 FlatLafCobalt2Theme,
                 FlatLafCyanLightTheme,
@@ -183,85 +130,36 @@ object SwingSettingsPlugin {
                 FlatLafLightFlatTheme,
                 FlatLafMaterialDesignDarkTheme,
                 FlatLafMonocaiTheme,
+                FlatLafMonokaiProTheme,
                 FlatLafNordTheme,
                 FlatLafOneDarkTheme,
                 FlatLafSolarizedDarkTheme,
                 FlatLafSolarizedLightTheme,
                 FlatLafSpaceGrayTheme,
                 FlatLafVuesionTheme,
-                // FlatLaf - Material
+                FlatLafXCodeTheme,
+                // Material
                 FlatLafMaterialArcDarkTheme,
-                FlatLafMaterialArcDarkContrastTheme,
                 FlatLafMaterialOneDarkTheme,
-                FlatLafMaterialOneDarkContrastTheme,
                 FlatLafMaterialOneLightTheme,
-                FlatLafMaterialOneLightContrastTheme,
                 FlatLafMaterialDraculaTheme,
-                FlatLafMaterialDraculaContrastTheme,
                 FlatLafMaterialGitHubTheme,
-                FlatLafMaterialGitHubContrastTheme,
                 FlatLafMaterialLightOwlTheme,
-                FlatLafMaterialLightOwlContrastTheme,
                 FlatLafMaterialDarkerTheme,
-                FlatLafMaterialDarkerContrastTheme,
                 FlatLafMaterialDeepOceanTheme,
-                FlatLafMaterialDeepOceanContrastTheme,
                 FlatLafMaterialLighterTheme,
-                FlatLafMaterialLighterContrastTheme,
                 FlatLafMaterialOceanicTheme,
-                FlatLafMaterialOceanicContrastTheme,
                 FlatLafMaterialPalenightTheme,
-                FlatLafMaterialPalenightContrastTheme,
                 FlatLafMaterialMonokaiProTheme,
-                FlatLafMaterialMonokaiProContrastTheme,
                 FlatLafMaterialMoonlightTheme,
-                FlatLafMaterialMoonlightContrastTheme,
                 FlatLafMaterialNightOwlTheme,
-                FlatLafMaterialNightOwlContrastTheme,
                 FlatLafMaterialSolarizedDarkTheme,
-                FlatLafMaterialSolarizedDarkContrastTheme,
                 FlatLafMaterialSolarizedLightTheme,
-                FlatLafMaterialSolarizedLightContrastTheme,
-                // DarkLaf
-                DarkLafDarculaTheme,
-                DarkLafHighContrastDarkTheme,
-                DarkLafHighContrastLightTheme,
-                DarkLafIntelliJTheme,
-                DarkLafOneDarkTheme,
-                DarkLafSolarizedDarkTheme,
-                DarkLafSolarizedLightTheme,
-                // Solarized
-                SolarizedTheme,
-                // Plastic
-                PlasticBrownSugarTheme,
-                PlasticDarkStarTheme,
-                PlasticDesertBlueTheme,
-                PlasticDesertBluerTheme,
-                PlasticDesertGreenTheme,
-                PlasticDesertRedTheme,
-                PlasticDesertYellowTheme,
-                PlasticExperienceBlueTheme,
-                PlasticExperienceGreenTheme,
-                PlasticSilverTheme,
-                PlasticSkyBlueTheme,
-                PlasticSkyBluerTheme,
-                PlasticSkyBluerTahomaTheme,
-                PlasticSkyGreenTheme,
-                PlasticSkyKruppTheme,
-                PlasticSkyPinkTheme,
-                PlasticSkyRedTheme,
-                PlasticSkyYellowTheme,
-                Plastic3DTheme,
-                PlasticXPTheme,
-                // Kunststoff
-                KunststoffTheme,
-                // NimROD
-                NimRODTheme,
-                // TinyMediaManager
-                TinyMediaManagerLightTheme,
-                TinyMediaManagerDarkTheme,
-                // SeaGlass
-                SeaGlassTheme,
+                // Catppuccin
+                FlatLafCatppuccinFrappeIntelliJTheme,
+                FlatLafCatppuccinLatteIntelliJTheme,
+                FlatLafCatppuccinMacchiatoIntelliJTheme,
+                FlatLafCatppuccinMochaIntelliJTheme,
             )
                 .forEach { register(it.id, it) }
         }
@@ -270,20 +168,14 @@ object SwingSettingsPlugin {
             if ("swing_settings" in file.name) {
                 ConfigUtil.getSettings<SwingSettings>("deflatedpickle@swing_settings#>=1.0.0")?.let {
                         settings ->
-                    if (!settings.enabled) return@addListener
+                    settings.theme.apply {
+                        this.apply()
 
-                    SwingUtilities.invokeLater {
-                        settings.theme.apply {
-                            this.apply()
-
-                            settings.font.also {
-                                setFont(
-                                    if (it.name.name == "") {
-                                        Font(style = it.style, size = it.size)
-                                    } else {
-                                        Font(it.name, it.style, it.size)
-                                    },
-                                )
+                        settings.font.also {
+                            if (it.family.name == "") {
+                                setFont(Font(style = it.style, size = it.size))
+                            } else {
+                                FlatLaf.setPreferredFontFamily(it.family.name)
                             }
                         }
                     }
@@ -337,7 +229,7 @@ object SwingSettingsPlugin {
                     if ("swing_settings" in it.name) {
                         SwingUtilities.invokeLater {
                             settings.font.also { font ->
-                                settings.theme.setFont(Font(font.name, font.style, font.size))
+                                settings.theme.setFont(Font(font.family, font.style, font.size))
                             }
 
                             this.updateComponents()

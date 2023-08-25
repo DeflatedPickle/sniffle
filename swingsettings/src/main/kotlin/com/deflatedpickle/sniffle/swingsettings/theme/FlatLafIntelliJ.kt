@@ -25,35 +25,15 @@ import com.formdev.flatlaf.intellijthemes.FlatHighContrastIJTheme
 import com.formdev.flatlaf.intellijthemes.FlatLightFlatIJTheme
 import com.formdev.flatlaf.intellijthemes.FlatMaterialDesignDarkIJTheme
 import com.formdev.flatlaf.intellijthemes.FlatMonocaiIJTheme
+import com.formdev.flatlaf.intellijthemes.FlatMonokaiProIJTheme
 import com.formdev.flatlaf.intellijthemes.FlatNordIJTheme
 import com.formdev.flatlaf.intellijthemes.FlatOneDarkIJTheme
 import com.formdev.flatlaf.intellijthemes.FlatSolarizedDarkIJTheme
 import com.formdev.flatlaf.intellijthemes.FlatSolarizedLightIJTheme
 import com.formdev.flatlaf.intellijthemes.FlatSpacegrayIJTheme
 import com.formdev.flatlaf.intellijthemes.FlatVuesionIJTheme
+import com.formdev.flatlaf.intellijthemes.FlatXcodeDarkIJTheme
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatArcDarkIJTheme
-
-object FlatLafArcTheme :
-    Theme(
-        "flatlaf-intellij_arc",
-        FlatLaf,
-        "Arc",
-    ) {
-    override fun changeTo() {
-        FlatArcIJTheme.setup()
-    }
-}
-
-object FlatLafArcOrangeTheme :
-    Theme(
-        "flatlaf-intellij_arc_orange",
-        FlatLaf,
-        "Arc Orange",
-    ) {
-    override fun changeTo() {
-        FlatArcOrangeIJTheme.setup()
-    }
-}
 
 object FlatLafArcDarkTheme :
     Theme(
@@ -74,6 +54,28 @@ object FlatLafArcDarkOrangeTheme :
     ) {
     override fun changeTo() {
         FlatArcDarkOrangeIJTheme.setup()
+    }
+}
+
+object FlatLafArcTheme :
+    Theme(
+        "flatlaf-intellij_arc",
+        FlatLaf,
+        "Arc",
+    ) {
+    override fun changeTo() {
+        FlatArcIJTheme.setup()
+    }
+}
+
+object FlatLafArcOrangeTheme :
+    Theme(
+        "flatlaf-intellij_arc_orange",
+        FlatLaf,
+        "Arc Orange",
+    ) {
+    override fun changeTo() {
+        FlatArcOrangeIJTheme.setup()
     }
 }
 
@@ -281,6 +283,17 @@ object FlatLafMonocaiTheme :
     }
 }
 
+object FlatLafMonokaiProTheme :
+    Theme(
+        "flatlaf-intellij_monokai_pro",
+        FlatLaf,
+        "Monocai",
+    ) {
+    override fun changeTo() {
+        FlatMonokaiProIJTheme.setup()
+    }
+}
+
 object FlatLafNordTheme :
     Theme(
         "flatlaf-intellij_nord",
@@ -344,5 +357,16 @@ object FlatLafVuesionTheme :
     ) {
     override fun changeTo() {
         FlatVuesionIJTheme.setup()
+    }
+}
+
+object FlatLafXCodeTheme :
+    Theme(
+        "flatlaf-intellij_xcode",
+        FlatLaf,
+        "XCode",
+    ) {
+    override fun changeTo() {
+        FlatXcodeDarkIJTheme.setup()
     }
 }

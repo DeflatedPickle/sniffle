@@ -53,7 +53,7 @@ abstract class Theme(
     // Change the font used with this theme
     // Not static as some themes need to override how the font is changed
     open fun setFont(font: Font) {
-        val f = FontUIResource(font.name.name, font.style.ordinal, font.size)
+        val f = FontUIResource(font.family.name, font.style.ordinal, font.size)
         val keys: Enumeration<*> = UIManager.getDefaults().keys()
 
         while (keys.hasMoreElements()) {
