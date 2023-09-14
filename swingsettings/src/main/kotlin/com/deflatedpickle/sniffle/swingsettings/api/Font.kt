@@ -10,6 +10,6 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Font(
     var family: FontFamily = FontFamily(FlatOpenDyslexicFont.FAMILY),
-    var style: FontStyle = FontStyle.BOLD,
-    @IntRange(1, 36) var size: Int = 12,
+    var style: FontStyle = FontStyle.PLAIN,
+    @IntRange(1, 36) var size: Int = 14,
 ) : ConfigSection
